@@ -1,0 +1,18 @@
+
+github "kishikawakatsumi/KeychainAccess"
+github "SVProgressHUD/SVProgressHUD"
+github "SwiftyJSON/SwiftyJSON"
+github "hsousa/HCSStarRatingView"
+github "nicklockwood/iCarousel"
+github "DavydLiu/DLRadioButton" ~> 1.4
+github "Alamofire/Alamofire" ~> 4.3
+github "RxSwiftCommunity/RxAlamofire" "master"
+github "ReactiveX/RxSwift" ~> 3.2
+github "Hearst-DD/ObjectMapper" ~> 2.2
+github "tristanhimmelman/AlamofireObjectMapper" ~> 4.0
+github "anatoliyv/SMIconLabel"
+github "mutualmobile/MMDrawerController"
+github "MortimerGoro/MGSwipeTableCell"
+github "sjkim0757/SwiftAnimations"
+github "rs/SDWebImage"
+github "Orderella/PopupDialog" ~> 0.5

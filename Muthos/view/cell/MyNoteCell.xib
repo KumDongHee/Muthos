@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MyNoteCell" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="363"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="362.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hg0-2M-Qsf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="363"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mynote_bg_sh_top_02" translatesAutoresizingMaskIntoConstraints="NO" id="u0N-k1-kch">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="227.5" id="cMO-cK-7u9"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MWr-cI-kpE">
+                        <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="MWr-cI-kpE" secondAttribute="height" multiplier="1:1" id="F8S-Op-HQw"/>
+                            <constraint firstAttribute="width" constant="67" id="cQI-eY-Ype"/>
+                        </constraints>
+                    </imageView>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7f-EM-vSD">
+                        <rect key="frame" x="308" y="0.0" width="67" height="67"/>
+                        <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_empty" translatesAutoresizingMaskIntoConstraints="NO" id="Byw-iB-Gwd">
+                                <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-eX-z1T">
+                                <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_fill" translatesAutoresizingMaskIntoConstraints="NO" id="hLT-jV-IjR">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lze-EE-bdo">
+                                <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_fill" translatesAutoresizingMaskIntoConstraints="NO" id="evn-st-pzT">
+                                        <rect key="frame" x="-10" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_fill" translatesAutoresizingMaskIntoConstraints="NO" id="q6O-6q-rV0">
+                                        <rect key="frame" x="10" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZD3-CB-6iz">
+                                <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_fill" translatesAutoresizingMaskIntoConstraints="NO" id="Bk1-KK-IPr">
+                                        <rect key="frame" x="-15" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_fill" translatesAutoresizingMaskIntoConstraints="NO" id="AVp-cp-RGY">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_star_fill" translatesAutoresizingMaskIntoConstraints="NO" id="6rc-0w-Tjb">
+                                        <rect key="frame" x="15" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-2K-e72">
+                                <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mynote_icon_crown" translatesAutoresizingMaskIntoConstraints="NO" id="Z3c-mB-oWX">
+                                        <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="67" id="kAT-j8-Mze"/>
+                            <constraint firstAttribute="width" constant="67" id="uCb-WL-yPz"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mynote_btn_fold" highlightedImage="mynote_btn_fold" translatesAutoresizingMaskIntoConstraints="NO" id="FA7-zn-xfY">
+                        <rect key="frame" x="337" y="29" width="19" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="5PN-PC-EF9"/>
+                            <constraint firstAttribute="height" constant="10" id="fX0-Jf-jcn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think about me as a boyfriend?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqr-f6-yzX" customClass="TopAlignedLabel" customModule="muthos" customModuleProvider="target">
+                        <rect key="frame" x="81" y="8" width="230" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="8eL-QW-fpz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oct 24. 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXl-Gj-jHC">
+                        <rect key="frame" x="80" y="341" width="100" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="d0s-vx-vmN"/>
+                            <constraint firstAttribute="width" constant="100" id="zYm-V0-uRA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set 8" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF4-e1-qN5">
+                        <rect key="frame" x="81" y="55" width="100" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mL4-Uq-2sA">
+                        <rect key="frame" x="156" y="257" width="62" height="62"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="62" id="V2A-0m-vzP"/>
+                            <constraint firstAttribute="height" constant="62" id="bKA-Jg-hA6"/>
+                        </constraints>
+                        <state key="normal" image="control_btn_speak_default"/>
+                        <connections>
+                            <action selector="touchSpeakButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VnH-fd-s1u"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mynote_bg_sh_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ozJ-ok-8YC">
+                        <rect key="frame" x="0.0" y="198" width="375" height="164"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="163.5" id="pUj-nS-0tG"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8z-08-x0W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="363"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3C-Fs-l9j">
+                        <rect key="frame" x="0.0" y="66" width="375" height="188"/>
+                        <connections>
+                            <action selector="touchListenButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ED7-gD-UoK"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="h3C-Fs-l9j" firstAttribute="top" secondItem="MWr-cI-kpE" secondAttribute="bottom" constant="-1" id="30N-FC-hBU"/>
+                    <constraint firstItem="V8z-08-x0W" firstAttribute="centerY" secondItem="hg0-2M-Qsf" secondAttribute="centerY" id="36X-15-59l"/>
+                    <constraint firstItem="hg0-2M-Qsf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="3TP-Jk-34u"/>
+                    <constraint firstItem="V8z-08-x0W" firstAttribute="width" secondItem="hg0-2M-Qsf" secondAttribute="width" id="3V5-cz-oG8"/>
+                    <constraint firstItem="V8z-08-x0W" firstAttribute="centerX" secondItem="hg0-2M-Qsf" secondAttribute="centerX" id="3f6-WH-FAl"/>
+                    <constraint firstItem="h3C-Fs-l9j" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="8fr-t1-wRy"/>
+                    <constraint firstItem="MWr-cI-kpE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Agt-8O-WoX"/>
+                    <constraint firstItem="u0N-k1-kch" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="B41-B3-9AX"/>
+                    <constraint firstItem="eXl-Gj-jHC" firstAttribute="leading" secondItem="MWr-cI-kpE" secondAttribute="trailing" constant="13" id="CmF-U8-OpG"/>
+                    <constraint firstItem="u0N-k1-kch" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F8J-Zv-isI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="g7f-EM-vSD" secondAttribute="trailing" constant="-8" id="GBq-uA-xSa"/>
+                    <constraint firstAttribute="trailing" secondItem="u0N-k1-kch" secondAttribute="trailing" id="Hou-gY-Kiy"/>
+                    <constraint firstItem="tqr-f6-yzX" firstAttribute="leading" secondItem="MWr-cI-kpE" secondAttribute="trailing" constant="14" id="L5Y-eL-l7r"/>
+                    <constraint firstItem="h3C-Fs-l9j" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LUc-xg-jST"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="h3C-Fs-l9j" secondAttribute="bottom" constant="100" id="ODN-dE-n86"/>
+                    <constraint firstAttribute="trailing" secondItem="hg0-2M-Qsf" secondAttribute="trailing" id="S4Q-xg-AdY"/>
+                    <constraint firstItem="FA7-zn-xfY" firstAttribute="centerY" secondItem="MWr-cI-kpE" secondAttribute="centerY" id="T8y-eg-ot6"/>
+                    <constraint firstItem="g7f-EM-vSD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="UKz-ze-PFh"/>
+                    <constraint firstAttribute="bottom" secondItem="eXl-Gj-jHC" secondAttribute="bottom" constant="8" id="Uhn-Su-ayj"/>
+                    <constraint firstAttribute="trailing" secondItem="ozJ-ok-8YC" secondAttribute="trailing" id="VIs-RV-ltD"/>
+                    <constraint firstAttribute="trailing" secondItem="FA7-zn-xfY" secondAttribute="trailing" constant="19" id="W1a-od-NQr"/>
+                    <constraint firstItem="MWr-cI-kpE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Z7a-dE-3WQ"/>
+                    <constraint firstItem="mL4-Uq-2sA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="at6-hV-DaO"/>
+                    <constraint firstItem="tqr-f6-yzX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="dLa-ZW-EJS"/>
+                    <constraint firstItem="eXl-Gj-jHC" firstAttribute="top" secondItem="mL4-Uq-2sA" secondAttribute="bottom" constant="22.5" id="exc-Bc-qVf"/>
+                    <constraint firstAttribute="bottom" secondItem="ozJ-ok-8YC" secondAttribute="bottom" id="fjT-NC-O0I"/>
+                    <constraint firstItem="hg0-2M-Qsf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hVr-cN-ikp"/>
+                    <constraint firstItem="FA7-zn-xfY" firstAttribute="leading" secondItem="tqr-f6-yzX" secondAttribute="trailing" constant="26" id="hXX-J2-iLr"/>
+                    <constraint firstItem="u0N-k1-kch" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="imy-sQ-00C"/>
+                    <constraint firstItem="V8z-08-x0W" firstAttribute="height" secondItem="hg0-2M-Qsf" secondAttribute="height" id="pd8-38-f11"/>
+                    <constraint firstItem="ozJ-ok-8YC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="r6z-BN-WJF"/>
+                    <constraint firstAttribute="bottom" secondItem="hg0-2M-Qsf" secondAttribute="bottom" constant="-0.5" id="uEg-aE-zhv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="arrowImgView" destination="FA7-zn-xfY" id="DH3-nn-KeI"/>
+                <outlet property="dateLabel" destination="eXl-Gj-jHC" id="Qjx-mU-ZWs"/>
+                <outlet property="gradeStarArea" destination="g7f-EM-vSD" id="HyL-NZ-OaR"/>
+                <outlet property="listenButton" destination="h3C-Fs-l9j" id="lYx-CW-B6M"/>
+                <outlet property="previewImgView" destination="hg0-2M-Qsf" id="8YN-xs-nB5"/>
+                <outlet property="setNameLabel" destination="aF4-e1-qN5" id="GmV-cj-tVT"/>
+                <outlet property="shadowImgView" destination="ozJ-ok-8YC" id="J4P-CA-30j"/>
+                <outlet property="speakButton" destination="mL4-Uq-2sA" id="uND-0o-YGx"/>
+                <outlet property="talkArea" destination="V8z-08-x0W" id="PdJ-El-po4"/>
+                <outlet property="thumbImgView" destination="MWr-cI-kpE" id="zDY-aV-qEs"/>
+                <outlet property="titleLabel" destination="tqr-f6-yzX" id="uV4-IL-MGc"/>
+                <outlet property="topShadowImgView" destination="u0N-k1-kch" id="lhB-NS-fzA"/>
+            </connections>
+            <point key="canvasLocation" x="-50.5" y="21.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="control_btn_speak_default" width="62" height="62"/>
+        <image name="mynote_bg_sh_bottom" width="375" height="163"/>
+        <image name="mynote_bg_sh_top_02" width="375" height="227"/>
+        <image name="mynote_btn_fold" width="19" height="10"/>
+        <image name="mynote_icon_crown" width="13" height="10"/>
+        <image name="mynote_icon_star_empty" width="11" height="11"/>
+        <image name="mynote_icon_star_fill" width="11" height="11"/>
+    </resources>
+</document>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCell" id="gTV-IL-0wX" customClass="BookCell" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="104" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="104" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UtC-wK-wlQ">
+                        <rect key="frame" x="0.0" y="0.0" width="104" height="150"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPp-Y2-ibp">
+                        <rect key="frame" x="0.0" y="0.0" width="104" height="150"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ih2-Xl-Ou6">
+                                <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ih2-Xl-Ou6" secondAttribute="height" multiplier="1:1" id="FZE-fx-9G9"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expresion ABCDE HELLO WORLD" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59L-KL-NdV" customClass="TopAlignedLabel" customModule="muthos" customModuleProvider="target">
+                                <rect key="frame" x="9" y="112" width="86" height="30"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13.5"/>
+                                <color key="textColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mybook_icon_badge" translatesAutoresizingMaskIntoConstraints="NO" id="1bn-f8-bmn">
+                                <rect key="frame" x="10" y="0.0" width="22" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="kHU-1f-KEw"/>
+                                    <constraint firstAttribute="height" constant="39" id="xrJ-IS-TPe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1bn-f8-bmn" firstAttribute="leading" secondItem="WPp-Y2-ibp" secondAttribute="leading" constant="10" id="1DW-h8-Uz6"/>
+                            <constraint firstItem="59L-KL-NdV" firstAttribute="leading" secondItem="WPp-Y2-ibp" secondAttribute="leading" constant="9" id="CSR-IL-TK7"/>
+                            <constraint firstAttribute="bottom" secondItem="59L-KL-NdV" secondAttribute="bottom" constant="8" id="J3v-SF-a5s"/>
+                            <constraint firstItem="ih2-Xl-Ou6" firstAttribute="top" secondItem="WPp-Y2-ibp" secondAttribute="top" id="LYP-B3-8Zv"/>
+                            <constraint firstItem="ih2-Xl-Ou6" firstAttribute="leading" secondItem="WPp-Y2-ibp" secondAttribute="leading" id="c2U-qf-rRd"/>
+                            <constraint firstAttribute="trailing" secondItem="59L-KL-NdV" secondAttribute="trailing" constant="9" id="iWT-5h-hcG"/>
+                            <constraint firstItem="59L-KL-NdV" firstAttribute="top" secondItem="ih2-Xl-Ou6" secondAttribute="bottom" constant="8" id="kIP-1x-gy2"/>
+                            <constraint firstAttribute="trailing" secondItem="ih2-Xl-Ou6" secondAttribute="trailing" id="op4-So-arJ"/>
+                            <constraint firstItem="1bn-f8-bmn" firstAttribute="top" secondItem="WPp-Y2-ibp" secondAttribute="top" id="vTs-N5-qs0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="WPp-Y2-ibp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="84L-R2-fcd"/>
+                <constraint firstItem="UtC-wK-wlQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8C3-AO-RjS"/>
+                <constraint firstAttribute="trailing" secondItem="UtC-wK-wlQ" secondAttribute="trailing" id="Odn-Ib-pqB"/>
+                <constraint firstAttribute="trailing" secondItem="WPp-Y2-ibp" secondAttribute="trailing" id="Vpu-2F-kuT"/>
+                <constraint firstAttribute="bottom" secondItem="UtC-wK-wlQ" secondAttribute="bottom" id="gKL-Pt-SWo"/>
+                <constraint firstItem="UtC-wK-wlQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="oQD-3S-Jsa"/>
+                <constraint firstAttribute="bottom" secondItem="WPp-Y2-ibp" secondAttribute="bottom" id="oXR-u3-owP"/>
+                <constraint firstItem="WPp-Y2-ibp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pU8-QJ-WS7"/>
+            </constraints>
+            <connections>
+                <outlet property="backView" destination="UtC-wK-wlQ" id="eR8-HI-5F4"/>
+                <outlet property="bookImage" destination="ih2-Xl-Ou6" id="aLY-Bp-bSR"/>
+                <outlet property="bookLabel" destination="59L-KL-NdV" id="x4P-tU-Cen"/>
+                <outlet property="bookmarkImgView" destination="1bn-f8-bmn" id="DOm-eE-hqR"/>
+                <outlet property="frontView" destination="WPp-Y2-ibp" id="oOe-2a-jcT"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="mybook_icon_badge" width="22" height="39"/>
+    </resources>
+</document>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F54b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P0v-Yb-C6i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="mRl-Tm-rAy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Scc-Uk-khI">
+                                <rect key="frame" x="149" y="272" width="78" height="73.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73.5" id="aaw-Oh-WLm"/>
+                                    <constraint firstAttribute="width" constant="78" id="iHx-48-mCl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright muthos. All rights reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a55-cj-KcI">
+                                <rect key="frame" x="104.5" y="642" width="166.5" height="13"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="10.5"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mRl-Tm-rAy" firstAttribute="leading" secondItem="P0v-Yb-C6i" secondAttribute="leading" id="0mk-Jg-0Rp"/>
+                            <constraint firstItem="Scc-Uk-khI" firstAttribute="centerY" secondItem="P0v-Yb-C6i" secondAttribute="centerY" constant="-25" id="5XI-F6-7c7"/>
+                            <constraint firstAttribute="trailing" secondItem="mRl-Tm-rAy" secondAttribute="trailing" id="JXW-Wr-302"/>
+                            <constraint firstItem="mRl-Tm-rAy" firstAttribute="top" secondItem="P0v-Yb-C6i" secondAttribute="top" id="LRd-jG-srI"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="mRl-Tm-rAy" secondAttribute="bottom" id="PKq-L0-yYk"/>
+                            <constraint firstItem="Scc-Uk-khI" firstAttribute="centerX" secondItem="P0v-Yb-C6i" secondAttribute="centerX" id="fTM-ty-aOl"/>
+                            <constraint firstItem="a55-cj-KcI" firstAttribute="centerX" secondItem="P0v-Yb-C6i" secondAttribute="centerX" id="gwK-lp-7nA"/>
+                            <constraint firstItem="mRl-Tm-rAy" firstAttribute="leading" secondItem="P0v-Yb-C6i" secondAttribute="leading" id="hMn-qx-6sa"/>
+                            <constraint firstAttribute="trailing" secondItem="mRl-Tm-rAy" secondAttribute="trailing" id="mJh-mQ-FVL"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="a55-cj-KcI" secondAttribute="bottom" constant="12" id="ugb-8S-hjf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launchscreen" width="375" height="667"/>
+        <image name="login_logo" width="78" height="73"/>
+    </resources>
+</document>

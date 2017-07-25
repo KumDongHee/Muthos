@@ -1,0 +1,6 @@
+framework module SwiftAnimations {
+  umbrella header "SwiftAnimations-umbrella.h"
+
+  export *
+  module * { export * }
+}

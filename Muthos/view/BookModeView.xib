@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BookModeView" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="145" height="30"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book_mode_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ruS-x7-kES">
+                    <rect key="frame" x="0.0" y="0.0" width="145" height="30"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="book_mode_btn" translatesAutoresizingMaskIntoConstraints="NO" id="fIi-c6-zX9">
+                    <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="book_mode_easy_01" translatesAutoresizingMaskIntoConstraints="NO" id="mpJ-Ed-cpA">
+                    <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1z-j2-Tp5">
+                    <rect key="frame" x="0.0" y="0.0" width="72.5" height="30"/>
+                    <connections>
+                        <action selector="onClickEasyWith_sender:" destination="iN0-l3-epB" eventType="touchUpInside" id="jzu-td-lnL"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="book_mode_hard_02" translatesAutoresizingMaskIntoConstraints="NO" id="JpS-Ar-Ie1">
+                    <rect key="frame" x="74" y="0.0" width="74" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-Db-Gqz">
+                    <rect key="frame" x="72.5" y="0.0" width="72.5" height="30"/>
+                    <connections>
+                        <action selector="onClickHardWith_sender:" destination="iN0-l3-epB" eventType="touchUpInside" id="LXK-mC-G4g"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cuV-Hd-8PJ" customClass="UIControl">
+                    <rect key="frame" x="0.0" y="0.0" width="74" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="onDragInside:event:" destination="iN0-l3-epB" eventType="touchDragInside" id="UYM-Ia-ibj"/>
+                        <action selector="onTouchDown:event:" destination="iN0-l3-epB" eventType="touchDown" id="UEX-W3-NEw"/>
+                        <action selector="onTouchUp:" destination="iN0-l3-epB" eventType="touchUpInside" id="6VR-iv-Xl7"/>
+                        <action selector="onTouchUp:" destination="iN0-l3-epB" eventType="touchUpOutside" id="XU3-yl-PFo"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="c4g-Db-Gqz" firstAttribute="width" secondItem="ruS-x7-kES" secondAttribute="width" multiplier="0.5" id="IU8-mc-1jz"/>
+                <constraint firstItem="V1z-j2-Tp5" firstAttribute="leading" secondItem="ruS-x7-kES" secondAttribute="leading" id="NJw-ok-Nwk"/>
+                <constraint firstItem="c4g-Db-Gqz" firstAttribute="trailing" secondItem="ruS-x7-kES" secondAttribute="trailing" id="OuF-yA-9jB"/>
+                <constraint firstItem="V1z-j2-Tp5" firstAttribute="height" secondItem="ruS-x7-kES" secondAttribute="height" id="PcZ-Ou-FXn"/>
+                <constraint firstItem="V1z-j2-Tp5" firstAttribute="centerY" secondItem="ruS-x7-kES" secondAttribute="centerY" id="dYV-lJ-7Hm"/>
+                <constraint firstAttribute="trailing" secondItem="ruS-x7-kES" secondAttribute="trailing" id="jKC-gd-oKT"/>
+                <constraint firstAttribute="bottom" secondItem="ruS-x7-kES" secondAttribute="bottom" id="l8g-g5-VAW"/>
+                <constraint firstItem="V1z-j2-Tp5" firstAttribute="width" secondItem="ruS-x7-kES" secondAttribute="width" multiplier="0.5" id="nze-NJ-qAb"/>
+                <constraint firstItem="c4g-Db-Gqz" firstAttribute="centerY" secondItem="ruS-x7-kES" secondAttribute="centerY" id="oSm-do-IR4"/>
+                <constraint firstItem="c4g-Db-Gqz" firstAttribute="height" secondItem="ruS-x7-kES" secondAttribute="height" id="paT-T5-JzM"/>
+                <constraint firstItem="ruS-x7-kES" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qZj-EW-GZ0"/>
+                <constraint firstItem="ruS-x7-kES" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rJm-js-lWv"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bookModeBtn" destination="fIi-c6-zX9" id="K4K-bK-wbQ"/>
+                <outlet property="imgEasy" destination="mpJ-Ed-cpA" id="J1L-P7-ugq"/>
+                <outlet property="imgHard" destination="JpS-Ar-Ie1" id="0Nj-bQ-qyF"/>
+                <outlet property="touchControl" destination="cuV-Hd-8PJ" id="Kwy-OT-UKD"/>
+            </connections>
+            <point key="canvasLocation" x="256.5" y="255"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="book_mode_bg" width="145" height="30"/>
+        <image name="book_mode_btn" width="74" height="30"/>
+        <image name="book_mode_easy_01" width="74" height="30"/>
+        <image name="book_mode_hard_02" width="74" height="30"/>
+    </resources>
+</document>

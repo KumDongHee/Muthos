@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TooltipHeader" id="iN0-l3-epB" customClass="TooltipHeader" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfN-Ig-3LF">
+                    <rect key="frame" x="18" y="49.5" width="357" height="0.5"/>
+                    <color key="backgroundColor" red="0.88627450980392153" green="0.88627450980392153" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="ztA-Ep-Rjh"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="setting_icon_flip_on" translatesAutoresizingMaskIntoConstraints="NO" id="RUZ-2f-iV4">
+                    <rect key="frame" x="342" y="20" width="19" height="10"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="10" id="Dtj-IE-Q8I"/>
+                        <constraint firstAttribute="width" constant="19" id="lbV-Tn-bI4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1N-DA-yZF">
+                    <rect key="frame" x="18" y="14" width="200" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="5lX-jy-gOr"/>
+                        <constraint firstAttribute="width" constant="200" id="jNR-x3-zB6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RUZ-2f-iV4" secondAttribute="trailing" constant="14" id="6zg-Hb-2Ni"/>
+                <constraint firstAttribute="trailing" secondItem="TfN-Ig-3LF" secondAttribute="trailing" id="ANH-dQ-vtg"/>
+                <constraint firstItem="TfN-Ig-3LF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="Imy-Kv-CSj"/>
+                <constraint firstAttribute="bottom" secondItem="TfN-Ig-3LF" secondAttribute="bottom" id="Kyu-CE-7pl"/>
+                <constraint firstItem="RUZ-2f-iV4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="g9f-o9-eII"/>
+                <constraint firstItem="s1N-DA-yZF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="sji-v7-qem"/>
+                <constraint firstItem="s1N-DA-yZF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="yI3-30-sJ7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="arrowImgView" destination="RUZ-2f-iV4" id="aS5-kv-DE1"/>
+                <outlet property="sectionTitleLabel" destination="s1N-DA-yZF" id="NmJ-Du-bNN"/>
+            </connections>
+            <point key="canvasLocation" x="304.5" y="521"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="setting_icon_flip_on" width="19" height="10"/>
+    </resources>
+</document>

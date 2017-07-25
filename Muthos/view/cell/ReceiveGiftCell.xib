@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zlf-Cm-bwh" customClass="ReceiveGiftCell" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zlf-Cm-bwh" id="4UZ-XN-LkI">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xee-BB-W5g">
+                        <rect key="frame" x="12" y="9" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="xee-BB-W5g" secondAttribute="height" multiplier="1:1" id="9vY-9y-JzY"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qe3-YV-pbR">
+                        <rect key="frame" x="70" y="18.5" width="150" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="d6m-jz-QkS"/>
+                            <constraint firstAttribute="height" constant="18" id="rK9-qz-YeG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNl-sX-b4k">
+                        <rect key="frame" x="322" y="11" width="43" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="43" id="8Gm-bG-jbc"/>
+                            <constraint firstAttribute="width" constant="43" id="UI6-hL-91Z"/>
+                        </constraints>
+                        <state key="normal" image="friends_btn_present_default"/>
+                        <state key="highlighted" image="friends_btn_present_pressed"/>
+                        <state key="focused" image="friends_btn_present_pressed"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pig / Lv.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qQ-iv-TnW">
+                        <rect key="frame" x="70" y="37" width="100" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Czp-d7-C7e"/>
+                            <constraint firstAttribute="height" constant="12" id="xQf-ui-5qQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="11"/>
+                        <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="xee-BB-W5g" firstAttribute="top" secondItem="4UZ-XN-LkI" secondAttribute="top" constant="9" id="9tU-x0-jEv"/>
+                    <constraint firstItem="xee-BB-W5g" firstAttribute="leading" secondItem="4UZ-XN-LkI" secondAttribute="leading" constant="12" id="DVn-gw-cx9"/>
+                    <constraint firstItem="Qe3-YV-pbR" firstAttribute="top" secondItem="4UZ-XN-LkI" secondAttribute="top" constant="18.5" id="b1q-Pa-yxY"/>
+                    <constraint firstItem="Qe3-YV-pbR" firstAttribute="leading" secondItem="xee-BB-W5g" secondAttribute="trailing" constant="10" id="b8d-KU-AHQ"/>
+                    <constraint firstAttribute="bottom" secondItem="xee-BB-W5g" secondAttribute="bottom" constant="9" id="f8c-N8-yMn"/>
+                    <constraint firstItem="2qQ-iv-TnW" firstAttribute="leading" secondItem="xee-BB-W5g" secondAttribute="trailing" constant="10" id="hSz-Wf-Y7v"/>
+                    <constraint firstAttribute="bottom" secondItem="2qQ-iv-TnW" secondAttribute="bottom" constant="17" id="loc-yA-y2S"/>
+                    <constraint firstAttribute="trailing" secondItem="nNl-sX-b4k" secondAttribute="trailing" constant="10" id="sGc-Ns-hjn"/>
+                    <constraint firstItem="nNl-sX-b4k" firstAttribute="centerY" secondItem="4UZ-XN-LkI" secondAttribute="centerY" id="vg9-jd-Zq6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="levelLabel" destination="2qQ-iv-TnW" id="4cw-mv-9at"/>
+                <outlet property="rightButton" destination="nNl-sX-b4k" id="RZy-gE-6gl"/>
+                <outlet property="thumbImage" destination="xee-BB-W5g" id="529-Cb-dY7"/>
+                <outlet property="titleLabel" destination="Qe3-YV-pbR" id="XEx-7d-x0s"/>
+            </connections>
+            <point key="canvasLocation" x="-13" y="67"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="friends_btn_present_default" width="23" height="23"/>
+        <image name="friends_btn_present_pressed" width="23" height="23"/>
+    </resources>
+</document>

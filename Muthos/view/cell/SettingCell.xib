@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F71b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="KGk-i7-Jjw" customClass="SettingCell" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notice_icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="KE8-9q-R5v">
+                        <rect key="frame" x="351" y="15" width="10" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="CE2-7v-0hT"/>
+                            <constraint firstAttribute="width" constant="10" id="WH4-Ba-WcH"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msG-id-HAt">
+                        <rect key="frame" x="17" y="15" width="200" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="CF2-H6-N40"/>
+                            <constraint firstAttribute="width" constant="200" id="nIc-6F-Qpw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3O-ea-wcx">
+                        <rect key="frame" x="312" y="9" width="51" height="31"/>
+                        <color key="onTintColor" red="0.96470588235294119" green="0.30196078431372547" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jU-iK-Trf">
+                        <rect key="frame" x="257" y="16" width="69" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="69" id="Tcv-Tc-Uue"/>
+                            <constraint firstAttribute="height" constant="18" id="hh4-NT-fgu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                        <color key="textColor" red="0.96470588235294119" green="0.30196078431372547" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7jU-iK-Trf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DDw-7K-RBp"/>
+                    <constraint firstItem="E3O-ea-wcx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MtD-hv-ubg"/>
+                    <constraint firstItem="KE8-9q-R5v" firstAttribute="leading" secondItem="7jU-iK-Trf" secondAttribute="trailing" constant="25" id="O50-tu-L5h"/>
+                    <constraint firstAttribute="trailing" secondItem="KE8-9q-R5v" secondAttribute="trailing" constant="14" id="Wcz-O7-vsO"/>
+                    <constraint firstItem="msG-id-HAt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YFA-PR-HGT"/>
+                    <constraint firstItem="KE8-9q-R5v" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ayu-wJ-N4V"/>
+                    <constraint firstItem="msG-id-HAt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="phu-gZ-TOy"/>
+                    <constraint firstAttribute="trailing" secondItem="E3O-ea-wcx" secondAttribute="trailing" constant="14" id="zUy-4d-V99"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="nextImgView" destination="KE8-9q-R5v" id="Rfb-i4-A12"/>
+                <outlet property="subLabel" destination="7jU-iK-Trf" id="xeU-kQ-RxJ"/>
+                <outlet property="titleLabel" destination="msG-id-HAt" id="Urg-Pa-mdd"/>
+                <outlet property="userSwitch" destination="E3O-ea-wcx" id="PIb-qs-6IZ"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="notice_icon_next" width="10" height="19"/>
+    </resources>
+</document>

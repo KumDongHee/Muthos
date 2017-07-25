@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PetCell" customModule="muthos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dyC-eh-ycL">
+                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLu-6P-Isd" customClass="ArcView" customModule="muthos" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rate">
+                            <real key="value" value="0.10000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_btn_01_01" translatesAutoresizingMaskIntoConstraints="NO" id="QMO-d7-HT6">
+                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pet_icon_coin_01" translatesAutoresizingMaskIntoConstraints="NO" id="rJ1-Qk-OiB">
+                    <rect key="frame" x="62" y="0.0" width="23" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3h22m " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yWX-i9-6uD">
+                    <rect key="frame" x="0.0" y="0.0" width="85" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.74117647060000003" blue="0.070588235289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.0" green="0.74117647058823533" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZb-NZ-S0o" customClass="UIControl">
+                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="onClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="ruX-96-lmW"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" red="0.99607843139999996" green="0.98823529409999999" blue="0.14343015940000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="cZb-NZ-S0o" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="36s-c4-8tA"/>
+                <constraint firstItem="cZb-NZ-S0o" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="9n6-08-LAr"/>
+                <constraint firstItem="iLu-6P-Isd" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="N8O-6Y-32z"/>
+                <constraint firstItem="QMO-d7-HT6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OHB-sg-ezu"/>
+                <constraint firstItem="iLu-6P-Isd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qgh-Li-VCg"/>
+                <constraint firstItem="iLu-6P-Isd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Ukt-eS-3rd"/>
+                <constraint firstItem="cZb-NZ-S0o" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bAK-QF-raw"/>
+                <constraint firstItem="dyC-eh-ycL" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="bBY-Xq-iad"/>
+                <constraint firstItem="QMO-d7-HT6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cJ2-Ed-LHi"/>
+                <constraint firstItem="dyC-eh-ycL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cgt-G0-hhc"/>
+                <constraint firstItem="QMO-d7-HT6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="f4m-pj-iWf"/>
+                <constraint firstItem="iLu-6P-Isd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hPZ-pg-BLD"/>
+                <constraint firstItem="dyC-eh-ycL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ocR-II-UCX"/>
+                <constraint firstItem="dyC-eh-ycL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="pAo-de-I6B"/>
+                <constraint firstItem="QMO-d7-HT6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="vRa-B8-ezQ"/>
+                <constraint firstItem="cZb-NZ-S0o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zHt-LR-g02"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="background" destination="dyC-eh-ycL" id="W3l-Io-fpc"/>
+                <outlet property="face" destination="QMO-d7-HT6" id="aqQ-t2-dlh"/>
+                <outlet property="icon" destination="rJ1-Qk-OiB" id="gtB-Lv-XRi"/>
+                <outlet property="progress" destination="iLu-6P-Isd" id="7mF-63-o37"/>
+                <outlet property="time" destination="yWX-i9-6uD" id="lSu-ED-I81"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pet_btn_01_01" width="85" height="85"/>
+        <image name="pet_icon_coin_01" width="23" height="23"/>
+    </resources>
+</document>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F71b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Training Clock Cont-->
+        <scene sceneID="kYl-md-q28">
+            <objects>
+                <viewController storyboardIdentifier="TrainingClockCont" id="ku6-Mg-KAY" customClass="TrainingClockCont" customModule="muthos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZEP-SA-MKh"/>
+                        <viewControllerLayoutGuide type="bottom" id="zcs-Rc-hRr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nCZ-mQ-cf0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uho-Gn-3BK" userLabel="Clock-Area">
+                                <rect key="frame" x="35" y="164" width="305" height="305"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock_img_clock" translatesAutoresizingMaskIntoConstraints="NO" id="SdK-7A-ADr">
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="305"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock_img_minute" translatesAutoresizingMaskIntoConstraints="NO" id="e5I-xz-VLa">
+                                        <rect key="frame" x="147" y="17" width="12" height="135"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock_img_hour" translatesAutoresizingMaskIntoConstraints="NO" id="AuU-PK-bQt">
+                                        <rect key="frame" x="145" y="57" width="14" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="305" id="Z4X-Ec-HHR"/>
+                                    <constraint firstAttribute="width" constant="305" id="eL3-5B-Q9G"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSs-9z-9qv">
+                                <rect key="frame" x="156" y="565" width="62" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="7bX-JA-Ddz"/>
+                                    <constraint firstAttribute="width" constant="62" id="Dz5-AK-mrI"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="control_btn_speak_default"/>
+                                <connections>
+                                    <action selector="onClickMic:" destination="ku6-Mg-KAY" eventType="touchUpInside" id="YIJ-ZQ-ecA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Uho-Gn-3BK" secondAttribute="trailing" constant="35" id="IaB-1E-EZk"/>
+                            <constraint firstItem="Uho-Gn-3BK" firstAttribute="leading" secondItem="nCZ-mQ-cf0" secondAttribute="leading" constant="35" id="T2z-hc-XOU"/>
+                            <constraint firstItem="zcs-Rc-hRr" firstAttribute="top" secondItem="sSs-9z-9qv" secondAttribute="bottom" constant="40" id="n1E-3s-vxe"/>
+                            <constraint firstItem="sSs-9z-9qv" firstAttribute="centerX" secondItem="nCZ-mQ-cf0" secondAttribute="centerX" id="rdr-Pb-w3i"/>
+                            <constraint firstItem="Uho-Gn-3BK" firstAttribute="top" secondItem="ZEP-SA-MKh" secondAttribute="bottom" constant="100" id="soX-QK-fWA"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="hourImgView" destination="AuU-PK-bQt" id="rdG-Yd-KdA"/>
+                        <outlet property="minuteImgView" destination="e5I-xz-VLa" id="okH-Jh-LhD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wn7-B4-bgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247" y="464"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clock_img_clock" width="305" height="305"/>
+        <image name="clock_img_hour" width="15" height="96"/>
+        <image name="clock_img_minute" width="12" height="134"/>
+        <image name="control_btn_speak_default" width="62" height="62"/>
+    </resources>
+</document>

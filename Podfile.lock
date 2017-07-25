@@ -1,0 +1,95 @@
+PODS:
+  - Alamofire (4.4.0)
+  - AlamofireObjectMapper (4.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 2.0)
+  - DLRadioButton (1.4.9)
+  - HCSStarRatingView (1.4.5)
+  - iCarousel (1.8.3)
+  - KeychainAccess (3.0.1)
+  - MGSwipeTableCell (1.5.6)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
+  - ObjectMapper (2.2.5)
+  - PopupDialog (0.5.3)
+  - ReachabilitySwift (3)
+  - RxAlamofire (3.0.2):
+    - RxAlamofire/Core (= 3.0.2)
+  - RxAlamofire/Core (3.0.2):
+    - Alamofire (~> 4.0)
+    - RxSwift (~> 3.0)
+  - RxCocoa (3.2.0):
+    - RxSwift (~> 3.1)
+  - RxSwift (3.2.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SMIconLabel (0.4.0)
+  - SVProgressHUD (2.1.2)
+  - SwiftAnimations (1.1.4)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper
+  - DLRadioButton
+  - HCSStarRatingView
+  - iCarousel
+  - KeychainAccess
+  - MGSwipeTableCell
+  - MMDrawerController
+  - ObjectMapper
+  - PopupDialog (~> 0.5)
+  - ReachabilitySwift (~> 3)
+  - RxAlamofire
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
+  - SDWebImage
+  - SMIconLabel
+  - SVProgressHUD
+  - SwiftAnimations (from `https://github.com/sjkim0757/SwiftAnimations`)
+  - SwiftyJSON
+
+EXTERNAL SOURCES:
+  SwiftAnimations:
+    :git: https://github.com/sjkim0757/SwiftAnimations
+
+CHECKOUT OPTIONS:
+  SwiftAnimations:
+    :commit: 6f00cb1df7bafbb85825e51fc8cf9decc427b982
+    :git: https://github.com/sjkim0757/SwiftAnimations
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
+  DLRadioButton: 7bb8a6e3768b572469ace553391ab4d2af6f9c19
+  HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  ObjectMapper: fb30f71e08470d1e5a20b199fafe1246281db898
+  PopupDialog: 533dd564f8781633375505b9fbd406f8f146ccc9
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
+  RxAlamofire: bc53604b29fd2d220cfaa490c736cc4500819f34
+  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SMIconLabel: a30e4316fb3d7808549005faa6a6798c06c2eeba
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SwiftAnimations: dbb12dbbae5ce8b0e6a05e7632361f1ee1a4c371
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: f104ca5560f64abcd69fb40b689736f32f6affae
+
+COCOAPODS: 1.1.1

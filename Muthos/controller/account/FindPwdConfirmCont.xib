@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FindPwdCont" customModule="muthos" customModuleProvider="target">
+            <connections>
+                <outlet property="confirmButton" destination="dvO-c5-prg" id="nnz-eu-4xm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="265" height="230"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IS1-mO-qkH">
+                    <rect key="frame" x="0.0" y="0.0" width="265" height="230"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="임시 비밀번호를 메일로 발송했습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfJ-fu-GbW">
+                            <rect key="frame" x="0.0" y="58" width="265" height="44"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvO-c5-prg">
+                            <rect key="frame" x="40" y="160" width="185" height="50"/>
+                            <color key="backgroundColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Ux2-lc-g31"/>
+                            </constraints>
+                            <state key="normal" title="확인"/>
+                            <connections>
+                                <action selector="confirm:" destination="-1" eventType="touchUpInside" id="rJr-wj-uJe"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dvO-c5-prg" secondAttribute="trailing" constant="40" id="GDd-0t-Y5t"/>
+                        <constraint firstItem="nfJ-fu-GbW" firstAttribute="top" secondItem="IS1-mO-qkH" secondAttribute="top" constant="58" id="I4c-9M-Ouf"/>
+                        <constraint firstItem="nfJ-fu-GbW" firstAttribute="leading" secondItem="IS1-mO-qkH" secondAttribute="leading" id="UnN-pY-ECr"/>
+                        <constraint firstAttribute="bottom" secondItem="dvO-c5-prg" secondAttribute="bottom" constant="20" id="eCR-W4-Jph"/>
+                        <constraint firstAttribute="trailing" secondItem="nfJ-fu-GbW" secondAttribute="trailing" id="lxg-YQ-94i"/>
+                        <constraint firstItem="dvO-c5-prg" firstAttribute="leading" secondItem="IS1-mO-qkH" secondAttribute="leading" constant="40" id="piR-4i-1vf"/>
+                        <constraint firstItem="dvO-c5-prg" firstAttribute="top" secondItem="nfJ-fu-GbW" secondAttribute="bottom" constant="58" id="uH0-cO-eAZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="IS1-mO-qkH" secondAttribute="bottom" id="d8w-V8-fpT"/>
+                <constraint firstItem="IS1-mO-qkH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nIN-WD-C0j"/>
+                <constraint firstItem="IS1-mO-qkH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ncB-9S-Iub"/>
+                <constraint firstAttribute="trailing" secondItem="IS1-mO-qkH" secondAttribute="trailing" id="rlD-9w-zuN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-453" y="112"/>
+        </view>
+    </objects>
+</document>
