@@ -173,7 +173,14 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     
     @IBAction func onClickTalkAnswer(_ sender: AnyObject) {
         if self.micArea.isHidden == false{
-            self.replayCurrentVoice()
+            let speechRecognizer = SpeechFrameworkRecognizer.instance()
+            if !speechRecognizer.getOnRecognize() {
+                // 일반 재생
+                self.replayCurrentVoice()
+            }
+            else {
+                ///// TODO : 무음 재생
+            }
         }
     }
     
@@ -866,6 +873,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     func close() {
         self.finaly()
         self.navigationController!.popViewController(animated: true)
+        self.controller?.situationCont = nil
         self.dismiss(animated: false, completion: {() -> Void in
             print("situation dismissed")
             return
@@ -1296,18 +1304,21 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         
         
         ///// TODO : 음성과 충돌 지점
-        // currentPlayer().play()
-        
+        //currentPlayer().play()
+
         
         let speechRecognizer = SpeechFrameworkRecognizer.instance()
         if !speechRecognizer.getOnRecognize() {
             // 일반 재생
+            currentPlayer().isMuted = false
             currentPlayer().play()
         }
         else {
-            ///// TODO : 무음 재생
+            ///// 무음 재생
+      //      currentPlayer().isMuted = true
+      //      currentPlayer().play()
         }
-        
+    
         //let speechRecognizer = SpeechFrameworkRecognizer.instance()
             //currentPlayer().play()
         
