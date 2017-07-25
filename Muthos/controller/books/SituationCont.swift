@@ -873,7 +873,6 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     func close() {
         self.finaly()
         self.navigationController!.popViewController(animated: true)
-        self.controller?.situationCont = nil
         self.dismiss(animated: false, completion: {() -> Void in
             print("situation dismissed")
             return
