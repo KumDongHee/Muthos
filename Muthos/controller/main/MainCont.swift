@@ -238,7 +238,15 @@ class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigat
         viewModel.mainMode.onNext(.myBook)
     }
     
-    func selectStore() {viewModel.mainMode.onNext(.store)}
+    func selectStore() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let listCont = storyboard.instantiateViewController(withIdentifier: "StoreListCont") as! StoreListCont
+        self.navigationController?.pushViewController(listCont, animated: true)
+        if let categories = try? self.viewModel.categories.value() {
+            let category = categories[0]
+            listCont.category = category
+        }
+    }
         
     static func scaleImage(_ image: UIImage, toSize newSize: CGSize) -> (UIImage) {
         let newRect = CGRect(x: 0,y: 0, width: newSize.width, height: newSize.height).integral
