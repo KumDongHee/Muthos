@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1404C5DD1F304BE400899900 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404C5DC1F304BE400899900 /* UIDevice.swift */; };
 		190AE09F1EC8DA5A007F89F0 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 190AE09E1EC8DA5A007F89F0 /* KakaoOpenSDK.framework */; };
 		190AE0A11EC8DF99007F89F0 /* SpeechKitApplicationKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 190AE0A01EC8DF99007F89F0 /* SpeechKitApplicationKey.m */; };
 		4F06CFC01D68982600EC2AB2 /* RouletteCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F06CFBF1D68982600EC2AB2 /* RouletteCont.swift */; };
@@ -183,6 +184,7 @@
 /* Begin PBXFileReference section */
 		0E35285C6FD65B2BF8DCD14F /* Pods_muthos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muthos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		123D15660C24B510034D09FD /* Pods-muthos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muthos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muthos/Pods-muthos.debug.xcconfig"; sourceTree = "<group>"; };
+		1404C5DC1F304BE400899900 /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = Muthos/UIDevice.swift; sourceTree = SOURCE_ROOT; };
 		190AE09E1EC8DA5A007F89F0 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		190AE0A01EC8DF99007F89F0 /* SpeechKitApplicationKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeechKitApplicationKey.m; path = nuance/SpeechKitApplicationKey.m; sourceTree = "<group>"; };
 		4F06CFBF1D68982600EC2AB2 /* RouletteCont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouletteCont.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				DFA684D51DB231EF005CF6C6 /* RxImagePickerDelegateProxy.swift */,
 				DFA684D71DB2324C005CF6C6 /* UIImagePickerController+Rx.swift */,
 				DFA684D91DB232A2005CF6C6 /* UIImagePickerController+RxCreate.swift */,
+				1404C5DC1F304BE400899900 /* UIDevice.swift */,
 			);
 			name = extension;
 			sourceTree = "<group>";
@@ -1066,6 +1069,7 @@
 				4FB42B121D943342004AFE60 /* ArcView.swift in Sources */,
 				DF555B5D1C7A004F00E9B0B8 /* DefaultCont.swift in Sources */,
 				4F200E5B1D9550940066CA2A /* PetCell.swift in Sources */,
+				1404C5DD1F304BE400899900 /* UIDevice.swift in Sources */,
 				DFB559071C74264C0081855A /* StoreListCell.swift in Sources */,
 				DFE7F06F1C71CC7B00FECD50 /* Category.swift in Sources */,
 				DF4B8F261C7997E3007B8E49 /* SettingTooltipCont.swift in Sources */,

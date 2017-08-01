@@ -907,15 +907,6 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         pivotsCarousel.scrollToItem(at: 0, animated:false)
     }
     
-    func initPlayer() {
-        scene.isHidden = false
-        initSinglePlayer()
-        initSinglePlayer()
-        selectPlayerAtIndex(0)
-        videoLoop = VideoLoop(cont:self)
-        _ = videoLoop!.start()
-    }
-    
     func currentPlayer() -> AVPlayer {
         return self.players[currentPlayerIndex]
     }
@@ -1303,19 +1294,19 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         
         
         ///// TODO : 음성과 충돌 지점
-        //currentPlayer().play()
+        // currentPlayer().play()
 
         
         let speechRecognizer = SpeechFrameworkRecognizer.instance()
-        if !speechRecognizer.getOnRecognize() {
+        if false == speechRecognizer.getOnRecognize() {
             // 일반 재생
             currentPlayer().isMuted = false
-            currentPlayer().play()
+             currentPlayer().play()
         }
         else {
             ///// 무음 재생
-      //      currentPlayer().isMuted = true
-      //      currentPlayer().play()
+            currentPlayer().isMuted = true
+             currentPlayer().play()
         }
     
         //let speechRecognizer = SpeechFrameworkRecognizer.instance()
@@ -1653,7 +1644,13 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             cont!.switchPlayer()
             cont!.playCurrentVideo({()->Bool in
                 if !self.looping { return false }
-                self.changeVideo(url)
+                let modelName = UIDevice.current.modelName
+                if modelName == "iPhone 5" || modelName == "iPhone 5c" || modelName == "iPhone 5s" || modelName == "iPhone 6" {
+                    
+                }else {
+                    self.changeVideo(url)
+                }
+
                 return true
             })
         }
