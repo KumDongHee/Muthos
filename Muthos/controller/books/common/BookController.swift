@@ -748,11 +748,11 @@ class BookController : NSObject {
                 let idx:Int = Int(p)!
                 seps[idx-1] = ""
             }
-            seps[Int(positions[0])! - 1] = "<u style='color:"+(correct ? "blue" : "red" )+"'>" + d + "</u>"
+            seps[Int(positions[0])! - 1] = "<u style='color:"+(correct ? "yello" : "red" )+"'>" + d + "</u>"
         } else {
             for p:String in positions {
                 let idx:Int = Int(p)!
-                seps[idx-1] = "<u style='color:"+(correct ? "blue" : "red" )+"'>"+seps[idx-1]+"</u>"
+                seps[idx-1] = "<u style='color:"+(correct ? "yello" : "red" )+"'>"+seps[idx-1]+"</u>"
             }
         }
         

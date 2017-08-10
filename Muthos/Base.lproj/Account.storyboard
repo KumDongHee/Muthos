@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F71b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -80,26 +80,6 @@
                                 <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLB-zX-Vbi">
-                                <rect key="frame" x="164" y="568" width="47" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="qLB-zX-Vbi" secondAttribute="height" multiplier="1:1" id="mSz-Zo-rh7"/>
-                                </constraints>
-                                <state key="normal" image="login_btn_facebook_default"/>
-                                <connections>
-                                    <action selector="onClickFBLogin:" destination="K8c-ey-Re1" eventType="touchUpInside" id="PUo-lb-G0C"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-Qk-KJE">
-                                <rect key="frame" x="227" y="568" width="47" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="BB6-Qk-KJE" secondAttribute="height" multiplier="1:1" id="aqP-Vo-leZ"/>
-                                </constraints>
-                                <state key="normal" image="login_btn_kakao_default"/>
-                                <connections>
-                                    <action selector="onClickKakaoLogin:" destination="K8c-ey-Re1" eventType="touchUpInside" id="uDt-8e-IH7"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_input_box" translatesAutoresizingMaskIntoConstraints="NO" id="K6k-G0-ZEh">
                                 <rect key="frame" x="18" y="285" width="339" height="90"/>
                                 <constraints>
@@ -170,13 +150,49 @@
                                     <action selector="findPassword:" destination="K8c-ey-Re1" eventType="touchUpInside" id="LSS-H6-Lvr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7P-sz-gKd">
-                                <rect key="frame" x="101" y="568" width="47" height="47"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNw-1X-fOa">
+                                <rect key="frame" x="132.5" y="571.5" width="110" height="47"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7P-sz-gKd">
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="s7P-sz-gKd" secondAttribute="height" multiplier="1:1" id="QIW-OH-nYw"/>
+                                        </constraints>
+                                        <state key="normal" image="login_btn_email_default"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLB-zX-Vbi">
+                                        <rect key="frame" x="63" y="0.0" width="47" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="qLB-zX-Vbi" secondAttribute="height" multiplier="1:1" id="mSz-Zo-rh7"/>
+                                        </constraints>
+                                        <state key="normal" image="login_btn_facebook_default"/>
+                                        <connections>
+                                            <action selector="onClickFBLogin:" destination="K8c-ey-Re1" eventType="touchUpInside" id="PUo-lb-G0C"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-Qk-KJE">
+                                        <rect key="frame" x="63" y="0.0" width="47" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BB6-Qk-KJE" secondAttribute="height" multiplier="1:1" id="aqP-Vo-leZ"/>
+                                        </constraints>
+                                        <state key="normal" image="login_btn_kakao_default"/>
+                                        <connections>
+                                            <action selector="onClickKakaoLogin:" destination="K8c-ey-Re1" eventType="touchUpInside" id="uDt-8e-IH7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="s7P-sz-gKd" secondAttribute="height" multiplier="1:1" id="QIW-OH-nYw"/>
+                                    <constraint firstAttribute="trailing" secondItem="BB6-Qk-KJE" secondAttribute="trailing" id="1bp-3g-B5s"/>
+                                    <constraint firstItem="s7P-sz-gKd" firstAttribute="centerY" secondItem="qLB-zX-Vbi" secondAttribute="centerY" id="4Sc-tw-88A"/>
+                                    <constraint firstItem="qLB-zX-Vbi" firstAttribute="leading" secondItem="s7P-sz-gKd" secondAttribute="trailing" constant="16" id="Lat-13-NRm"/>
+                                    <constraint firstAttribute="bottom" secondItem="qLB-zX-Vbi" secondAttribute="bottom" id="MjQ-HW-ZEa"/>
+                                    <constraint firstAttribute="trailing" secondItem="qLB-zX-Vbi" secondAttribute="trailing" id="Mvd-Js-GWx"/>
+                                    <constraint firstItem="BB6-Qk-KJE" firstAttribute="centerY" secondItem="qLB-zX-Vbi" secondAttribute="centerY" id="SmD-YW-GAA"/>
+                                    <constraint firstItem="s7P-sz-gKd" firstAttribute="leading" secondItem="bNw-1X-fOa" secondAttribute="leading" id="eqT-Oz-ijK"/>
+                                    <constraint firstItem="qLB-zX-Vbi" firstAttribute="top" secondItem="bNw-1X-fOa" secondAttribute="top" id="zvB-R6-lVh"/>
                                 </constraints>
-                                <state key="normal" image="login_btn_email_default"/>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -192,40 +208,32 @@
                             <constraint firstItem="T2p-HT-mnY" firstAttribute="top" secondItem="jdg-by-YRM" secondAttribute="bottom" id="7Fa-d6-RWw"/>
                             <constraint firstItem="5y8-ld-KkH" firstAttribute="width" secondItem="u1d-bX-Wgm" secondAttribute="width" multiplier="0.32" id="8QZ-T2-ZG6"/>
                             <constraint firstItem="Ct4-1J-2MR" firstAttribute="centerY" secondItem="Fab-eL-kLl" secondAttribute="centerY" id="BpO-7a-x2S"/>
-                            <constraint firstItem="qLB-zX-Vbi" firstAttribute="centerX" secondItem="u1d-bX-Wgm" secondAttribute="centerX" id="CVb-EQ-uiQ"/>
-                            <constraint firstItem="qLB-zX-Vbi" firstAttribute="centerY" secondItem="s7P-sz-gKd" secondAttribute="centerY" id="CZs-gk-d0p"/>
                             <constraint firstItem="5y8-ld-KkH" firstAttribute="leading" secondItem="u1d-bX-Wgm" secondAttribute="leading" constant="18" id="Dkf-Tn-pS9"/>
                             <constraint firstItem="62x-uc-tZA" firstAttribute="centerY" secondItem="u1d-bX-Wgm" secondAttribute="centerY" multiplier="1.405" id="EFV-pj-gF7"/>
                             <constraint firstAttribute="trailing" secondItem="Pqm-r0-ZpN" secondAttribute="trailing" id="GuH-gz-1gP"/>
                             <constraint firstItem="dcn-Sy-XZc" firstAttribute="trailing" secondItem="K6k-G0-ZEh" secondAttribute="trailing" id="L0j-kl-lLU"/>
                             <constraint firstItem="Fab-eL-kLl" firstAttribute="trailing" secondItem="dcn-Sy-XZc" secondAttribute="trailing" id="MK3-Vm-Nub"/>
                             <constraint firstItem="Aer-0D-k1a" firstAttribute="centerY" secondItem="u1d-bX-Wgm" secondAttribute="centerY" multiplier="0.59" id="My7-N6-he3"/>
-                            <constraint firstItem="BB6-Qk-KJE" firstAttribute="width" secondItem="s7P-sz-gKd" secondAttribute="width" id="NGS-rc-isz"/>
                             <constraint firstItem="Aer-0D-k1a" firstAttribute="leading" secondItem="u1d-bX-Wgm" secondAttribute="leading" id="NkZ-j3-cDY"/>
-                            <constraint firstItem="qLB-zX-Vbi" firstAttribute="width" secondItem="s7P-sz-gKd" secondAttribute="width" id="OR7-0d-5hE"/>
                             <constraint firstItem="FU3-ns-2gj" firstAttribute="centerY" secondItem="u1d-bX-Wgm" secondAttribute="centerY" multiplier="1.64" id="PUz-ej-zv7"/>
+                            <constraint firstItem="bNw-1X-fOa" firstAttribute="top" secondItem="gx2-NW-oRN" secondAttribute="bottom" constant="16" id="Qon-CM-cSZ"/>
                             <constraint firstAttribute="trailing" secondItem="Aer-0D-k1a" secondAttribute="trailing" id="QuQ-9b-B0f"/>
-                            <constraint firstItem="BB6-Qk-KJE" firstAttribute="height" secondItem="s7P-sz-gKd" secondAttribute="height" id="RuX-0z-6Vl"/>
                             <constraint firstItem="gx2-NW-oRN" firstAttribute="centerX" secondItem="u1d-bX-Wgm" secondAttribute="centerX" id="UOu-08-sss"/>
                             <constraint firstItem="dcn-Sy-XZc" firstAttribute="leading" secondItem="dtC-Fh-GO5" secondAttribute="trailing" constant="15" id="aVe-bM-qIw"/>
-                            <constraint firstItem="qLB-zX-Vbi" firstAttribute="height" secondItem="s7P-sz-gKd" secondAttribute="height" id="aaQ-82-JPU"/>
                             <constraint firstItem="5y8-ld-KkH" firstAttribute="centerY" secondItem="u1d-bX-Wgm" secondAttribute="centerY" multiplier="1.64" id="ang-jb-cFv"/>
                             <constraint firstItem="Pqm-r0-ZpN" firstAttribute="centerY" secondItem="u1d-bX-Wgm" secondAttribute="centerY" multiplier="1.93" id="bsY-Uf-mdB"/>
                             <constraint firstItem="jdg-by-YRM" firstAttribute="top" secondItem="u1d-bX-Wgm" secondAttribute="top" id="cbF-iu-ryG"/>
                             <constraint firstItem="Fab-eL-kLl" firstAttribute="bottom" secondItem="K6k-G0-ZEh" secondAttribute="bottom" id="eMf-DK-oML"/>
-                            <constraint firstItem="qLB-zX-Vbi" firstAttribute="leading" secondItem="s7P-sz-gKd" secondAttribute="trailing" constant="16" id="h9T-V3-dwY"/>
                             <constraint firstItem="K6k-G0-ZEh" firstAttribute="centerY" secondItem="u1d-bX-Wgm" secondAttribute="centerY" multiplier="0.99" id="hci-7R-Cig"/>
                             <constraint firstItem="K6k-G0-ZEh" firstAttribute="leading" secondItem="u1d-bX-Wgm" secondAttribute="leading" constant="18" id="hcx-ly-0LH"/>
                             <constraint firstAttribute="trailing" secondItem="jdg-by-YRM" secondAttribute="trailing" id="lMZ-db-sBu"/>
                             <constraint firstItem="dcn-Sy-XZc" firstAttribute="leading" secondItem="Ct4-1J-2MR" secondAttribute="trailing" constant="15" id="mp4-ok-Xi9"/>
-                            <constraint firstItem="Pqm-r0-ZpN" firstAttribute="top" secondItem="qLB-zX-Vbi" secondAttribute="bottom" constant="23" id="n7p-CD-O0R"/>
-                            <constraint firstItem="BB6-Qk-KJE" firstAttribute="centerY" secondItem="s7P-sz-gKd" secondAttribute="centerY" id="nL0-Z3-A8w"/>
-                            <constraint firstItem="BB6-Qk-KJE" firstAttribute="leading" secondItem="qLB-zX-Vbi" secondAttribute="trailing" constant="16" id="ncQ-3A-rm2"/>
                             <constraint firstItem="dtC-Fh-GO5" firstAttribute="centerY" secondItem="dcn-Sy-XZc" secondAttribute="centerY" id="oFd-81-35L"/>
                             <constraint firstItem="FU3-ns-2gj" firstAttribute="width" secondItem="u1d-bX-Wgm" secondAttribute="width" multiplier="0.32" id="pNL-ED-qbZ"/>
                             <constraint firstItem="dcn-Sy-XZc" firstAttribute="leading" secondItem="K6k-G0-ZEh" secondAttribute="leading" constant="41" id="pXP-ir-13N"/>
                             <constraint firstItem="dcn-Sy-XZc" firstAttribute="top" secondItem="K6k-G0-ZEh" secondAttribute="top" id="rIM-7M-kUg"/>
                             <constraint firstItem="ZD0-pm-lr0" firstAttribute="trailing" secondItem="K6k-G0-ZEh" secondAttribute="trailing" id="sKQ-Cp-4mI"/>
+                            <constraint firstItem="bNw-1X-fOa" firstAttribute="centerX" secondItem="u1d-bX-Wgm" secondAttribute="centerX" id="v7R-Et-j2M"/>
                             <constraint firstItem="gx2-NW-oRN" firstAttribute="centerY" secondItem="5y8-ld-KkH" secondAttribute="centerY" id="vxo-Mv-c8u"/>
                             <constraint firstItem="Pqm-r0-ZpN" firstAttribute="leading" secondItem="u1d-bX-Wgm" secondAttribute="leading" id="yqk-a0-TeT"/>
                             <constraint firstItem="06V-0g-7v3" firstAttribute="centerX" secondItem="u1d-bX-Wgm" secondAttribute="centerX" id="za6-IT-0co"/>
@@ -241,7 +249,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dby-xz-6f8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1065" y="668"/>
+            <point key="canvasLocation" x="-1066.4000000000001" y="667.91604197901052"/>
         </scene>
         <!--Sign Up Cont-->
         <scene sceneID="4yH-2a-ANx">

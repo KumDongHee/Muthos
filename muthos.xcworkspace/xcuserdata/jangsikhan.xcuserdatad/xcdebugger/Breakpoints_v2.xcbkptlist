@@ -74,13 +74,173 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Muthos/controller/books/SituationCont.swift"
-            timestampString = "523256067.796386"
+            timestampString = "523864325.331472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1293"
-            endingLineNumber = "1293"
+            startingLineNumber = "1303"
+            endingLineNumber = "1303"
             landmarkName = "playCurrentVideo(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/SituationCont.swift"
+            timestampString = "523859392.639695"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
+            landmarkName = "startListening(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/common/BookController.swift"
+            timestampString = "523859518.600785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "playVoice(_:callback:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/SituationCont.swift"
+            timestampString = "523864325.331472"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1724"
+            endingLineNumber = "1724"
+            landmarkName = "resetBgNarration(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "muthos.SituationCont.resetBgNarration (() -&gt; Swift.Bool) -&gt; ()"
+                  moduleName = "muthos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jangsikhan/Documents/Muthos/Source/muthos-org/Muthos/controller/books/SituationCont.swift"
+                  timestampString = "523860254.395409"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1714"
+                  endingLineNumber = "1714"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "muthos.SituationCont.(resetBgNarration (() -&gt; Swift.Bool) -&gt; ()).(closure #1)"
+                  moduleName = "muthos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jangsikhan/Documents/Muthos/Source/muthos-org/Muthos/controller/books/SituationCont.swift"
+                  timestampString = "523860254.397918"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1715"
+                  endingLineNumber = "1715"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/SituationCont.swift"
+            timestampString = "523862203.080032"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "setRecoginzingStatus(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/SituationCont.swift"
+            timestampString = "523862700.586221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "onRecognizing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/SituationCont.swift"
+            timestampString = "523862702.430896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "onRecognizing(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "muthos.SituationCont.onRecognizing (Swift.AnyObject) -&gt; ()"
+                  moduleName = "muthos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jangsikhan/Documents/Muthos/Source/muthos-org/Muthos/controller/books/SituationCont.swift"
+                  timestampString = "523863136.258356"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "512">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "muthos.SituationCont.(onRecognizing (Swift.AnyObject) -&gt; ()).(closure #2)"
+                  moduleName = "muthos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jangsikhan/Documents/Muthos/Source/muthos-org/Muthos/controller/books/SituationCont.swift"
+                  timestampString = "523863136.260838"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -44,7 +44,7 @@ class ApplicationContext {
             if situationCont.progressing {
                 situationCont.procListenPaused(false)
                 situationCont.restartBGMOnCurrentSequence()
-                situationCont.renderCurrentSequence()
+         //       situationCont.renderCurrentSequence()
             }
         }
     }

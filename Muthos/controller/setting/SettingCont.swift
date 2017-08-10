@@ -33,20 +33,20 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
+//        case 1:
+//            return 2
         case 1:
-            return 2
+            return 1
         case 2:
-            return 2
-        case 3:
             return 3
-        case 4:
+        case 3:
             return 1
         default:
             return 0
@@ -63,30 +63,30 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
             cell.nextImgView.isHidden = false
             cell.userSwitch.isHidden = true
             
+//        case 1:
+//            switch (indexPath as NSIndexPath).row {
+//            case 0:
+//                cell.titleLabel.text = "언어선택"
+//                cell.titleLabel.alpha = 0.3
+//                
+//                //current language
+//                userViewModel.currentLanguage
+//                    .subscribe(onNext: { (mode:LanguageMode) -> Void in
+//                        cell.subLabel.text = mode.value
+//                    }).addDisposableTo(disposeBag)
+//                
+//            case 1:
+//                cell.titleLabel.text = "키즈락"
+//                cell.titleLabel.alpha = 0.3
+//            default:
+//                cell.titleLabel.text = ""
+//            }
+//            
+//            cell.nextImgView.isHidden = false
+//            cell.nextImgView.alpha = 0.3
+//            cell.userSwitch.isHidden = true
+//            
         case 1:
-            switch (indexPath as NSIndexPath).row {
-            case 0:
-                cell.titleLabel.text = "언어선택"
-                cell.titleLabel.alpha = 0.3
-                
-                //current language
-                userViewModel.currentLanguage
-                    .subscribe(onNext: { (mode:LanguageMode) -> Void in
-                        cell.subLabel.text = mode.value
-                    }).addDisposableTo(disposeBag)
-                
-            case 1:
-                cell.titleLabel.text = "키즈락"
-                cell.titleLabel.alpha = 0.3
-            default:
-                cell.titleLabel.text = ""
-            }
-            
-            cell.nextImgView.isHidden = false
-            cell.nextImgView.alpha = 0.3
-            cell.userSwitch.isHidden = true
-            
-        case 2:
             switch (indexPath as NSIndexPath).row {
             case 0:
                 cell.titleLabel.text = "이동통신망 사용알림"
@@ -96,16 +96,16 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
                     .subscribe({[unowned self] isOn in
                         ApplicationContext.putValue(key: "NOTY-3G", value: cell.userSwitch.isOn ? "true" : "false")
                     }).addDisposableTo(disposeBag)
-            case 1:
-                cell.titleLabel.text = "푸쉬알람 설정"
+//            case 1:
+//                cell.titleLabel.text = "푸쉬알람 설정"
             default:
                 cell.titleLabel.text = ""
             }
-            
+
             cell.nextImgView.isHidden = true
             cell.userSwitch.isHidden = false
             
-        case 3:
+        case 2:
             switch (indexPath as NSIndexPath).row {
             case 0:
                 cell.titleLabel.text = "툴팁"
@@ -120,7 +120,7 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
             cell.nextImgView.isHidden = false
             cell.userSwitch.isHidden = true
         
-        case 4:
+        case 3:
             switch (indexPath as NSIndexPath).row {
             case 0:
                 cell.titleLabel.text = "캐시 삭제"
@@ -159,13 +159,13 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
         switch section {
         case 0:
             header.titleLabel.text = "개인정보"
+//        case 1:
+//            header.titleLabel.text = "부가정보"
         case 1:
-            header.titleLabel.text = "부가정보"
-        case 2:
             header.titleLabel.text = "알림"
-        case 3:
+        case 2:
             header.titleLabel.text = "고객센터"
-        case 4:
+        case 3:
             header.titleLabel.text = "캐시삭제"
 //        case 4:
 //            header.titleLabel.text = "정보"
@@ -207,7 +207,7 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
 //                self.navigationController?.pushViewController(cont, animated: true)
 //            }
             
-        case 3:
+        case 2:
             switch (indexPath as NSIndexPath).row {
             case 0:
                 let cont = storyboard.instantiateViewController(withIdentifier: "SettingTooltipCont")
@@ -229,7 +229,7 @@ class SettingCont: DefaultCont, UITableViewDataSource, UITableViewDelegate {
                 break;
             }
             
-        case 4:
+        case 3:
             switch (indexPath as NSIndexPath).row {
             case 0:
                 BookController.removeCache(self)

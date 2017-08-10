@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                             <rect key="frame" x="0.0" y="402" width="375" height="265"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="I don't want to talk about school." translatesAutoresizingMaskIntoConstraints="NO" id="6OB-rb-UVK">
-                                    <rect key="frame" x="12" y="5" width="352" height="45"/>
+                                    <rect key="frame" x="11.5" y="5" width="352" height="45"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="1z6-Lc-U41"/>
@@ -33,14 +33,14 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sYh-tX-2yH" userLabel="Line">
-                                    <rect key="frame" x="12" y="50" width="352" height="1"/>
+                                    <rect key="frame" x="11.5" y="50" width="352" height="1"/>
                                     <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="S4f-yX-MiA"/>
                                     </constraints>
                                 </view>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="talk about" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="idU-xI-OnF">
-                                    <rect key="frame" x="12" y="55" width="352" height="45"/>
+                                    <rect key="frame" x="11.5" y="55" width="352" height="45"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="dTo-ql-kiw"/>
@@ -50,7 +50,7 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="~ 에 대해 이야기 하다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pMq-Fg-27A">
-                                    <rect key="frame" x="12" y="90" width="352" height="45"/>
+                                    <rect key="frame" x="11.5" y="90" width="352" height="45"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="1Bc-p4-VRk"/>
@@ -60,7 +60,7 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-YD-KMz">
-                                    <rect key="frame" x="12" y="125" width="352" height="105"/>
+                                    <rect key="frame" x="11.5" y="125" width="352" height="105"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="105" id="f3d-E0-0vi"/>
@@ -117,7 +117,7 @@
                                         <constraint firstAttribute="height" constant="64" id="epQ-zX-USM"/>
                                     </constraints>
                                     <state key="normal" backgroundImage="control_btn_speak_record"/>
-                                    <state key="highlighted" backgroundImage="96C324E7-721B-4EDB-BFA2-F35E319B54FA"/>
+                                    <state key="highlighted" backgroundImage="button:M8O-rU-uFS:backgroundImage"/>
                                     <connections>
                                         <action selector="onRecognizing:" destination="iN0-l3-epB" eventType="touchUpInside" id="Pg4-6r-YFR"/>
                                     </connections>
@@ -304,7 +304,7 @@
         </view>
     </objects>
     <resources>
-        <image name="96C324E7-721B-4EDB-BFA2-F35E319B54FA" width="62" height="62">
+        <image name="button:M8O-rU-uFS:backgroundImage" width="62" height="62">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

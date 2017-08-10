@@ -118,6 +118,7 @@ class SettingAccountCont: DefaultCont, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
             let storyboard = UIStoryboard(name: "Account", bundle: nil)

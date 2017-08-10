@@ -33,7 +33,7 @@ class DialogPopOverCont: UIViewController {
     @IBOutlet var speakBtn: UIButton!
     @IBOutlet var closeBtn: UIButton!
     
-    @IBAction func onClickClose(sender: AnyObject) {
+    @IBAction func onClickClose(sender: AnyObject?) {
         print("onClickClose")
         self.view.removeFromSuperview()
     }

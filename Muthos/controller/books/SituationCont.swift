@@ -448,7 +448,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                 self.retryBedgeArea.layer.opacity = 1
                 self.retryBedgeArea.transform = CGAffineTransform.identity
             }).withDuration(0.1).withOptions(.curveEaseOut).completion { (finish) -> Void in
-                if finish {
+                
                     self.micArea.isHidden = true
                     self.micButton.transform = CGAffineTransform.identity
                     self.micOverLayer.opacity = 0.0
@@ -458,7 +458,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                     }
                     self.setRecoginzingStatus(false)
                     self.playResultAreaAnimation()
-                }
+                
         }
         
         ApplicationContext.sharedInstance.userViewModel.appendExp(1,memo:"speech")
@@ -828,6 +828,16 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     }
     
     func finaly() {
+        
+        
+        if self.recognizing == true {
+            self.micButton.isEnabled = false
+            DispatchQueue.main.asyncAfter(deadline: (DispatchTime.now() + 1)) {
+                self.controller!.recognizer!.stopRecognizing()
+            }
+            return
+        }
+        popOver.onClickClose(sender: nil)
         
         view!.endEditing(true)
         if dictationLabelArea.isHidden == false {
@@ -2075,7 +2085,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     
     func doPulse() {
         let level = self.recentlyMicLevel
-        let LEVEL_MAX:Float = 2
+        let LEVEL_MAX:Float = 0.2
         let CIRCLE_MAX:Float = 180
         let CIRCLE_MIN:Float = 64
         
@@ -2090,7 +2100,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             self.pulse.setHeight(size)
             self.pulse.center = self.micButton.center
             _ = self.pulse.circle()
-        }.withDuration(0.1).withOptions(.curveEaseOut).completion { (finish) -> Void in
+        }.withDuration(0.15).withOptions(.curveEaseOut).completion { (finish) -> Void in
         }
         
         pulse.isHidden = false
