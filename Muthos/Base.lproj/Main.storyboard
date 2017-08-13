@@ -77,7 +77,7 @@
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cij-Zx-1B6">
                                 <rect key="frame" x="0.0" y="106" width="375" height="561"/>
-                                <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1369,6 +1369,9 @@ everything else</string>
                                                     <exclude reference="uv6-rl-CcP"/>
                                                 </mask>
                                             </variation>
+                                            <connections>
+                                                <action selector="purchaseProductWithSender:" destination="eGU-gw-CaM" eventType="touchUpInside" id="Nj9-tx-xzL"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egO-AQ-emd" customClass="SMIconLabel" customModule="SMIconLabel">
                                             <rect key="frame" x="113" y="208" width="150" height="25"/>

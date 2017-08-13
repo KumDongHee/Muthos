@@ -33,6 +33,12 @@ class StoreListCell: UITableViewCell, DownloadContextDelegate {
             eventButton.setImage(UIImage(named: "store_btn_"+statusString[status]+"_pressed"), for: .selected)
             eventButton.setImage(UIImage(named: "store_btn_"+statusString[status]+"_pressed"), for: .highlighted)
             
+            if status == 3 {
+                eventButton.isUserInteractionEnabled = false
+            }else {
+                eventButton.isUserInteractionEnabled = true
+            }
+            
             if status == 2 {
                 eventButton.setImage(UIImage(named: "store_btn_"+statusString[status]+"_pressed"), for: UIControlState())
             }
@@ -93,7 +99,7 @@ class StoreListCell: UITableViewCell, DownloadContextDelegate {
             : (contains ? 2 : 0)
 
         //임시로
-        let rating = arc4random() % 5
+        let rating = 1 // arc4random() % 5
         ratingView.value = CGFloat(rating)
         ratingView.isUserInteractionEnabled = false
         

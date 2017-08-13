@@ -303,7 +303,7 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
             speakerThumbnail.isHidden = false
         }
         
-        let price = setObj["price"].error == nil ? setObj["price"].intValue : 100
+        let price = setObj["price"].error == nil ? setObj["price"].intValue : 0
         priceImgView.image = UIImage(named: "book_icon_"+(price == 0 ? "free" : String(price)))
     }
     
@@ -327,7 +327,7 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
             self.showListen()
         } else {
             let set:JSON = controller.model!["sets"][controller.selectedIdx!]
-            let price:Int = (set["price"].error == nil) ? set["price"].intValue : 100
+            let price:Int = (set["price"].error == nil) ? set["price"].intValue : 0
             let coin:Int = ApplicationContext.currentUser.getCoin()
             
             guard coin >= price else {

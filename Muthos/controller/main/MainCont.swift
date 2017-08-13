@@ -13,7 +13,7 @@ protocol CellSelectDelegate {
     func selectBookCellFromStore(_ bookcell:BookCell)
 }
 
-class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigationControllerDelegate, BookCellDelegate {
+class MainCont : DefaultCont, CellSelectDelegate, UINavigationControllerDelegate, BookCellDelegate {
     static let STANDARD_WIDTH:CGFloat = 375
     @IBOutlet weak var rightDotImgView: UIImageView!
     @IBOutlet weak var leftDotImgView: UIImageView!
@@ -158,6 +158,7 @@ class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigat
                             self.collectionView.isHidden = true
                             self.leftDotImgView.isHidden = false
                             self.rightDotImgView.isHidden = true
+                            self.tableView.reloadData()
                     })
                 } else {
                     UIView.animate(withDuration: self.animationInterval,
@@ -175,33 +176,9 @@ class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigat
             }).addDisposableTo(disposeBag)
         
         
-        //table view
-        tableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
-        
-        tableView.rowHeight = MainCont.scaledSize(192.0)
-        tableView.separatorStyle = .none
-        
-        viewModel.categories
-            .bindTo(tableView.rx.items(cellIdentifier:"CategoryCell", cellType: CategoryCell.self)) { (row, element, cell) in
-                cell.category = element
-                cell.selectionStyle = .none
-                cell.cellSelectDelegate = self
-                let l:[NSLayoutConstraint] = cell.contentView.constraints.filter({$0.firstAttribute == .top}).filter({$0.secondAttribute == .top}).filter({$0.firstItem is UICollectionView})
-                if l.count > 0 {
-                    l[0].constant = MainCont.scaledSize(42)
-                    cell.setNeedsLayout()
-                }
-            }.addDisposableTo(disposeBag)
-        
-        tableView.rx.itemSelected.subscribe(onNext: { [unowned self](indexPath) -> Void in
-            if let categories = try? self.viewModel.categories.value() {
-                let category = categories[indexPath.row]
-                self.didSelectCategory(category)
-            }
-            }).addDisposableTo(disposeBag)
-        
-        tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
-
+        //tableView
+        ApplicationContext.sharedInstance.downloadManager.delegate = self
+        tableViewSetting(disposeBag: disposeBag)
         
         //collection 
         collectionView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: "BookCell")
@@ -239,13 +216,7 @@ class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigat
     }
     
     func selectStore() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let listCont = storyboard.instantiateViewController(withIdentifier: "StoreListCont") as! StoreListCont
-        self.navigationController?.pushViewController(listCont, animated: true)
-        if let categories = try? self.viewModel.categories.value() {
-            let category = categories[0]
-            listCont.category = category
-        }
+        viewModel.mainMode.onNext(.store)
     }
         
     static func scaleImage(_ image: UIImage, toSize newSize: CGSize) -> (UIImage) {
@@ -261,23 +232,11 @@ class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigat
         return newImage
     }
     
-    // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, editingStyleForRowAt editingStyleForRowAtIndexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.none
-    }
-    
     // MARK: - Event
     func selectBookCellFromStore(_ bookcell: BookCell) {
         let controller:BookController = ApplicationContext.sharedInstance.sharedBookController
         controller.book = bookcell.book
         controller.showSummaryOn(self.view.superview!.superview!.superview!)
-    }
-    
-    func didSelectCategory(_ category: Category) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let listCont = storyboard.instantiateViewController(withIdentifier: "StoreListCont") as! StoreListCont
-        self.navigationController?.pushViewController(listCont, animated: true)
-        listCont.category = category
     }
     
     func selectBookCellFromMyBook(_ bookcell: BookCell) {
@@ -292,16 +251,6 @@ class MainCont : DefaultCont, CellSelectDelegate, UITableViewDelegate, UINavigat
                 BookController.displaySetMainOn(self, book:book)
 //                self.performSegue(withIdentifier: "openSegue", sender: nil)
             }
-        }
-    }
-
-    //test
-    func selectBook(_ book:Book) {
-        if book.sets.count == 0 {
-            SVProgressHUD.showError(withStatus: "세트가 존재하지 않습니다.")
-        } else {
-            ApplicationContext.playEffect(code: .bookOpen)
-            BookController.displaySetMainOn(self, book:book)
         }
     }
     
