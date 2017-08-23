@@ -11,7 +11,7 @@ import SVProgressHUD
 import RxSwift
 import RxCocoa
 
-let minimalPasswordLength = 4
+let minimalPasswordLength = 8
 
 class SignUpCont: UIViewController, UITextFieldDelegate {
     

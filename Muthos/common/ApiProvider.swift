@@ -211,20 +211,42 @@ class ApiProvider {
         return nil
     }
     
+//    static func asyncSaveUserModel(_ user:User) {
+//        let myId:JSON = (user.my?["_id"])!
+//        var strMyId:String = ""
+//
+//        if myId.error == nil {
+//            strMyId = "/" + myId.stringValue
+//        }
+//        
+//        
+//        var post = Dictionary<String, AnyObject>()
+//        for (key, object) in user.my! {
+//            post[key] = object as AnyObject
+//        }
+//        
+//        //let encoded:String = str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+//        let url:String = MODEL_BASE_URL+"/api/muthos/My"+strMyId
+//        Alamofire.request(url, method: .post, parameters: post).responseJSON { response in
+//        }
+//    }
+
+    
     static func asyncSaveUserModel(_ user:User) {
         let myId:JSON = (user.my?["_id"])!
         var strMyId:String = ""
-
+        
         if myId.error == nil {
             strMyId = "/" + myId.stringValue
         }
         
-        let str:String = (user.my?.rawString()!)!
+        let post = convertStringToDictionary((user.my?.rawString())!)
         
-        let encoded:String = str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let url:String = MODEL_BASE_URL+"/api/muthos/save/My"+strMyId+"?obj="+encoded
-        _ = Alamofire.request(url)
+        let url:String = MODEL_BASE_URL+"/api/muthos/save/My"+strMyId
+        Alamofire.request(url, method: .post, parameters: post, encoding: JSONEncoding.default).responseJSON { response in
+        }
     }
+    
     
     static func purchaseSet(_ email:AnyObject, bookId:AnyObject, setIndex:AnyObject, callback:@escaping Async.callbackWithParam) {
         let params = ["email":email, "bookId":bookId, "setIndex":setIndex]
@@ -263,7 +285,7 @@ class ApiProvider {
                     let fbUserID = result.token.userID
 
                     FBSDKAccessToken.current()
-                    FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, name"])
+                    FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email, name, gender"])
                         .start(completionHandler: {(conn:FBSDKGraphRequestConnection?, result:Any?, err:Error?) in
                             let result:NSDictionary = result as! NSDictionary
                             
@@ -274,7 +296,23 @@ class ApiProvider {
                                 keychain[AUTH_EMAIL] = email
                             }
                             
-                            appDelegate.goMain()
+                            var gender = result.object(forKey: "gender") as? String
+                            if gender == nil {
+                                gender = "None"
+                            }
+                            
+                            let account = [
+                                "email": keychain[AUTH_EMAIL]!,
+                                "nickname": keychain[AUTH_NICK]!,
+                                "gender": gender!,
+                                "password": "yNK3H2cSBP"
+                            ]
+                            
+                            let url = BASE_URL+"/account"
+                            Alamofire.request(url, method:.post, parameters:account).responseJSON { response in
+                                appDelegate.goMain()
+                            }
+
                         })
                 }
         })

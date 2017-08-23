@@ -29,7 +29,6 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
     @IBOutlet weak var ordinaryButtonsWrap: UIView!
     @IBOutlet weak var bonusButtonsWrap: UIView!
     @IBOutlet var speakerThumbnail: UIImageView!
-    @IBOutlet weak var micMute: UIImageView!
     @IBOutlet var roundButtons: [UIButton]!
     @IBOutlet weak var speakerThumbnailArea:UIView!
     @IBOutlet weak var swipeControl: UIControl!
@@ -344,16 +343,6 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
     
     @IBAction func talk(_ sender: AnyObject) {
         self.showTalk()
-    }
-    
-    @IBAction func onClickSpeaker(_ sender: AnyObject) {
-        if micMute.isHidden {
-            micMute.isHidden = false
-        }
-        else {
-            micMute.isHidden = true
-        }
-        controller.muteSpeaker = !micMute.isHidden
     }
     
     func showTalk() {
