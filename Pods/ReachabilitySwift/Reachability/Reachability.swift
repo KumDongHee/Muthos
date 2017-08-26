@@ -115,19 +115,33 @@ public class Reachability {
         
         self.init(reachabilityRef: ref)
     }
+
     
     public convenience init?() {
         
         var zeroAddress = sockaddr()
         zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
-        zeroAddress.sa_family = sa_family_t(AF_INET)
+        zeroAddress.sa_family = sa_family_t(AF_INET6)
         
-        guard let ref: SCNetworkReachability = withUnsafePointer(to: &zeroAddress, {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
-        }) else { return nil }
+        guard let ref: SCNetworkReachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "www.muthos.net")
+            else { return nil }
         
         self.init(reachabilityRef: ref)
     }
+    
+    
+//    public convenience init?() {
+//        
+//        var zeroAddress = sockaddr()
+//        zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
+//        zeroAddress.sa_family = sa_family_t(AF_INET)
+//        
+//        guard let ref: SCNetworkReachability = withUnsafePointer(to: &zeroAddress, {
+//            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+//        }) else { return nil }
+//        
+//        self.init(reachabilityRef: ref)
+//    }
     
     deinit {
         stopNotifier()

@@ -45,14 +45,28 @@ class BallonView:UIView {
     static let MARGIN:CGFloat = 3
     static let PADDING_MYNOTE:CGFloat = 15
     
+    
+    
+    
     func setModel(_ quote:JSON, controller:BookController) {
         self.quote = quote
         self.controller = controller
 
         initQuoteView()
-
-        var x:CGFloat = MainCont.scaledSize(CGFloat(quote["position"]["left"].floatValue))
-        var y:CGFloat = MainCont.scaledSize(CGFloat(quote["position"]["top"].floatValue))
+        
+        var positionChange : String = "position"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if quote["padPosition"].error == nil {
+            positionChange = "padPosition"
+            }
+        }
+        var x:CGFloat = MainCont.scaledSize(CGFloat(quote["\(positionChange)"]["left"].floatValue))
+        var y:CGFloat = MainCont.scaledSize(CGFloat(quote["\(positionChange)"]["top"].floatValue))
+        
+        
+//        var x:CGFloat = MainCont.scaledSize(CGFloat(quote["position"]["left"].floatValue))
+//        var y:CGFloat = MainCont.scaledSize(CGFloat(quote["position"]["top"].floatValue))
+        
         
         x = x < 0 ? UIScreen.main.bounds.size.width + x - quoteBackground.width : x
         y = y < 0 ? UIScreen.main.bounds.size.height + y - quoteBackground.height : y
@@ -84,6 +98,10 @@ class BallonView:UIView {
         refresh()
         
         self.transform = CGAffineTransform(scaleX: MainCont.SIZE_RATIO, y: MainCont.SIZE_RATIO)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.transform = CGAffineTransform(scaleX: MainCont.SIZE_RATIO * 2/3, y: MainCont.SIZE_RATIO * 2/3)
+        }
+        
     }
     
     func isEmptyEdgeEnd() -> Bool {
@@ -95,10 +113,17 @@ class BallonView:UIView {
         edgeEnd.x = 0
         edgeEnd.y = 0
         
-        guard let quote = quote else { return }
-        guard quote["position"]["tail"].error == nil else { return }
+        var changePosition = "position"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if quote!["padPosition"].error == nil {
+                changePosition = "padPosition"
+            }
+        }
         
-        let tailString = quote["position"]["tail"].stringValue
+        guard let quote = quote else { return }
+        guard quote["\(changePosition)"]["tail"].error == nil else { return }
+        
+        let tailString = quote["\(changePosition)"]["tail"].stringValue
         let arr:[String] = tailString.components(separatedBy: ",")
         guard let tail:Int = Int(arr[0]) else {return}
         

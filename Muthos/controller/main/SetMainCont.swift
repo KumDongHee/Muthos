@@ -29,7 +29,6 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
     @IBOutlet weak var ordinaryButtonsWrap: UIView!
     @IBOutlet weak var bonusButtonsWrap: UIView!
     @IBOutlet var speakerThumbnail: UIImageView!
-    @IBOutlet weak var micMute: UIImageView!
     @IBOutlet var roundButtons: [UIButton]!
     @IBOutlet weak var speakerThumbnailArea:UIView!
     @IBOutlet weak var swipeControl: UIControl!
@@ -303,7 +302,7 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
             speakerThumbnail.isHidden = false
         }
         
-        let price = setObj["price"].error == nil ? setObj["price"].intValue : 100
+        let price = setObj["price"].error == nil ? setObj["price"].intValue : 0
         priceImgView.image = UIImage(named: "book_icon_"+(price == 0 ? "free" : String(price)))
     }
     
@@ -327,7 +326,7 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
             self.showListen()
         } else {
             let set:JSON = controller.model!["sets"][controller.selectedIdx!]
-            let price:Int = (set["price"].error == nil) ? set["price"].intValue : 100
+            let price:Int = (set["price"].error == nil) ? set["price"].intValue : 0
             let coin:Int = ApplicationContext.currentUser.getCoin()
             
             guard coin >= price else {
@@ -344,16 +343,6 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
     
     @IBAction func talk(_ sender: AnyObject) {
         self.showTalk()
-    }
-    
-    @IBAction func onClickSpeaker(_ sender: AnyObject) {
-        if micMute.isHidden {
-            micMute.isHidden = false
-        }
-        else {
-            micMute.isHidden = true
-        }
-        controller.muteSpeaker = !micMute.isHidden
     }
     
     func showTalk() {

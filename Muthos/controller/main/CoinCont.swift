@@ -21,6 +21,8 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
     @IBOutlet weak var carousel: iCarousel!
     
     @IBAction func purchaseProduct(sender: AnyObject) {
+        actionButton.isEnabled = false
+        inPurchase = true
         let payment = SKPayment(product: product!)
         SKPaymentQueue.default().add(payment)
     }
@@ -32,17 +34,24 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
     
     var product:SKProduct?
     var productID = "muthos.coins.5000"
+    
+    var inPurchase = false;
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
+        
+        actionButton.isEnabled = false
+        
         getProductInfo()
         
         if let image = bgImage {
             bgImageView.image = image
         }
         
-        actionButton.rx.tap
+        /*actionButton.rx.tap
             .subscribe(onNext: { [unowned self] _ in
                 self.dismiss(animated: true, completion: { [unowned self] () -> Void in
                     //실제 충전
@@ -66,12 +75,12 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
                         default:
                             break
                         }
-                        self.userViewModel.updateCash(currentCash)
-                        ApiProvider.asyncSaveUserModel(ApplicationContext.currentUser)
+                        //self.userViewModel.updateCash(currentCash)
+                        //ApiProvider.asyncSaveUserModel(ApplicationContext.currentUser)
                     } catch {}
 
                 })
-        }).addDisposableTo(disposeBag)
+        }).addDisposableTo(disposeBag)*/
         
         //cash
         let formatter = NumberFormatter()
@@ -91,20 +100,24 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
         carousel.isPagingEnabled = true
     }
     
-    func callPurchase() {
+    /*func callPurchase() {
         actionButton.isEnabled = false
         let payment = SKPayment(product: product!)
         SKPaymentQueue.default().add(payment)
-    }
+    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        
+    //    SKPaymentQueue.default().add(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+        
+        SKPaymentQueue.default().remove(self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -118,6 +131,7 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
             request.delegate = self
             request.start()
         }else{
+            return
         }
     }
     
@@ -127,7 +141,9 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
         // 상품 정보가 정상적으로 수신되었을 경우 화면에 상품 정보 갱신 및 구매 버튼 활성화 처리한다.
         if products.count != 0 {
             product = products[0] as SKProduct
-            actionButton.isEnabled = true
+            if inPurchase != true {
+                actionButton.isEnabled = true
+            }
         }else{
         }
         
@@ -137,22 +153,60 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
         }
     }
     
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        for trans in queue.transactions {
+            queue.finishTransaction(trans)
+        }
+        
+    }
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions as [SKPaymentTransaction]{
             switch transaction.transactionState {
             case SKPaymentTransactionState.purchased:
                 // 구매가 정상적으로 완료될 경우 후처리 시작
                 self.unlockFeature()
-                SKPaymentQueue.default().finishTransaction(transaction)
+                //SKPaymentQueue.default().finishTransaction(transaction)
+                queue.finishTransaction(transaction)
                 break
             case SKPaymentTransactionState.failed:
-                SKPaymentQueue.default().finishTransaction(transaction)
-            default: break
+                //SKPaymentQueue.default().finishTransaction(transaction)
+                queue.finishTransaction(transaction)
+                inPurchase = false;
+                actionButton.isEnabled = true;
+            default:
+                break
             }
         }
     }
     
     func unlockFeature(){
+        do {
+            var currentCash = try self.userViewModel.currentCash.value()
+            
+            switch self.carousel.currentItemIndex {
+            case 0:
+                currentCash += 5000
+            case 1:
+                currentCash += 11000
+            case 2:
+                currentCash += 35000
+            case 3:
+                currentCash += 60000
+            case 4:
+                currentCash += 130000
+            default:
+                break
+            }
+            
+            self.dismiss(animated: true, completion: {
+                self.userViewModel.updateCash(currentCash)
+                ApiProvider.asyncSaveUserModel(ApplicationContext.currentUser)
+            })
+            
+        } catch {}
+        
+        return
     }
     
     //MARK: - iCarousel
@@ -196,6 +250,9 @@ class CoinCont: UIViewController, iCarouselDelegate, iCarouselDataSource, SKPaym
         default:
             break
         }
+        
+        actionButton.isEnabled = false
+        getProductInfo()
         
         return imageView
     }

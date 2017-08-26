@@ -109,7 +109,7 @@ class BillCont:UIViewController {
         titleLabel.text = set["title"].string!
         setLabel.text = String(format: "%02d", setNo)
         
-        let originPrice:Int = (set["price"].error == nil) ? set["price"].intValue : 100
+        let originPrice:Int = (set["price"].error == nil) ? set["price"].intValue : 0
         var dcPrice:Int = originPrice
         var dcRate:Int = 0
         let user = ApplicationContext.currentUser

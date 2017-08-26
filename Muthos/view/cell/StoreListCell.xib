@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F71b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0mo-TW-orl">
@@ -140,6 +140,9 @@
                 <outlet property="bookImage" destination="0mo-TW-orl" id="UKq-8j-6PB"/>
                 <outlet property="bookLabel" destination="oHv-BU-qf6" id="O1V-3N-dO8"/>
                 <outlet property="eventButton" destination="6N2-TP-tyc" id="MgT-JZ-3Hl"/>
+                <outlet property="levelTextImageLeadingConstraint" destination="fnn-Bw-v3r" id="kj9-Tr-6F7"/>
+                <outlet property="levelTextImageView" destination="2qz-B5-Y1f" id="KpP-V2-bfQ"/>
+                <outlet property="levelTextRatingConstraint" destination="CB9-Kg-Xz3" id="lq5-LU-j5z"/>
                 <outlet property="progressArea" destination="QSO-LU-KNc" id="JR8-Zs-XbS"/>
                 <outlet property="progressBar" destination="vEq-AP-Fl8" id="hcg-rR-HtC"/>
                 <outlet property="progressText" destination="fb6-kq-6Rg" id="Rl0-d1-mB4"/>

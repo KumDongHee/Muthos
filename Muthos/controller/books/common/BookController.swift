@@ -51,7 +51,6 @@ extension String {
 
 class BookController : NSObject {
     var bookMode:BookMode = .easy
-    var muteSpeaker:Bool = false
     var model:JSON?
     var L:JSON?
     var recognizer:SpeechRecognizing?
@@ -66,7 +65,6 @@ class BookController : NSObject {
 
     var book:Book? {
         didSet {
-            muteSpeaker = false
             bookMode = .easy
             
             self.loadModel()
@@ -748,11 +746,11 @@ class BookController : NSObject {
                 let idx:Int = Int(p)!
                 seps[idx-1] = ""
             }
-            seps[Int(positions[0])! - 1] = "<u style='color:"+(correct ? "yello" : "red" )+"'>" + d + "</u>"
+            seps[Int(positions[0])! - 1] = "<u style='color:"+(correct ? "yellow" : "red" )+"'>" + d + "</u>"
         } else {
             for p:String in positions {
                 let idx:Int = Int(p)!
-                seps[idx-1] = "<u style='color:"+(correct ? "yello" : "red" )+"'>"+seps[idx-1]+"</u>"
+                seps[idx-1] = "<u style='color:"+(correct ? "" : "red" )+"'>"+seps[idx-1]+"</u>"
             }
         }
         

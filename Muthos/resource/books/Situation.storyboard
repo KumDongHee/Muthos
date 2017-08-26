@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -562,10 +561,10 @@
                                 <color key="backgroundColor" red="0.1764705882352941" green="0.46666666666666667" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEp-sn-z5D">
-                                <rect key="frame" x="334" y="44" width="21" height="21"/>
+                                <rect key="frame" x="314" y="20" width="61" height="61"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="7os-Jx-UAj"/>
-                                    <constraint firstAttribute="width" constant="21" id="twz-GX-Kqz"/>
+                                    <constraint firstAttribute="height" constant="61" id="7os-Jx-UAj"/>
+                                    <constraint firstAttribute="width" constant="61" id="twz-GX-Kqz"/>
                                 </constraints>
                                 <state key="normal" image="control_btn_white_close"/>
                                 <connections>
@@ -610,9 +609,9 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="NGp-a4-DI0" firstAttribute="top" secondItem="hdf-7H-Giu" secondAttribute="bottom" constant="34" id="DHq-aK-BAP"/>
-                            <constraint firstItem="gEp-sn-z5D" firstAttribute="top" secondItem="mFM-6j-KlU" secondAttribute="bottom" constant="23.5" id="QsJ-T3-0Bu"/>
+                            <constraint firstItem="gEp-sn-z5D" firstAttribute="top" secondItem="mFM-6j-KlU" secondAttribute="bottom" id="QsJ-T3-0Bu"/>
                             <constraint firstItem="hdf-7H-Giu" firstAttribute="centerX" secondItem="vh3-mC-cVz" secondAttribute="centerX" id="Zo7-5o-PWT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gEp-sn-z5D" secondAttribute="trailing" constant="4" id="sCV-bA-4NO"/>
+                            <constraint firstAttribute="trailing" secondItem="gEp-sn-z5D" secondAttribute="trailing" id="yIh-OA-9I1"/>
                         </constraints>
                     </view>
                     <connections>

@@ -10,30 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class StoreListCont: DefaultCont, UITableViewDelegate, StoreListCellDelegate, DownloadManagerDelegate {
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
-
-    var category:Category?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableViewSetting()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.hideLine()
-        self.navigationItem.titleView = UIImageView(image: UIImage(named: "gnb_top_icon_logo"))
-
-        ApplicationContext.sharedInstance.downloadManager.delegate = self
-    }
+// class StoreListCont: DefaultCont, UITableViewDelegate, StoreListCellDelegate, DownloadManagerDelegate {
+extension MainCont : UITableViewDelegate, StoreListCellDelegate, DownloadManagerDelegate {
     
     // MARK:- UI Setting
-    func tableViewSetting() {
+    func tableViewSetting(disposeBag : DisposeBag) {
         self.tableView.register(UINib(nibName: "StoreListCell", bundle: nil), forCellReuseIdentifier: "StoreListCell")
         self.tableView.rx.setDelegate(self).addDisposableTo(disposeBag)
         self.tableView.showsHorizontalScrollIndicator = false
@@ -42,8 +23,8 @@ class StoreListCont: DefaultCont, UITableViewDelegate, StoreListCellDelegate, Do
         self.tableView.backgroundColor = UIColor(hexString: "e8e8e8")
         self.tableView.rowHeight = 89
         
-        if let category = category {
-            titleLabel.text = category.name
+        if let categories = try? self.viewModel.categories.value() {
+            let category = categories[0]
             let books = Variable<[Book]>(category.books)
             
             books.asObservable()
@@ -71,11 +52,6 @@ class StoreListCont: DefaultCont, UITableViewDelegate, StoreListCellDelegate, Do
     
     // MARK: - Event
     func selectBook(_ book: Book) {
-    }
-
-    override func touchLeftButton() {
-        super.touchLeftButton()
-        self.navigationController!.popViewController(animated: true)
     }
     
     func storeListCellDidTouchedThumbnail(_ cell:StoreListCell) {

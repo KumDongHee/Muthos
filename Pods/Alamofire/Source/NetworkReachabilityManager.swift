@@ -101,30 +101,54 @@ public class NetworkReachabilityManager {
     /// - parameter host: The host used to evaluate network reachability.
     ///
     /// - returns: The new `NetworkReachabilityManager` instance.
+
+    
     public convenience init?(host: String) {
         guard let reachability = SCNetworkReachabilityCreateWithName(nil, host) else { return nil }
         self.init(reachability: reachability)
     }
 
+
+    
+    
+    
+    
+    
+    
+    
     /// Creates a `NetworkReachabilityManager` instance that monitors the address 0.0.0.0.
     ///
     /// Reachability treats the 0.0.0.0 address as a special token that causes it to monitor the general routing
     /// status of the device, both IPv4 and IPv6.
     ///
     /// - returns: The new `NetworkReachabilityManager` instance.
+
+    
     public convenience init?() {
         var address = sockaddr_in()
         address.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-        address.sin_family = sa_family_t(AF_INET)
-
-        guard let reachability = withUnsafePointer(to: &address, { pointer in
-            return pointer.withMemoryRebound(to: sockaddr.self, capacity: MemoryLayout<sockaddr>.size) {
-                return SCNetworkReachabilityCreateWithAddress(nil, $0)
-            }
-        }) else { return nil }
-
+        address.sin_family = sa_family_t(AF_INET6)
+        
+        guard let reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, "www.muthos.net") else { return nil }
+        
         self.init(reachability: reachability)
     }
+    
+    
+    
+//    public convenience init?() {
+//        var address = sockaddr_in()
+//        address.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+//        address.sin_family = sa_family_t(AF_INET)
+//
+//        guard let reachability = withUnsafePointer(to: &address, { pointer in
+//            return pointer.withMemoryRebound(to: sockaddr.self, capacity: MemoryLayout<sockaddr>.size) {
+//                return SCNetworkReachabilityCreateWithAddress(nil, $0)
+//            }
+//        }) else { return nil }
+//
+//        self.init(reachability: reachability)
+//    }
 
     private init(reachability: SCNetworkReachability) {
         self.reachability = reachability

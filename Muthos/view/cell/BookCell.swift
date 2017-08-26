@@ -50,6 +50,9 @@ class BookCell: UICollectionViewCell {
         if MainCont.isSmallScreen() {
             bookLabel.font = UIFont(name: "AppleGothic", size: 10)
         }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            bookLabel.font = UIFont(name: "AppleGothic", size: 20)
+        }
 
         bookmarkImgView.isHidden = !book.bookmarked
         
