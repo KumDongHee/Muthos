@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -21,27 +21,27 @@
                         <viewControllerLayoutGuide type="bottom" id="T2p-HT-mnY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="u1d-bX-Wgm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="source_bg_login" translatesAutoresizingMaskIntoConstraints="NO" id="jdg-by-YRM">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62x-uc-tZA">
-                                <rect key="frame" x="18" y="490.66666666666663" width="378" height="52.999999999999886"/>
+                                <rect key="frame" x="18" y="693" width="732" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="C1e-Sl-7v1"/>
                                 </constraints>
                                 <state key="normal" image="login_btn_login_default"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="06V-0g-7v3">
-                                <rect key="frame" x="168" y="114.33333333333334" width="78" height="73.000000000000028"/>
+                                <rect key="frame" x="345" y="173.5" width="78" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="06V-0g-7v3" secondAttribute="height" multiplier="78:73" id="uzp-K0-ndH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Muthos English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-0D-k1a">
-                                <rect key="frame" x="0.0" y="209.66666666666666" width="414" height="15"/>
+                                <rect key="frame" x="0.0" y="294.5" width="768" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="X7A-hV-gPd"/>
                                 </constraints>
@@ -50,19 +50,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_sign_bar" translatesAutoresizingMaskIntoConstraints="NO" id="5y8-ld-KkH">
-                                <rect key="frame" x="18" y="603" width="132.33333333333334" height="1"/>
+                                <rect key="frame" x="18" y="839" width="246" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="q5M-kN-JS7"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_sign_bar" translatesAutoresizingMaskIntoConstraints="NO" id="FU3-ns-2gj">
-                                <rect key="frame" x="263.66666666666674" y="603" width="132.33333333333331" height="1"/>
+                                <rect key="frame" x="504" y="839" width="246" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bKk-Ba-5Uu"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright muthos. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqm-r0-ZpN">
-                                <rect key="frame" x="0.0" y="704.66666666666663" width="414" height="11"/>
+                                <rect key="frame" x="0.0" y="982.5" width="768" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="Ofh-7L-l85"/>
                                 </constraints>
@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sign up with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx2-NW-oRN">
-                                <rect key="frame" x="157" y="595" width="100" height="17"/>
+                                <rect key="frame" x="334" y="831" width="100" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="JYN-h9-nwK"/>
                                     <constraint firstAttribute="width" constant="100" id="bdy-iO-IgI"/>
@@ -81,20 +81,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_input_box" translatesAutoresizingMaskIntoConstraints="NO" id="K6k-G0-ZEh">
-                                <rect key="frame" x="18" y="319.33333333333331" width="378" height="90"/>
+                                <rect key="frame" x="18" y="462" width="732" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="qvd-vb-HiJ"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_icon_user" translatesAutoresizingMaskIntoConstraints="NO" id="dtC-Fh-GO5">
-                                <rect key="frame" x="28" y="331.66666666666669" width="16" height="19"/>
+                                <rect key="frame" x="28" y="474" width="16" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="5sK-Ej-Vxd"/>
                                     <constraint firstAttribute="height" constant="19" id="zRK-5X-wpc"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-Sy-XZc">
-                                <rect key="frame" x="59" y="319.33333333333331" width="337" height="44"/>
+                                <rect key="frame" x="59" y="462" width="691" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1Yd-ZW-JDx"/>
                                 </constraints>
@@ -108,7 +108,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fab-eL-kLl">
-                                <rect key="frame" x="59" y="365.33333333333331" width="337" height="44"/>
+                                <rect key="frame" x="59" y="508" width="691" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="YME-Du-Kcy"/>
                                 </constraints>
@@ -122,7 +122,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_icon_password" translatesAutoresizingMaskIntoConstraints="NO" id="Ct4-1J-2MR">
-                                <rect key="frame" x="28" y="377.66666666666669" width="16" height="19"/>
+                                <rect key="frame" x="28" y="520" width="16" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="1Fo-si-j3s"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="SDx-q4-hB0"/>
@@ -137,7 +137,7 @@
                                 </variation>
                             </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZD0-pm-lr0">
-                                <rect key="frame" x="316" y="409.33333333333331" width="80" height="30"/>
+                                <rect key="frame" x="670" y="552" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7cp-xi-05T"/>
                                     <constraint firstAttribute="width" constant="80" id="L4F-mf-cEV"/>
@@ -151,7 +151,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNw-1X-fOa">
-                                <rect key="frame" x="152" y="628" width="110" height="47"/>
+                                <rect key="frame" x="329" y="864" width="110" height="47"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7P-sz-gKd">
                                         <rect key="frame" x="0.0" y="0.0" width="47" height="47"/>
@@ -260,11 +260,11 @@
                         <viewControllerLayoutGuide type="bottom" id="NKv-mM-3Zn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Mv-dk-c3F">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Muthos 가입을 환영합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvP-Gm-37R">
-                                <rect key="frame" x="0.0" y="89" width="414" height="15"/>
+                                <rect key="frame" x="0.0" y="89" width="768" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Dcp-eR-KPj"/>
                                 </constraints>
@@ -273,7 +273,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JI6-ub-WZ0" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="127" width="378" height="50"/>
+                                <rect key="frame" x="18" y="127" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="본인 이메일 주소 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRz-10-ao1">
                                         <rect key="frame" x="17" y="0.0" width="220" height="50"/>
@@ -306,14 +306,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xO-hL-GKU">
-                                <rect key="frame" x="0.0" y="328" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="328" width="768" height="1"/>
                                 <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="9iu-kv-EvU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuW-aP-Bbf" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="187" width="378" height="50"/>
+                                <rect key="frame" x="18" y="187" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (영문/숫자 조합 8자 ~ 15자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QKZ-Rp-ape">
                                         <rect key="frame" x="15" y="0.0" width="207" height="50"/>
@@ -346,7 +346,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKV-Yo-0Le" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="247" width="378" height="50"/>
+                                <rect key="frame" x="18" y="247" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 다시 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KPI-Ix-mPI">
                                         <rect key="frame" x="15" y="0.0" width="207" height="50"/>
@@ -388,7 +388,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cy7-2Z-gLI" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="389" width="378" height="97"/>
+                                <rect key="frame" x="18" y="389" width="732" height="97"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qa-1I-GQc">
                                         <rect key="frame" x="10" y="15" width="25" height="25"/>
@@ -431,21 +431,21 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="join_icon_view" translatesAutoresizingMaskIntoConstraints="NO" id="KEd-uG-zJV">
-                                        <rect key="frame" x="354" y="65.666666666666686" width="5" height="8"/>
+                                        <rect key="frame" x="708" y="65.5" width="5" height="8"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="MuC-vD-7Ne"/>
                                             <constraint firstAttribute="width" constant="5" id="Nnn-Ih-IoV"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="join_icon_view" translatesAutoresizingMaskIntoConstraints="NO" id="lp0-1c-yWi">
-                                        <rect key="frame" x="354" y="23.666666666666686" width="5" height="8"/>
+                                        <rect key="frame" x="708" y="23.5" width="5" height="8"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="5" id="54L-K5-CUs"/>
                                             <constraint firstAttribute="height" constant="8" id="Okt-sd-HWa"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보기" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9n-zq-gtf">
-                                        <rect key="frame" x="298" y="15" width="50" height="25"/>
+                                        <rect key="frame" x="652" y="15" width="50" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="DVb-d6-wqQ"/>
                                             <constraint firstAttribute="width" constant="50" id="hZi-ro-NcD"/>
@@ -455,7 +455,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보기" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwg-u7-bWh">
-                                        <rect key="frame" x="298" y="57" width="50" height="25"/>
+                                        <rect key="frame" x="652" y="57" width="50" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="ZAj-96-YAE"/>
                                             <constraint firstAttribute="height" constant="25" id="dfd-Vc-muA"/>
@@ -509,7 +509,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khs-Yd-KMR">
-                                <rect key="frame" x="18" y="666" width="378" height="49"/>
+                                <rect key="frame" x="18" y="954" width="732" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="wGx-ku-k2p"/>
                                 </constraints>
@@ -590,11 +590,11 @@
                         <viewControllerLayoutGuide type="bottom" id="uWI-OY-Kv8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rbk-kT-n46">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Muthos 가입을 환영합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YW-qw-Bu1">
-                                <rect key="frame" x="0.0" y="89" width="414" height="15"/>
+                                <rect key="frame" x="0.0" y="89" width="768" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="EgQ-Sp-zWQ"/>
                                 </constraints>
@@ -603,7 +603,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YvJ-ZE-fFb" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="127" width="378" height="50"/>
+                                <rect key="frame" x="18" y="127" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="본인 이름 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CrC-1M-1nt">
                                         <rect key="frame" x="17" y="0.0" width="220" height="50"/>
@@ -636,7 +636,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8G-6P-7nT" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="328" width="378" height="50"/>
+                                <rect key="frame" x="18" y="328" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="본인 생일 입력 (년, 월, 일)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="08g-uv-uht">
                                         <rect key="frame" x="15" y="0.0" width="207" height="50"/>
@@ -652,7 +652,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-7x-Nks">
-                                        <rect key="frame" x="0.0" y="0.0" width="378" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="732" height="50"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -676,7 +676,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZY-bm-JpC">
-                                <rect key="frame" x="18" y="666" width="378" height="49"/>
+                                <rect key="frame" x="18" y="954" width="732" height="49"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.30196078430000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="G3Z-m7-DJU"/>
@@ -800,11 +800,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cdD-Go-GZb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4Jn-56-BTW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="s4l-B3-RdM">
-                                <rect key="frame" x="18" y="79" width="378" height="635"/>
+                                <rect key="frame" x="33" y="110" width="702" height="883"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90972417593002319" green="0.9098549485206604" blue="0.90969544649124146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Muthos Fairy Tale(뮤토스 동화)
@@ -1011,7 +1011,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6BW-Vc-kpS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ewU-0f-vPy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kBA-Av-SG3">
@@ -1129,11 +1129,11 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                         <viewControllerLayoutGuide type="bottom" id="dSu-FT-lB9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s4c-UE-jJw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 주소를 입력해주세요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK4-X4-tGr">
-                                <rect key="frame" x="0.0" y="89" width="414" height="15"/>
+                                <rect key="frame" x="0.0" y="89" width="768" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="jjX-u1-apX"/>
                                 </constraints>
@@ -1142,7 +1142,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udn-bN-6YE" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="127" width="378" height="50"/>
+                                <rect key="frame" x="18" y="127" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zev-1X-tYu">
                                         <rect key="frame" x="17" y="0.0" width="220" height="50"/>
@@ -1175,7 +1175,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgy-ai-4nv">
-                                <rect key="frame" x="18" y="666" width="378" height="49"/>
+                                <rect key="frame" x="18" y="954" width="732" height="49"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.30196078430000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="061-GF-mNs"/>
@@ -1189,7 +1189,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSL-Nt-7HI">
-                                <rect key="frame" x="18" y="197" width="378" height="102"/>
+                                <rect key="frame" x="18" y="197" width="732" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="YxN-pr-zoI"/>
                                 </constraints>
@@ -1254,11 +1254,11 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                         <viewControllerLayoutGuide type="bottom" id="zVh-AR-YQU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HJk-2w-ToZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="변경하실 새로운 비밀번호를 입력해 주세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8c-Oc-xby">
-                                <rect key="frame" x="0.0" y="89" width="414" height="15"/>
+                                <rect key="frame" x="0.0" y="89" width="768" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="er8-lp-Stx"/>
                                 </constraints>
@@ -1267,7 +1267,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAI-GP-h2M" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="127" width="378" height="50"/>
+                                <rect key="frame" x="18" y="127" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (영문/숫자 조합 8-15자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AB8-FU-rcH">
                                         <rect key="frame" x="17" y="0.0" width="220" height="50"/>
@@ -1300,7 +1300,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTl-Sd-dKr" customClass="BorderView" customModule="muthos" customModuleProvider="target">
-                                <rect key="frame" x="18" y="187" width="378" height="50"/>
+                                <rect key="frame" x="18" y="187" width="732" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 다시 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6P0-Pp-9D7">
                                         <rect key="frame" x="15" y="0.0" width="207" height="50"/>
@@ -1333,7 +1333,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ew-nB-UZE">
-                                <rect key="frame" x="18" y="666" width="378" height="49"/>
+                                <rect key="frame" x="18" y="954" width="732" height="49"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.30196078430000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="IJE-GJ-Bfe"/>
@@ -1384,11 +1384,11 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                         <viewControllerLayoutGuide type="bottom" id="oH1-vH-TD5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eHu-5F-OLx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 정보 및 보유한 코인은 탈퇴 시 모두 사라집니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYN-70-cpL">
-                                <rect key="frame" x="0.0" y="103" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="103" width="768" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nGd-1U-fbz"/>
                                 </constraints>
@@ -1397,7 +1397,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGQ-si-xIL">
-                                <rect key="frame" x="18" y="666" width="378" height="49"/>
+                                <rect key="frame" x="18" y="954" width="732" height="49"/>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.30196078430000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="v2S-DQ-XtX"/>
@@ -1411,7 +1411,7 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCX-nP-c6X">
-                                <rect key="frame" x="155" y="166" width="104" height="25"/>
+                                <rect key="frame" x="332" y="166" width="104" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동의합니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-c7-cHQ">
                                         <rect key="frame" x="34" y="0.0" width="70" height="25"/>
@@ -1446,14 +1446,14 @@ C. 기타 업무상 개인정보의 취급이 불가피한 자
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-b1-WDX">
-                                <rect key="frame" x="155" y="166" width="104" height="25"/>
+                                <rect key="frame" x="332" y="166" width="104" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="XN2-f7-xzF"/>
                                     <constraint firstAttribute="height" constant="25" id="gEe-pn-QAp"/>
                                 </constraints>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그동안 뮤토스를 이용해 주셔서 감사합니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OQ-L2-Tlu">
-                                <rect key="frame" x="18" y="627" width="378" height="21"/>
+                                <rect key="frame" x="18" y="915" width="732" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1ge-Vg-dZ7"/>
                                 </constraints>

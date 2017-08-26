@@ -6,6 +6,13 @@
 //
 //
 
+func fontsizeForDevice(size : Double) -> Double{
+    if UIDevice.current.userInterfaceIdiom == .pad {
+        return size / 2
+    }
+    return size
+}
+
 import Foundation
 import UIKit
 import AVFoundation
@@ -495,7 +502,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         view.frame = CGRect(x: center - frame.size.width/2, y: frame.origin.y, width: frame.size.width, height: frame.size.height)
     }
 
-    let PADDING_WIDTH:CGFloat = 8
+    let PADDING_WIDTH:CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0 : 8
 
     func alignTalkAnswers() {
         let Y_MOVE:CGFloat = 0
@@ -530,7 +537,10 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     func renderTalkAnswer(_ view:UITextView, string:String) {
         let ORIGIN_BOUNDS:CGRect = CGRect(x: 0,y: 0,width: MainCont.scaledSize(300) - PADDING_WIDTH * 2,height: 32)
         
-        let prefix:String = "<div style='margin-left:auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;width:100%;text-align:center;font-family:Apple SD Gothic Neo;font-weight:400;font-size:18px;'>"
+        var prefix:String = "<div style='margin-left:auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;width:100%;text-align:center;font-family:Apple SD Gothic Neo;font-weight:400;font-size:18px;'>"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            prefix = "<div style='margin-left:auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;width:100%;text-align:center;font-family:Apple SD Gothic Neo;font-weight:400;font-size:10px;'>"
+        }
         let suffix:String = "</div>"
         
         view.bounds = ORIGIN_BOUNDS
@@ -538,6 +548,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         view.textAlignment = NSTextAlignment.center
         view.isEditable = false
         view.layer.masksToBounds = true
+        
         let html:String = prefix + string + suffix
         do {
             let style = NSMutableParagraphStyle()
@@ -585,7 +596,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     func clearListening() {
         self.currentAnswer = ""
         answerText.text = ""
-        recognizedText.text = ""
+        recognizedText.text = " "
         resultArea.isHidden = true
         micArea.isHidden = false
         talkAnswer.isHidden = true
@@ -1066,6 +1077,13 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         if let key:String = quote["dialog-key"].string {
             var m:JSON = controller!.findDialogByKey(key)!
             m["position"] = quote["position"]
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                if quote["padPosition"].error == nil {
+                    m["padPosition"] = quote["padPosition"]
+                }
+            }
+            
             m["frameless"] = quote["frameless"]
             m["waiting"] = quote["waiting"]
             m["dictation"] = quote["dictation"]
@@ -1178,6 +1196,11 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         view.frame = CGRect(x: quote["position"]["left"].int!, y: quote["position"]["top"].int!, width: 230, height: 40)
+//        if UIDevice.current.userInterfaceIdiom == .pad {
+//            if quote["padPosition"].error == nil {
+//                view.frame = CGRect(x: quote["padPosition"]["left"].int!, y: quote["padPosition"]["top"].int!, width: 230, height: 40)
+//            }
+//        }
         view.backgroundColor = UIColor.white
         
         let leftView:UITextView = UITextView()
@@ -1655,7 +1678,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             cont!.playCurrentVideo({()->Bool in
                 if !self.looping { return false }
                 let modelName = UIDevice.current.modelName
-                if modelName == "iPhone 5" || modelName == "iPhone 5c" || modelName == "iPhone 5s" || modelName == "iPhone 6" {
+                if modelName == "iPhone 5" || modelName == "iPhone 5c" || modelName == "iPhone 5s" || modelName == "iPhone 6" || modelName == "iPad Air" || modelName == "iPad Air 2" || modelName == "iPad mini 3" || modelName == "iPad mini 4" || modelName == "iPad 4" {
                     
                 }else {
                     self.changeVideo(url)
@@ -1743,7 +1766,15 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                 callback:{() -> Bool in
                     let narrCont = UIControl()
                     if json["params"]["position"].error == nil {
-                        let p:JSON = json["params"]["position"]
+                        var p:JSON = json["params"]["position"]
+
+// 다운로드 직후 음성이 나레이션 음성이 재생되지 않는 오류 발생
+//                        if UIDevice.current.userInterfaceIdiom == .pad {
+//                            if json["params"]["padPosition"].error == nil {
+//                                p = json["params"]["padPosition"]
+//                            }
+//                        }
+
                         let narr = UITextView()
                         let x:CGFloat = MainCont.scaledSize(CGFloat(p["left"].floatValue))
                         let y:CGFloat = MainCont.scaledSize(CGFloat(p["top"].floatValue),r:1)
@@ -1758,8 +1789,12 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                         }
                         
                         let text:String = BookController.getQuoteTextOf(dialog: dialog, params: json["params"], playMode: self.playMode!)
-
+                        
                         var fontSize:Int = 20
+                        if UIDevice.current.userInterfaceIdiom == .pad {
+                            fontSize = 12
+                        }
+                        
                         if json["params"]["font-size"].error == nil {
                             let fs:Int = json["params"]["font-size"].intValue
                             if fs > 0 { fontSize = fs }

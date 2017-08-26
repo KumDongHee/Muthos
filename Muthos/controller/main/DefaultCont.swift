@@ -62,7 +62,11 @@ class DefaultCont: UIViewController {
         let view:UIView = UIView(frame:CGRect(x: 0,y: 0,width: MainCont.scaledSize(150), height: MainCont.scaledSize(50)))
         let label:UILabel = UILabel(frame: CGRect(x: 0, y: MainCont.scaledSize(3), width: MainCont.scaledSize(150), height: MainCont.scaledSize(50)))
         label.backgroundColor = UIColor.clear
-        label.font = UIFont(name: "AppleGothic", size: MainCont.scaledSize(17))
+        var fontsize : CGFloat = 17
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            fontsize = 11
+        }
+        label.font = UIFont(name: "AppleGothic", size: MainCont.scaledSize(fontsize))
         label.textAlignment = .center;
         label.text = navigationItem.title;
         view.addSubview(label)
@@ -138,8 +142,12 @@ class DefaultCont: UIViewController {
     
     func updateCoin(coin:String) {
         do {
+            var coinsize = 15
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                coinsize = 8
+            }
             let str = try NSMutableAttributedString(data: coin.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSPlainTextDocumentType], documentAttributes: nil)
-            str.addAttributes([NSFontAttributeName:UIFont(name: "AppleGothic", size: MainCont.scaledSize(15))!], range: NSMakeRange(0, str.length))
+            str.addAttributes([NSFontAttributeName:UIFont(name: "AppleGothic", size: MainCont.scaledSize(CGFloat(coinsize)))!], range: NSMakeRange(0, str.length))
             str.addAttributes([NSKernAttributeName:-1.0], range: NSMakeRange(0, str.length))
             
             cashButton.setAttributedTitle(str, for: .normal)
@@ -147,7 +155,11 @@ class DefaultCont: UIViewController {
         }
         
         cashButton.titleLabel!.sizeToFit()
-        cashButton.frame = CGRect(x:0,y:MARGIN_TOP+MainCont.scaledSize(3),width:cashButton.titleLabel!.width, height:cashButton.titleLabel!.height)
+        var coinmargin : CGFloat = 3
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            coinmargin = 2
+        }
+        cashButton.frame = CGRect(x:0,y:MARGIN_TOP+MainCont.scaledSize(coinmargin),width:cashButton.titleLabel!.width, height:cashButton.titleLabel!.height)
         cashButtonWrap.frame = CGRect(x:0,y:0,width:cashButton.width, height:cashButton.height+MainCont.scaledSize(3))
 
         rightButtonArea.setWidth(coinWrap.width + cashButtonWrap.width + COIN_PADDING)

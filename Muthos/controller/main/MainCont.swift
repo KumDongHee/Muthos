@@ -100,7 +100,7 @@ class MainCont : DefaultCont, CellSelectDelegate, UINavigationControllerDelegate
         super.viewWillAppear(animated)
 
         let imageView = UIImageView(image: UIImage(named: "gnb_top_icon_logo"))
-        imageView.frame = CGRect(x:0,y:0,width:MainCont.scaledSize(40), height:MainCont.scaledSize(30))
+//        imageView.frame = CGRect(x:0,y:0,width:MainCont.scaledSize(40), height:MainCont.scaledSize(30))
         imageView.contentMode = .scaleAspectFit
         
         self.navigationController?.navigationBar.hideLine()

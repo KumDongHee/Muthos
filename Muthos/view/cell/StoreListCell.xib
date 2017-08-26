@@ -140,6 +140,9 @@
                 <outlet property="bookImage" destination="0mo-TW-orl" id="UKq-8j-6PB"/>
                 <outlet property="bookLabel" destination="oHv-BU-qf6" id="O1V-3N-dO8"/>
                 <outlet property="eventButton" destination="6N2-TP-tyc" id="MgT-JZ-3Hl"/>
+                <outlet property="levelTextImageLeadingConstraint" destination="fnn-Bw-v3r" id="kj9-Tr-6F7"/>
+                <outlet property="levelTextImageView" destination="2qz-B5-Y1f" id="KpP-V2-bfQ"/>
+                <outlet property="levelTextRatingConstraint" destination="CB9-Kg-Xz3" id="lq5-LU-j5z"/>
                 <outlet property="progressArea" destination="QSO-LU-KNc" id="JR8-Zs-XbS"/>
                 <outlet property="progressBar" destination="vEq-AP-Fl8" id="hcg-rR-HtC"/>
                 <outlet property="progressText" destination="fb6-kq-6Rg" id="Rl0-d1-mB4"/>

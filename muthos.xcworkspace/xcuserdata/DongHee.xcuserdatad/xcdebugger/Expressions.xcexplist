@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SituationCont.finaly() -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dictationLabelArea">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
