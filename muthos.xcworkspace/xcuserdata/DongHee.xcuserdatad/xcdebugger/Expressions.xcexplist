@@ -11,6 +11,36 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "SituationCont.showResultArea(desc : String) -&gt; ():SituationCont.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.restoreBackgroundOnPivotIndex(Int) -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentSequence">
+            </PersistentString>
+            <PersistentString
+               value = "sequence">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.doRenderQuote(AnyObject) -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ballonView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.getSpeechModel() -&gt; JSON?:SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sequence">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "BallonView.init(quote : JSON) -&gt; BallonView:BallonView.swift">
          <PersistentStrings>
             <PersistentString
@@ -26,14 +56,6 @@
          <PersistentStrings>
             <PersistentString
                value = "viewModel">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SituationCont.doRenderQuote(AnyObject) -&gt; ():SituationCont.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "ballonView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

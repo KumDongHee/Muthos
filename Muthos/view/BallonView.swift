@@ -79,8 +79,8 @@ class BallonView:UIView {
         var y = CGtop * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH
             - ( BACKGROUND_STANDARD_HEIGHT * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH - UIScreen.main.bounds.size.height ) / 2
         
-        x = x < 0 ? UIScreen.main.bounds.size.width + x - quoteBackground.width : x
-        y = y < 0 ? UIScreen.main.bounds.size.height + y - quoteBackground.height : y
+        x = CGleft < 0 ? UIScreen.main.bounds.size.width + x - quoteBackground.width : x
+        y = CGtop < 0 ? UIScreen.main.bounds.size.height + y - quoteBackground.height : y
         
         self.frame = CGRect(x: x, y: y , width: quoteBackground.width, height: quoteBackground.height + triangle.height)
 
