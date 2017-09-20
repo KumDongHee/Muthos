@@ -3,6 +3,25 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SituationCont.finaly() -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dictationLabelArea">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BallonView.init(quote : JSON) -&gt; BallonView:BallonView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIScreen.main.bounds.size.width">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainCont.tableViewSetting(disposeBag : DisposeBag) -&gt; ():StoreListCont.swift">
          <PersistentStrings>
             <PersistentString
@@ -11,10 +30,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SituationCont.finaly() -&gt; ():SituationCont.swift">
+         contextName = "SituationCont.doRenderQuote(AnyObject) -&gt; ():SituationCont.swift">
          <PersistentStrings>
             <PersistentString
-               value = "dictationLabelArea">
+               value = "ballonView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

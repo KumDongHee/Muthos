@@ -10,10 +10,14 @@ import UIKit
 import SwiftyJSON
 
 protocol BallonViewDelegate {
-    func ballonViewDidTouched(_:BallonView)
+    func ballonViewDidTapped(ballonView:BallonView, quote:JSON)
 }
 
 class BallonView:UIView {
+    
+    let BACKGROUND_STANDARD_WIDTH : CGFloat = 375
+    let BACKGROUND_STANDARD_HEIGHT : CGFloat = 667
+    
     enum TriangleEdge {
         case bottomLeft
         case bottomRight
@@ -27,81 +31,111 @@ class BallonView:UIView {
     
     let triangle:TriangleView = TriangleView()
     var quote:JSON?
-    var controller:BookController?
-    var translationView:UIView?
-    var translationText:UITextView?
     let quoteView:UITextView = UITextView()
+    let recognizedTextView:UITextView = UITextView()
+    let recognizedBackground:UIView = UIView()
     let quoteBackground:UIView = UIView()
     var edge:TriangleEdge = TriangleEdge.bottomLeft
     var edgeEnd:CGPoint = CGPoint()
-    var status:String = "ordinary"
-    let btnMyNote:UIControl = UIControl()
-    let markMyNote:UIImageView = UIImageView()
-    var ordinaryRect:CGRect?
     var playMode:String? = ""
     var delegate:BallonViewDelegate?
-    static let HIGHLIGHTED_COLOR:UIColor = UIColor(red: 0, green: 122, blue: 255)
-    static let TRANSLATION_COLOR:UIColor = UIColor(white:0, alpha:0.8)
     static let MARGIN:CGFloat = 3
     static let PADDING_MYNOTE:CGFloat = 15
     
-    
-    
-    
-    func setModel(_ quote:JSON, controller:BookController) {
+    init(quote: JSON) {
+        super.init(frame: CGRect())
         self.quote = quote
-        self.controller = controller
-
-        initQuoteView()
         
-        var positionChange : String = "position"
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if quote["padPosition"].error == nil {
-            positionChange = "padPosition"
-            }
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowRadius = 2
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        
+        quoteView.isEditable = false
+        quoteView.isUserInteractionEnabled = false
+        quoteView.backgroundColor = UIColor.clear
+        
+        quoteView.frame = CGRect(x: PADDING_WIDTH+X_MOVE, y: 0, width: UIScreen.main.bounds.size.width * 2 / 3, height: 40)
+        let w:Int = self.quote!["position"]["width"].intValue
+        if w > 0 {
+            quoteView.frame.size.width = CGFloat(w)
         }
-        var x:CGFloat = MainCont.scaledSize(CGFloat(quote["\(positionChange)"]["left"].floatValue))
-        var y:CGFloat = MainCont.scaledSize(CGFloat(quote["\(positionChange)"]["top"].floatValue))
         
+        quoteView.setBalloonHtmlText(self.getQuoteText())
+        quoteView.sizeToFit()
+        quoteBackground.addSubview(quoteView)
         
-//        var x:CGFloat = MainCont.scaledSize(CGFloat(quote["position"]["left"].floatValue))
-//        var y:CGFloat = MainCont.scaledSize(CGFloat(quote["position"]["top"].floatValue))
+        quoteBackground.layer.cornerRadius = 3
+        quoteBackground.layer.masksToBounds = true
+        quoteBackground.backgroundColor = UIColor.white
+        quoteBackground.frame = CGRect(x: 0, y: 0, width: quoteView.width+PADDING_WIDTH*2, height: quoteView.height)
+
         
+        let CGleft = CGFloat(quote["position"]["left"].floatValue)
+        print("CGLeft : \(CGleft)")
+        let CGtop = CGFloat(quote["position"]["top"].floatValue)
+        print("CGright : \(CGtop)")
+        var x : CGFloat = CGleft * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH
+        var y = CGtop * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH
+            - ( BACKGROUND_STANDARD_HEIGHT * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH - UIScreen.main.bounds.size.height ) / 2
         
         x = x < 0 ? UIScreen.main.bounds.size.width + x - quoteBackground.width : x
         y = y < 0 ? UIScreen.main.bounds.size.height + y - quoteBackground.height : y
         
-        self.frame = CGRect(x: Int(x), y: Int(y), width: Int(quoteBackground.width), height: Int(MainCont.scaledSize(40)))
+        self.frame = CGRect(x: x, y: y , width: quoteBackground.width, height: quoteBackground.height + triangle.height)
+
+        
+        addSubview(quoteBackground)
         
         initEdge()
-        initTranslationView()
         initTriangleView()
-        initMyNoteButton()
-        addSubview(triangle)
-
-        let fl:Bool = quote["frameless"].boolValue
-        if fl {
-            self.quoteBackground.backgroundColor = UIColor.clear
-            self.triangle.tintColor = UIColor.clear
+        
+        if TriangleEdge.bottomLeft == edge || TriangleEdge.bottomRight == edge {
+            triangle.frame.origin.y = quoteBackground.height
         }
-
+        
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BallonView.onQuoteTapped(_:))))
-//        addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(BallonView.onQuotePressed(_:))))
-//        let swipeDownGesture = UISwipeGestureRecognizer(target:self, action:#selector(BallonView.onSwipeDown(_:)))
-//        swipeDownGesture.direction = UISwipeGestureRecognizerDirection.down
-//        let swipeUpGesture = UISwipeGestureRecognizer(target:self, action:#selector(BallonView.onSwipeUp(_:)))
-//        swipeUpGesture.direction = UISwipeGestureRecognizerDirection.up
-//        
-//        addGestureRecognizer(swipeDownGesture)
-//        addGestureRecognizer(swipeUpGesture)
-
-        refresh()
+    }
+    
+    func changeToAnswerBallon(recognized : String, flexibility : JSON) -> Int {
         
-        self.transform = CGAffineTransform(scaleX: MainCont.SIZE_RATIO, y: MainCont.SIZE_RATIO)
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.transform = CGAffineTransform(scaleX: MainCont.SIZE_RATIO * 2/3, y: MainCont.SIZE_RATIO * 2/3)
+        let json:JSON = BookController.evaluateSentence(self.getQuoteText(), desc: recognized, flexibility:flexibility)
+        quoteView.setBalloonHtmlText(json["orig"].stringValue)
+        
+        recognizedTextView.isEditable = false
+        recognizedTextView.isUserInteractionEnabled = false
+        recognizedTextView.backgroundColor = UIColor.clear
+        
+        recognizedTextView.frame = CGRect(x: PADDING_WIDTH+X_MOVE, y: 0, width: UIScreen.main.bounds.size.width * 2 / 3, height: 40)
+        
+        recognizedTextView.setBalloonHtmlText(json["desc"].stringValue)
+        recognizedTextView.sizeToFit()
+        recognizedBackground.frame = CGRect(x: 0, y: quoteView.frame.size.height, width: quoteView.width+PADDING_WIDTH*2, height: quoteView.height)
+        recognizedBackground.backgroundColor = UIColor.yellow
+        recognizedBackground.addSubview(recognizedTextView)
+        
+        quoteBackground.frame.size.height += recognizedTextView.frame.size.height
+        
+        recognizedBackground.frame.size.width = max(recognizedBackground.frame.size.width, quoteBackground.frame.size.width)
+        quoteBackground.frame.size.width = recognizedBackground.frame.size.width
+        
+        quoteBackground.addSubview(recognizedBackground)
+        
+        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y - recognizedBackground.frame.height / 2, width: quoteBackground.width, height: quoteBackground.height + triangle.height)
+        
+        
+        initTriangleView()
+        triangle.tintColor = UIColor.yellow
+        
+        if TriangleEdge.bottomLeft == edge || TriangleEdge.bottomRight == edge {
+            triangle.frame.origin.y = quoteBackground.height
         }
         
+        return max(json["grade"].intValue, 1) as Int
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     func isEmptyEdgeEnd() -> Bool {
@@ -113,17 +147,10 @@ class BallonView:UIView {
         edgeEnd.x = 0
         edgeEnd.y = 0
         
-        var changePosition = "position"
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            if quote!["padPosition"].error == nil {
-                changePosition = "padPosition"
-            }
-        }
-        
         guard let quote = quote else { return }
-        guard quote["\(changePosition)"]["tail"].error == nil else { return }
+        guard quote["position"]["tail"].error == nil else { return }
         
-        let tailString = quote["\(changePosition)"]["tail"].stringValue
+        let tailString = quote["position"]["tail"].stringValue
         let arr:[String] = tailString.components(separatedBy: ",")
         guard let tail:Int = Int(arr[0]) else {return}
         
@@ -141,110 +168,8 @@ class BallonView:UIView {
         edgeEnd.y = CGFloat(y)
     }
     
-    func initTranslationView() {
-        if let s:String = self.quote!["translation"].string {
-            
-            translationText = UITextView()
-            translationText!.isEditable = false
-            translationText!.frame = CGRect(x: 0,y: 0,width: quoteView.width,height: quoteView.height)
-            translationText!.layer.cornerRadius = 3
-            translationText!.text = s
-            translationText!.sizeToFit()
-            translationText!.setWidth(quoteView.width)
-            translationText!.textColor = UIColor.white
-            translationText!.backgroundColor = BallonView.TRANSLATION_COLOR
-            
-            translationView = UIView()
-            translationView!.frame = CGRect(x: 0,y: 0,width: translationText!.width,height: translationText!.height+10)
-            
-            let triangle = TriangleView()
-            triangle.frame = CGRect(x: translationView!.width/2-5,y: translationText!.height, width: 10,height: 10)
-            triangle.backgroundColor = UIColor.clear
-            triangle.tintColor = BallonView.TRANSLATION_COLOR
-            triangle.point = TriangleView.PointPosition.downCenter
-            
-            translationView!.addSubview(translationText!)
-            translationView!.addSubview(triangle)
-
-            translationView!.isHidden = true
-            
-            translationView!.setBottom(BallonView.MARGIN * -1)
-            addSubview(translationView!)
-        }
-    }
-    
     let PADDING_WIDTH:CGFloat = 8
     let X_MOVE:CGFloat = 1
-    
-    func initQuoteView() {
-        quoteView.isEditable = false
-        quoteView.isUserInteractionEnabled = false
-        quoteView.backgroundColor = UIColor.clear
-
-        quoteBackground.layer.cornerRadius = 3
-        quoteBackground.layer.masksToBounds = true
-        quoteView.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
-        let w:Int = self.quote!["position"]["width"].intValue
-        if w > 0 {
-            quoteView.frame.size.width = CGFloat(w)
-        }
-        
-        BallonView.setHtmlText(self.getQuoteText(), on: quoteView)
-        quoteView.sizeToFit()
-        ordinaryRect = CGRect(x: quoteView.x, y: quoteView.x, width: quoteView.width+PADDING_WIDTH*2, height: quoteView.height)
-        
-        quoteBackground.frame = ordinaryRect!
-        addSubview(quoteBackground)
-        quoteBackground.addSubview(quoteView)
-        quoteView.frame = CGRect(x: PADDING_WIDTH+X_MOVE,y: 0,width: quoteView.width, height: quoteView.height)
-        setNeedsLayout()
-    }
-    
-    func initMyNoteButton() {
-        btnMyNote.addTarget(self, action: #selector(BallonView.onToggleMyNote(_:)), for: UIControlEvents.touchUpInside)
-        btnMyNote.frame = CGRect(x: 0,y: 0,width: 33,height: 23)
-        btnMyNote.setCenterX(quoteView.centerX)
-        btnMyNote.setY(quoteView.height + BallonView.PADDING_MYNOTE)
-        
-        let icon:UIImageView = UIImageView()
-        icon.image = UIImage(named:"control_btn_add_book")
-        icon.frame = CGRect(x: 0,y: 0,width: 21,height: 23)
-
-        markMyNote.image = UIImage(named:"control_btn_add_arrow")
-        markMyNote.frame=CGRect(x: 0,y: 0,width: 11,height: 9)
-        markMyNote.setCenterY(btnMyNote.height / 2)
-        markMyNote.setRight(btnMyNote.width)
-        
-        btnMyNote.addSubview(icon)
-        btnMyNote.addSubview(markMyNote)
-        
-        addSubview(btnMyNote)
-    }
-    
-    func refresh() {
-        if "ordinary" == self.status {
-            btnMyNote.isHidden = true
-            quoteBackground.frame = ordinaryRect!
-            setHighlighted(false)
-        }
-        else if "my-note" == self.status {
-            btnMyNote.isHidden = false
-            let appendedHeight:CGFloat = btnMyNote.height + BallonView.PADDING_MYNOTE * 2
-            quoteBackground.setHeight(ordinaryRect!.size.height + appendedHeight)
-            setHighlighted(true)
-        }
-        
-        if TriangleEdge.bottomLeft == edge || TriangleEdge.bottomRight == edge {
-            triangle.setY(quoteBackground.height)
-        }
-        
-        setHeight(quoteBackground.height)
-        
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.4
-        self.layer.shadowRadius = 2
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-    }
     
     func showDictationResult() {
         BallonView.showDictationResultOn(textView: quoteView, model: self.quote!)
@@ -260,7 +185,7 @@ class BallonView:UIView {
         if let dictations:String = model["dictation"].string {
             var html:String = BookController.getDictationResultOf(text, dictations: dictations)
             html = "<span style='color:"+(white ? "white" : "black")+";"+fontString+"'>" + html + "</span>"
-            BallonView.setHtmlText(html, on: textView)
+            textView.setBalloonHtmlText(html)
             textView.sizeToFit()
         }
     }
@@ -323,6 +248,8 @@ class BallonView:UIView {
         
         triangle.point = calcPointPosition(origin, end)
         triangle.frame = calcTriangleRectFor([origin, end, third])
+        
+        addSubview(triangle)
     }
     
     func calcPointPosition(_ origin:CGPoint,_ end:CGPoint) -> TriangleView.PointPosition {
@@ -355,95 +282,37 @@ class BallonView:UIView {
         return CGRect(x:minX, y:minY, width:maxX - minX, height:maxY - minY)
     }
     
-    func setTrianglePosition() {
-    }
-    
-    func setHighlighted(_ highlighted:Bool) {
-        if highlighted {
-            quoteBackground.backgroundColor = BallonView.HIGHLIGHTED_COLOR
-            triangle.tintColor = BallonView.HIGHLIGHTED_COLOR
-            BallonView.setHtmlText("<font color='white'>"+self.getQuoteText()+"</font>", on: quoteView)
-        }
-        else {
-            quoteBackground.backgroundColor = UIColor.white
-            triangle.tintColor = UIColor.white
-            BallonView.setHtmlText(self.getQuoteText(), on: quoteView)
-        }
-        triangle.layer.setNeedsDisplay()
-    }
     
     func onQuoteTapped(_ ges:UIGestureRecognizer) {
         guard let delegate = delegate else { return }
-        delegate.ballonViewDidTouched(self)
+        delegate.ballonViewDidTapped(ballonView: self, quote: quote!)
+    }
+    
+    func setHtmlText(_ html:String) {
         
-//        if "ordinary" != status {
-//            if "my-note" == status {
-//                status = "ordinary"
-//                let bookId:String = (controller?.book!._id!)!
-//                let setIndex:String = controller!.selectedIdx!.description
-//                let key:String = self.quote!["dialog-key"].string!
-//                ApplicationContext.sharedInstance.userViewModel.toggleMyNote(bookId, setIndex: setIndex, key: key)
-//                refresh()
-//            }
-//            return
-//        }
-//        if let v:String = self.quote!["voice"].string {
-//            setHighlighted(true)
-//            status = "playing"
-//            self.controller?.playVoice((self.controller?.bookResourceURL(v))!, callback: {() -> Bool in
-//                self.setHighlighted(false)
-//                self.status = "ordinary"
-//                return true
-//            })
-//        }
     }
     
-    func onQuotePressed(_ ges:UIGestureRecognizer) {
-        if "ordinary" != status || "listen" == playMode { return }
-        if let view:UIView = self.translationView {
-            if UIGestureRecognizerState.began == ges.state {
-                view.isHidden = false
-            }
-            else if UIGestureRecognizerState.ended == ges.state {
-                view.isHidden = true
-            }
-        }
-    }
-    
-    func onSwipeDown(_ ges:UIGestureRecognizer) {
-        if "ordinary" != status { return }
-        self.status = "my-note"
-        self.refresh();
-    }
+}
 
-    func onSwipeUp(_ ges:UIGestureRecognizer) {
-        if "ordinary" != status { return }
-        self.status = "ordinary"
-        self.refresh();
-    }
-
-    func onToggleMyNote(_ sender:UIControl!) {
-        print("toggleMyNote")
-        self.status = "ordinary"
-        self.refresh()
-    }
+extension UITextView {
     
-    static func setHtmlText(_ html:String, on:UITextView) {
-        let PREFIX:String = "<span style='font-size:18px;AppleGothic;font-family:Apple SD Gothic Neo;font-weight:400;font-size:18px;'>"
+    func setBalloonHtmlText(_ html:String) {
+        let BACKGROUND_STANDARD_WIDTH : CGFloat = 375
+        let fontsize : Int = Int(18 * pow(UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH,1/2))
+        let PREFIX:String = "<span style='font-size:\(fontsize)px;AppleGothic;font-family:Apple SD Gothic Neo;font-weight:400;'>"
         let SUFFIX:String = "</span>"
         
         do {
             let myStr:String = PREFIX+html+SUFFIX
             let str = try NSMutableAttributedString(data: myStr.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-
+            
             let paraStyle = NSMutableParagraphStyle()
             paraStyle.lineSpacing = -2.0
             str.addAttribute(NSParagraphStyleAttributeName, value:paraStyle, range:NSMakeRange(0, str.length))
             
-            on.attributedText = str
+            self.attributedText = str
         } catch {
             print(error)
         }
     }
-    
 }

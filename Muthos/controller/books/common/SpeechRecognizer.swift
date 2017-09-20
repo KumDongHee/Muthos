@@ -15,7 +15,7 @@ protocol SpeechRecognizingDelegate {
 protocol SpeechRecognizing {
     var recognized:String {get}
     
-    func recognize(withAnswer:String, callback:@escaping Async.callbackFunc) -> Bool
+    func recognize(callback:@escaping Async.callbackFunc) -> Bool
     func stopRecognizing()
     func setDelegate(_ delegate:SpeechRecognizingDelegate?)
     

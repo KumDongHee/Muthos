@@ -23,6 +23,8 @@ import iCarousel
 
 class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCarouselDelegate, BallonViewDelegate, SpeechRecognizingDelegate {
     var controller:BookController?
+    var currentAnswer:String?
+    var currentSpeechModel:JSON?
     var answerFrame:CGRect?
     var recognizedFrame:CGRect?
     var recognizing:Bool = false
@@ -76,15 +78,21 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     @IBOutlet weak var resultArea: UIView!
     @IBOutlet weak var micArea: UIView!
     @IBOutlet weak var talkAnswer: UIView!
+    @IBOutlet weak var answerText: UITextView!
+    @IBOutlet weak var recognizedText: UITextView!
+    @IBOutlet weak var recognizedBack: UIView!
     @IBOutlet weak var scene: UIView!
     @IBOutlet weak var scoreImage: UIImageView!
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var lightImage: UIImageView!
+    @IBOutlet weak var answerArea: UIView!
     @IBOutlet weak var retryBedgeArea: UIView!
     @IBOutlet weak var retryCountLbl: UILabel!
     @IBOutlet var webviews: [UIWebView]!
     @IBOutlet var screens: [UIView]!
+    @IBOutlet weak var answerBallon: UIView!
     @IBOutlet weak var imageScene: UIImageView!
+    @IBOutlet weak var answerTriangle: TriangleView!
     @IBOutlet weak var dictationText: UITextField!
     @IBOutlet weak var dictationLabelArea: UIView!
     @IBOutlet weak var dictationLabel: UILabel!
@@ -107,8 +115,6 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     @IBAction func onTogglePauseListen(_ sender: AnyObject) {
         procListenPaused(!listenPaused)
     }
-    
-    var answerBallon : BallonView?
     
     deinit {
         print("deinit, SituationCont")
@@ -214,8 +220,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
 
         self.controller!.recognizer!.setDelegate(self)
         DispatchQueue.main.async {
-            _ = self.controller!.recognizer!.recognize(callback:{() -> Bool in
-                self.showResultArea(desc: self.controller!.recognizer!.recognized)
+            _ = self.controller!.recognizer!.recognize(withAnswer:self.currentAnswer!, callback:{() -> Bool in
+                self.showResultArea(self.currentAnswer!, desc: self.controller!.recognizer!.recognized)
                 return true
             })
             self.setRecoginzingStatus(true)
@@ -250,6 +256,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         
         talkAnswer.isHidden = false
         resultArea.isHidden = false
+        
+        answerArea.isHidden = true
         micArea.isHidden = true
         
         retryBedgeArea.isHidden = true
@@ -276,7 +284,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             if let dictations:String = model?["dictation"].string {
                 var html:String = BookController.getDictationResultOf(text, dictations: dictations)
                 html = "<span style='color:white;font-size:"+String(fontSize)+"'>" + html + "</span>"
-                tv.setBalloonHtmlText(html)
+                BallonView.setHtmlText(html, on: tv)
                 tv.sizeToFit()
             }
             
@@ -310,15 +318,15 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                                                               correct:correct, desc:result["desc"].string!)
         html = "<span style='color:white;font-size:18px'>" + html + "</span>"
         
-        tv.setBalloonHtmlText(html)
-        dictationTipsOrigin.setBalloonHtmlText(html)
+        BallonView.setHtmlText(html, on: tv)
+        BallonView.setHtmlText(html, on: dictationTipsOrigin)
         
         tv.sizeToFit()
         
         let con = dictationTipsOrigin.constraints[0]
         con.constant = tv.height
 
-        dictationTipsWords.text = model["text"].string!
+        dictationTipsWords.text = self.currentAnswer
         
         dictationTipsTranslation.text = ""
         dictationTipsMemo.text = ""
@@ -338,53 +346,27 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         dictationTipsArea.isHidden = false
     }
     
-    func getSpeechModel() -> JSON? {
-        let sequence = controller!.selectedSequence()
-        let quote:JSON = sequence["params"]
-        
-        var model:JSON?
-        if let key:String = quote["dialog-key"].string {
-            var m:JSON = controller!.findDialogByKey(key)!
-            m["position"] = quote["position"]
-            m["frameless"] = quote["frameless"]
-            m["waiting"] = quote["waiting"]
-            m["dictation"] = quote["dictation"]
-            m["dictation-translation"] = quote["dictation-translation"]
-            m["dictation-memo"] = quote["dictation-memo"]
-            m["dialog-key"].string = key
-            m["type"] = sequence["type"]
-            model = m
-        }
-        else {
-            model = quote
-        }
-        return model
-    }
-    
-    
-    func showResultArea(desc:String) {
+    func showResultArea(_ orig:String, desc:String) {
         audioPlayer.resumeLooping()
         
-        var model:JSON? = getSpeechModel()
+        let sequence:JSON = controller!.selectedSequence()
+        var seqJson:JSON = sequence[currentSequence]["params"]
         
         let images:[String] = ["control_result_30", "control_result_50", "control_result_70", "control_result_90", "control_result_100"]
         let effects:[SOUND_CODE] = [.bad, .notBad, .good, .excellent, .perfect]
-        
-        answerBallon = BallonView.init(quote: model!)
-        let grade : Int = (answerBallon?.changeToAnswerBallon(recognized: desc, flexibility: model!["flexibility"]))!
-        answerBallon?.delegate = self
-        answerBallon?.playMode = playMode
-        
-        answerBallon?.frame.origin.y = max((answerBallon?.frame.origin.y)!, UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.size.height)! + 8)
-        
-        answerBallon?.isHidden = true
-        self.view.addSubview(answerBallon!)
+        let json:JSON = BookController.evaluateSentence(orig, desc: desc, flexibility:seqJson["flexibility"])
+        var grade:Int = max(json["grade"].intValue, 1) as Int
         
         self.lightImage.image = UIImage(named:"control_result_light_yellow")
         
-        self.controller!.writeScore(model!["voice"].string!, grade: grade)
+        self.controller!.writeScore(self.currentSpeechModel!["voice"].string!, grade: grade)
         
         self.retryCountLbl.text = String(currentRetry)
+        
+        //animation
+        self.renderTalkAnswer(self.answerText, string:json["orig"].stringValue)
+        self.renderTalkAnswer(self.recognizedText, string:json["desc"].stringValue)
+        self.alignTalkAnswers()
         
         /*
          1. micButton 사이즈 줄이면서 색깔 노란색으로 바꿔줌
@@ -406,11 +388,32 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         retryBedgeArea.layer.opacity = 0
         btnNext.layer.opacity = 0
         btnRetry.layer.opacity = 0
+        answerText.layer.opacity = 0
+        recognizedText.layer.opacity = 0
         scoreImage.transform = moveDown
         btnNext.transform = moveDown
         btnRetry.transform = moveDown
-        answerBallon?.transform = scaleDown
+        answerArea.transform = scaleDown
         retryBedgeArea.transform = scaleDown
+        
+        let quote:BallonView = BallonView()
+        seqJson["text"].stringValue = orig.characters.count > desc.characters.count ? orig : desc
+        quote.setModel(seqJson, controller:controller!)
+        /* 말풍선 꼬리 모양 / 위치 보정 */
+        answerTriangle.point = quote.triangle.point
+        answerTriangle.baseline = quote.triangle.baseline
+        print(answerTriangle.frame, quote.triangle.frame)
+        let frame:CGRect = answerTriangle.frame
+        answerTriangle.frame = quote.triangle.frame
+        if answerTriangle.point == .bottomRight || answerTriangle.point == .bottomLeft {
+            answerTriangle.setY(frame.origin.y)
+        }
+        if answerTriangle.point == .leftUp || answerTriangle.point == .leftDown
+           || answerTriangle.point == .rightUp || answerTriangle.point == .rightDown
+        {
+            answerTriangle.setY(answerTriangle.y + recognizedBack.y)
+        }
+        answerTriangle.setNeedsDisplay()
         
         animate {
             self.pulse.isHidden = true
@@ -420,13 +423,24 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                 self.micButton.center = CGPoint(x: micCenter.x, y: micCenter.y+10)
             }).withDuration(0.11).withOptions(.curveEaseOut).thenAnimate({_ -> Void in
 //                self.micButton.center = CGPoint(x: micCenter.x, y: self.answerArea.frame.midY + self.micButton.frame.size.height/2.0)
-                self.micButton.center = (self.answerBallon?.center)!
+                self.micButton.center = quote.center
+                self.answerArea.center = self.micButton.center
                 
                 self.micButton.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
                 self.resultArea.isHidden = false
+                self.answerArea.isHidden = true
             }).withDuration(0.33).withOptions(.curveEaseIn).thenAnimate({_ -> Void in
-                self.answerBallon?.isHidden = false
-                self.answerBallon?.transform = CGAffineTransform.identity
+                self.answerArea.isHidden = false
+                self.answerArea.transform = CGAffineTransform.identity
+                self.answerArea.transform = CGAffineTransform(scaleX: MainCont.SIZE_RATIO, y: MainCont.SIZE_RATIO)
+                self.answerArea.layer.shadowColor = UIColor.black.cgColor
+                self.answerArea.layer.shadowOpacity = 0.4
+                self.answerArea.layer.shadowRadius = 2
+                self.answerArea.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+                self.lightImage.layer.opacity = 1
+            }).withDuration(0.1).withOptions(.curveEaseOut).thenAnimate({_ -> Void in
+                self.answerText.layer.opacity = 1
+                self.recognizedText.layer.opacity = 1
             }).withDuration(0.3).withOptions(.curveEaseOut).thenAnimate({_ -> Void in
                 self.scoreImage.transform = CGAffineTransform.identity
                 self.scoreImage.layer.opacity = 1
@@ -446,6 +460,9 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                     self.micButton.transform = CGAffineTransform.identity
                     self.micOverLayer.opacity = 0.0
                     self.micButton.center = micCenter
+                    if grade == 0 {
+                        grade = 1
+                    }
                     self.setRecoginzingStatus(false)
                     self.playResultAreaAnimation()
                 
@@ -487,6 +504,66 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
 
     let PADDING_WIDTH:CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 0 : 8
 
+    func alignTalkAnswers() {
+        let Y_MOVE:CGFloat = 0
+        let X_MOVE:CGFloat = 3
+        let BOTTOM_MARGIN:CGFloat = 1
+        let PADDING_TRIANGLE:CGFloat = 20
+        let bottomGuides:[CGFloat] = [103, 97, 81, 65]
+        let wordsPerLine:Int = 30
+        self.answerArea.frame = CGRect(x: 0,y: 0,width: max(answerText.frame.size.width, recognizedText.frame.size.width) + PADDING_WIDTH * 2, height: self.answerText.frame.size.height + self.recognizedText.frame.size.height + self.answerTriangle.height + BOTTOM_MARGIN)
+        
+        self.alignCenterHorizontal(self.answerArea, on:self.resultArea.frame)
+        self.adjustViewOnBottom(self.answerArea, bottom: bottomGuides[NSInteger(recognizedText.text.lengthOfBytes(using: String.Encoding.utf8) / wordsPerLine)], rect:resultArea.frame)
+        
+        self.answerTriangle.frame = CGRect(x: self.answerArea.width - PADDING_TRIANGLE, y: self.answerArea.height-answerTriangle.height, width: answerTriangle.width, height: answerTriangle.height)
+        
+        self.answerBallon.layer.cornerRadius = 3
+        self.answerBallon.layer.shadowColor = UIColor.black.cgColor
+        self.answerBallon.layer.shadowOpacity = 0.4
+        self.answerBallon.layer.shadowRadius = 2
+        self.answerBallon.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        
+        let height:CGFloat = answerText.height
+        
+        self.answerBallon.frame = CGRect(x: 0,y: 0,width: self.answerArea.width, height: answerText.height + recognizedText.height + BOTTOM_MARGIN)
+        self.answerText.frame = CGRect(x: PADDING_WIDTH+X_MOVE,y: 0, width: self.answerText.width, height: height - Y_MOVE)
+        self.recognizedText.frame = CGRect(x: PADDING_WIDTH+X_MOVE, y: height+BOTTOM_MARGIN, width: self.recognizedText.width, height: recognizedText.height)
+        self.recognizedBack.frame = CGRect(x: 0, y: height, width: self.answerArea.width , height: recognizedText.height + BOTTOM_MARGIN)
+        
+        self.resultArea.layoutSubviews()
+    }
+    
+    func renderTalkAnswer(_ view:UITextView, string:String) {
+        let ORIGIN_BOUNDS:CGRect = CGRect(x: 0,y: 0,width: MainCont.scaledSize(300) - PADDING_WIDTH * 2,height: 32)
+        
+        var prefix:String = "<div style='margin-left:auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;width:100%;text-align:center;font-family:Apple SD Gothic Neo;font-weight:400;font-size:18px;'>"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            prefix = "<div style='margin-left:auto;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;width:100%;text-align:center;font-family:Apple SD Gothic Neo;font-weight:400;font-size:10px;'>"
+        }
+        let suffix:String = "</div>"
+        
+        view.bounds = ORIGIN_BOUNDS
+        
+        view.textAlignment = NSTextAlignment.center
+        view.isEditable = false
+        view.layer.masksToBounds = true
+        
+        let html:String = prefix + string + suffix
+        do {
+            let style = NSMutableParagraphStyle()
+            style.alignment = NSTextAlignment.center
+            let str = try NSMutableAttributedString(data: html.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSParagraphStyleAttributeName:style], documentAttributes: nil)
+            let paraStyle = NSMutableParagraphStyle()
+            paraStyle.lineSpacing = -2.0
+            str.addAttribute(NSParagraphStyleAttributeName, value:paraStyle, range:NSMakeRange(0, str.length))
+            
+            view.attributedText = str
+        } catch {
+            print(error)
+        }
+        view.sizeToFit()
+    }
     
     func goNextSet() {
         if self.assignNextSet() {
@@ -503,11 +580,23 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.refresh()
     }
     
+    func initUI() {
+        self.answerArea.translatesAutoresizingMaskIntoConstraints = true
+        self.answerBallon.translatesAutoresizingMaskIntoConstraints = true
+        self.answerText.translatesAutoresizingMaskIntoConstraints = true
+        self.recognizedText.translatesAutoresizingMaskIntoConstraints = true
+        self.recognizedBack.translatesAutoresizingMaskIntoConstraints = true
+        self.answerTriangle.translatesAutoresizingMaskIntoConstraints = true
+    }
+    
     func initRetryCount() {
         currentRetry = (ApplicationContext.sharedInstance.userViewModel.currentUserObject()?.getRetry())!
     }
     
     func clearListening() {
+        self.currentAnswer = ""
+        answerText.text = ""
+        recognizedText.text = " "
         resultArea.isHidden = true
         micArea.isHidden = false
         talkAnswer.isHidden = true
@@ -516,14 +605,22 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         retryBedgeArea.isHidden = false
         btnRetry.isHidden = false
         
-        answerBallon?.removeFromSuperview()
-        answerBallon = nil
+        if let f = self.answerFrame {
+            answerText.frame = f
+        }
+        if let f = self.recognizedFrame {
+            recognizedText.frame = f
+        }
     }
     
     func startListening(_ model:JSON) {
+        self.currentSpeechModel = model
+        self.currentAnswer = model["text"].string!
         resultArea.isHidden = true
         micArea.isHidden = false
         talkAnswer.isHidden = false
+        answerFrame = answerText.frame
+        recognizedFrame = recognizedText.frame
         
         //마이크 떠오르는 애니메이션
         micButton.transform = CGAffineTransform(translationX: 0, y: 30)
@@ -548,11 +645,17 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.popOver.controller = self.controller
 
         self.dictationText.autocorrectionType = UITextAutocorrectionType.no
+        
+        answerArea.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SituationCont.onTouchAnswerArea(_:))))
 
         initSinglePlayer()
         initSinglePlayer()
 
         videoLoop = VideoLoop(cont:self)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.initUI()
     }
     
     func hideAllScreens() {
@@ -568,6 +671,18 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         micOverLayer.cornerRadius = micOverLayer.frame.width/2
         micButton.layer.addSublayer(micOverLayer)
         
+    }
+    
+    func doTest() {
+        micButton.alpha = 1.0
+        let model:JSON = JSON.parse("{\"text\":\"\", \"voice\":\"1\"}")
+        startListening(model)
+        
+        self.perform(#selector(SituationCont.doTest01), with: nil, afterDelay: 0.5)
+    }
+    
+    func doTest01() {
+        self.showResultArea("What's wrong, baby?", desc: "What's wrong")
     }
     
     var flagReserveStart:Bool = false
@@ -655,6 +770,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view!.endEditing(true)
+        self.showDictationResult(self.currentAnswer!, desc:self.dictationText.text!)
         self.dictationText.text = ""
         return true
     }
@@ -870,6 +986,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         }
     }
     
+    var tempQuote:JSON?
+    
     func renderSet(_ set:String) {
         var json:JSON = self.findSetModel(set)
         let situationVideo = json["content"]["videos"]["situation"].string!
@@ -884,6 +1002,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             self.prepareVideo(controller!.prepareResourcePath(waitingVideos[0] as! String)!)
         }
         self.looping = true
+        self.tempQuote = json["content"]["quote"]
+        self.perform(#selector(SituationCont.renderTempQuote), with: nil , afterDelay: 0.5)
         Async.series([
             {(nxt:@escaping Async.callbackFunc) -> Void in
                 if "" == situationVideo {
@@ -946,9 +1066,36 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         }
     }
     
-    func renderQuote() {
+    func renderTempQuote() {
+        self.renderQuote(self.tempQuote!)
+    }
+    
+    func renderQuote(_ json:JSON) {
+        let quote:JSON = json["params"]
         
-        var model:JSON? = getSpeechModel()
+        var model:JSON?
+        if let key:String = quote["dialog-key"].string {
+            var m:JSON = controller!.findDialogByKey(key)!
+            m["position"] = quote["position"]
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                if quote["padPosition"].error == nil {
+                    m["padPosition"] = quote["padPosition"]
+                }
+            }
+            
+            m["frameless"] = quote["frameless"]
+            m["waiting"] = quote["waiting"]
+            m["dictation"] = quote["dictation"]
+            m["dictation-translation"] = quote["dictation-translation"]
+            m["dictation-memo"] = quote["dictation-memo"]
+            m["dialog-key"].string = key
+            m["type"] = json["type"]
+            model = m
+        }
+        else {
+            model = quote
+        }
         
         // waiting 설정값 관련 처리
         var waiting:TimeInterval = 0
@@ -968,15 +1115,15 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         guard progressing else { return }
         var model:JSON = JSON(obj)
         if model["text"].string! == "" { return }
-        let ballonView:BallonView = BallonView.init(quote: model)
-        ballonView.frame.origin.y = max(ballonView.frame.origin.y, UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.size.height)! + 8)
+        let view:BallonView = BallonView()
         let type:String = model["type"].string!
         
-        ballonView.delegate = self
-        ballonView.playMode = playMode
+        view.delegate = self
+        view.playMode = playMode
+        view.setModel(model, controller:controller!)
         
-        self.view!.addSubview(ballonView)
-        self.quotes.add(ballonView)
+        self.view!.addSubview(view)
+        self.quotes.add(view)
         
         var waiting:TimeInterval = 0
         
@@ -1006,7 +1153,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                         if "talk" == self.playMode {
                             if let _:String = model["dictation"].string {
                                 self.currentDictationModel = DictationModel(model, textView:nil)
-                                self.currentBallonView = ballonView;
+                                self.currentBallonView = view;
+                                self.currentAnswer = view.getDictationText()
                                 self.holdNextSequence = true
                                 self.showDictationArea()
                             }
@@ -1278,8 +1426,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             let json:JSON = sequence[currentSequence]
             let type:String = json["type"].string!
             
-            if "quote" == type { renderQuote() }
-            else if "speech" == type { renderQuote() }
+            if "quote" == type { renderQuote(json) }
+            else if "speech" == type { renderQuote(json) }
             else if "bgm" == type { renderBgm(json) }
             else if "narration" == type { renderNarration(json) }
             else if "clearQuotes" == type { clearQuotes() }
@@ -1313,7 +1461,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             let json:JSON = sequence[currentSequence]
             let type:String = json["type"].string!
             
-            if "quote" == type { renderQuote() }
+            if "quote" == type { renderQuote(json) }
             else if "bgm" == type { renderBgm(json) }
             else if "clearQuotes" == type { clearQuotes() }
             
@@ -1367,12 +1515,12 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         
         /* 나레이션 상단 그림자 영역 관련 예외 처리 */
         _ = processRestoreBgTopNarration({() -> Bool in
-            if "quote" == type { self.renderQuote() }
+            if "quote" == type { self.renderQuote(json) }
             else if "image" == type { self.renderImage(json["params"].string!); self.renderNextSequence() }
             else if "sound" == type { self.renderSound(json["params"].string!) }
             else if "video" == type { self.renderVideo(json) }
             else if "video-sync" == type { self.renderVideoSync(json) }
-            else if "speech" == type { if "listen" == self.playMode {self.clearQuotes(); self.renderQuote()} else {self.renderSpeech(json)} }
+            else if "speech" == type { if "listen" == self.playMode {self.clearQuotes(); self.renderQuote(json)} else {self.renderSpeech(json)} }
             else if "bgm" == type { self.renderBgm(json); }
             else if "narration" == type { self.clearQuotes(); self.renderNarration(json) }
             else if "next" == type { self.renderNext(json) }
@@ -1653,7 +1801,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                         }
                         fontSize = Int(MainCont.scaledSize(CGFloat(fontSize)))
                         
-                        narr.setBalloonHtmlText("<span style='color:white;font-size:"+String(fontSize)+"'>"+text+"</span>")
+                        BallonView.setHtmlText("<span style='color:white;font-size:"+String(fontSize)+"'>"+text+"</span>", on: narr)
                         narr.isEditable = false
                         narr.isUserInteractionEnabled = false
                         narr.backgroundColor = UIColor.clear
@@ -1704,6 +1852,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                         }
                         if let dictations:String = json["params"]["dictation"].string {
                             self.currentBallonView = nil
+                            self.currentAnswer = BookController.getDictationTextOf(dialog["text"].string!, dictations: dictations)
                             self.showDictationArea()
                         }
                         else {
@@ -1719,6 +1868,10 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     
     func onTouchNarration(_ sender:UIControl) {
         showDialogPopOver(currentNarration!)
+    }
+    
+    func onTouchAnswerArea(_ ges:UIGestureRecognizer) {
+        showDialogPopOver(currentSpeechModel!)
     }
     
     func showDictationArea() {
@@ -1751,10 +1904,11 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     }
     
     // MARK: - BallonView
-    func ballonViewDidTapped(ballonView: BallonView, quote: JSON){
-        print("ballonViewDidTouched, "+(quote.rawString()!))
+    func ballonViewDidTouched(_ view:BallonView) {
+        print("ballonViewDidTouched, "+(view.quote?.rawString()!)!)
+        guard let model = view.quote else { return }
         
-        showDialogPopOver(quote)
+        showDialogPopOver(model)
     }
     
     // MARK: - Carousel

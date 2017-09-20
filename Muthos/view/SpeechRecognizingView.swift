@@ -86,7 +86,7 @@ class SpeechRecognizingView : UIView, SpeechRecognizingDelegate {
         
         controller.recognizer!.setDelegate(self)
         DispatchQueue.main.async {
-            _ = controller.recognizer!.recognize(withAnswer:self.model!["text"].stringValue, callback:{() -> Bool in
+            _ = controller.recognizer!.recognize(callback:{() -> Bool in
                 self.showResultArea(self.model!["text"].stringValue, desc: controller.recognizer!.recognized)
                 return true
             })

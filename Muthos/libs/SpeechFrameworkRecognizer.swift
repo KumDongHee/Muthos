@@ -11,10 +11,8 @@ import Speech
 import AVFoundation
 
 class SpeechFrameworkRecognizer : NSObject, SpeechRecognizing {
-    internal func recognize(withAnswer: String, callback: @escaping Async.callbackFunc) -> Bool {
+    internal func recognize(callback: @escaping Async.callbackFunc) -> Bool {
         recognized = ""
-        answer = withAnswer
-        answerCount = withAnswer.components(separatedBy: " ").count
         currentCallback = callback
         startRecording()
         return true
@@ -29,8 +27,6 @@ class SpeechFrameworkRecognizer : NSObject, SpeechRecognizing {
         self.delegate = delegate
     }
     
-    var answerCount:Int = 0
-    var answer:String?
     var recognized:String = ""
     static var authorized:Bool = false
     var currentCallback:Async.callbackFunc?

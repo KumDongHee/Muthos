@@ -133,7 +133,7 @@ class MyNoteCont: DefaultCont, UITableViewDelegate, UITableViewDataSource, MyNot
         self.working = true
         
         let bc:BookController = BookController(book:Book(JSON: ["_id":note.bookId!])!)
-        _ = bc.recognizer!.recognize(withAnswer: note.contents!, callback: {() -> Bool in
+        _ = bc.recognizer!.recognize(callback: {() -> Bool in
             cell.listenButton.isEnabled = true
             cell.speakButton.isEnabled = true
             self.working = false

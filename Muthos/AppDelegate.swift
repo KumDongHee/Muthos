@@ -12,6 +12,7 @@ import MMDrawerController
 import SwiftyJSON
 import FBSDKCoreKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -161,32 +162,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navCont = UINavigationController(rootViewController: loginCont)
         
         window?.rootViewController = navCont
-    }
-    
-    func doTestShining(_ mainCont:MainCont) {
-//        TC_producer.perform(for: "dictation")
-    }
-    
-    func doTestShiningRoulette(_ mainCont:MainCont) {
-        let sm:SetMainCont = mainCont.navigationController!.topViewController as! SetMainCont
-        sm.showRoulette()
-    }
-    
-    func doTestSjkim(_ mainCont:MainCont) {
-        let book:Book = Book(JSON: ["_id":"20160308-01", "name": "In the city", "thumbimage": "01_01"])!
-        book.sets = [BookSet(JSON: ["index":1, "title":"Leaving from anything else", "coverImage":"source_bg_login", "rating":2.0])!]
-        
-        //        mainCont.selectBook(book)
-        let sm:SetMainCont = mainCont.navigationController!.topViewController as! SetMainCont
-        sm.showTalk()
-        
-        self.perform(#selector(AppDelegate.doTestSjkim001(_:)), with: mainCont, afterDelay: 0.5)
-    }
-    
-    
-    func doTestSjkim001(_ mainCont:MainCont) {
-        let sc:SituationCont = mainCont.navigationController!.topViewController as! SituationCont
-        sc.doTest()
     }
 }
 
