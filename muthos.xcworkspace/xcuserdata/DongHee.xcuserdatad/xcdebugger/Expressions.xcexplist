@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SituationCont.replayCurrentVoice() -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentSet">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.renderNarration(JSON) -&gt; ():SituationCont.swift">
+      </ContextState>
+      <ContextState
          contextName = "SituationCont.finaly() -&gt; ():SituationCont.swift">
          <PersistentStrings>
             <PersistentString

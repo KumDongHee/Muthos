@@ -314,7 +314,7 @@ class SetMainCont: DefaultCont, iCarouselDataSource, iCarouselDelegate, Roulette
         }
         else if isTrainingBook() || (listen?.view)!.isHidden {
             ApplicationContext.playEffect(code: .bookClose)
-            self.navigationController!.popViewController(animated: false)
+            self.navigationController!.popViewController(animated: true)
         } else {
             self.hideListen()
         }

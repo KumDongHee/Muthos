@@ -9,11 +9,9 @@
 import UIKit
 import SwiftyJSON
 
-protocol BallonViewDelegate {
-    func ballonViewDidTapped(ballonView:BallonView, quote:JSON)
-}
 
-class BallonView:UIView {
+
+class BallonView:SituationItem {
     
     let BACKGROUND_STANDARD_WIDTH : CGFloat = 375
     let BACKGROUND_STANDARD_HEIGHT : CGFloat = 667
@@ -30,21 +28,17 @@ class BallonView:UIView {
     }
     
     let triangle:TriangleView = TriangleView()
-    var quote:JSON?
     let quoteView:UITextView = UITextView()
     let recognizedTextView:UITextView = UITextView()
     let recognizedBackground:UIView = UIView()
     let quoteBackground:UIView = UIView()
     var edge:TriangleEdge = TriangleEdge.bottomLeft
     var edgeEnd:CGPoint = CGPoint()
-    var playMode:String? = ""
-    var delegate:BallonViewDelegate?
     static let MARGIN:CGFloat = 3
     static let PADDING_MYNOTE:CGFloat = 15
     
-    init(quote: JSON) {
-        super.init(frame: CGRect())
-        self.quote = quote
+    override init(quote: JSON) {
+        super.init(quote : quote)
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.4
@@ -72,9 +66,7 @@ class BallonView:UIView {
 
         
         let CGleft = CGFloat(quote["position"]["left"].floatValue)
-        print("CGLeft : \(CGleft)")
         let CGtop = CGFloat(quote["position"]["top"].floatValue)
-        print("CGright : \(CGtop)")
         var x : CGFloat = CGleft * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH
         var y = CGtop * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH
             - ( BACKGROUND_STANDARD_HEIGHT * UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH - UIScreen.main.bounds.size.height ) / 2
@@ -93,8 +85,6 @@ class BallonView:UIView {
         if TriangleEdge.bottomLeft == edge || TriangleEdge.bottomRight == edge {
             triangle.frame.origin.y = quoteBackground.height
         }
-        
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(BallonView.onQuoteTapped(_:))))
     }
     
     func changeToAnswerBallon(recognized : String, flexibility : JSON) -> Int {
@@ -280,12 +270,6 @@ class BallonView:UIView {
         }
         
         return CGRect(x:minX, y:minY, width:maxX - minX, height:maxY - minY)
-    }
-    
-    
-    func onQuoteTapped(_ ges:UIGestureRecognizer) {
-        guard let delegate = delegate else { return }
-        delegate.ballonViewDidTapped(ballonView: self, quote: quote!)
     }
     
     func setHtmlText(_ html:String) {

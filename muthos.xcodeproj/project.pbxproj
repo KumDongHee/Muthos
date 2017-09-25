@@ -85,6 +85,8 @@
 		4FE8B73D1D90CD2900BC54BE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE8B73C1D90CD2900BC54BE /* Bolts.framework */; };
 		5F1C73481E431CA4008B0127 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C73471E431CA4008B0127 /* StoreKit.framework */; };
 		780187B52B4A161B06DE0845 /* Pods_muthos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E35285C6FD65B2BF8DCD14F /* Pods_muthos.framework */; };
+		8CDCE0B31F78CA8100F4A0E8 /* NarrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDCE0B21F78CA8000F4A0E8 /* NarrationView.swift */; };
+		8CDCE0B51F78CE5500F4A0E8 /* SituationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDCE0B41F78CE5500F4A0E8 /* SituationItem.swift */; };
 		9F0725881E668A3A003EBC22 /* ChangePwdCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0725871E668A3A003EBC22 /* ChangePwdCont.swift */; };
 		9F07258A1E6692F3003EBC22 /* QuitCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0725891E6692F3003EBC22 /* QuitCont.swift */; };
 		9F0BF02E1E66849C005ADED9 /* FindPwdCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0BF02D1E66849C005ADED9 /* FindPwdCont.swift */; };
@@ -150,10 +152,6 @@
 		DFBB212F1C79EB6700A7A5A1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFBB212D1C79EB6700A7A5A1 /* Account.storyboard */; };
 		DFBB21311C79F15D00A7A5A1 /* BorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBB21301C79F15D00A7A5A1 /* BorderView.swift */; };
 		DFC1C4931C7360B600BD6B89 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC1C4921C7360B600BD6B89 /* TopAlignedLabel.swift */; };
-		DFCB1F561E25DA4F00D01E3B /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = DFCB1F4F1E25DA4F00D01E3B /* .gitkeep */; };
-		DFCB1F571E25DA4F00D01E3B /* MOGBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCB1F511E25DA4F00D01E3B /* MOGBookView.m */; };
-		DFCB1F581E25DA4F00D01E3B /* MOGOpenBookAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCB1F531E25DA4F00D01E3B /* MOGOpenBookAnimator.m */; };
-		DFCB1F591E25DA4F00D01E3B /* MOGOpenBookSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = DFCB1F551E25DA4F00D01E3B /* MOGOpenBookSegue.m */; };
 		DFDA8D0F1C81A74100F49E92 /* MyNoteCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDA8D0E1C81A74100F49E92 /* MyNoteCont.swift */; };
 		DFE540451C79C2440027BAAA /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE540441C79C2440027BAAA /* ApiProvider.swift */; };
 		DFE540471C79C2E00027BAAA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE540461C79C2E00027BAAA /* Account.swift */; };
@@ -264,6 +262,8 @@
 		4FE8B7321D90CA0B00BC54BE /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4FE8B73C1D90CD2900BC54BE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		5F1C73471E431CA4008B0127 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8CDCE0B21F78CA8000F4A0E8 /* NarrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NarrationView.swift; sourceTree = "<group>"; };
+		8CDCE0B41F78CE5500F4A0E8 /* SituationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationItem.swift; sourceTree = "<group>"; };
 		9F0725871E668A3A003EBC22 /* ChangePwdCont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePwdCont.swift; path = Muthos/controller/account/ChangePwdCont.swift; sourceTree = SOURCE_ROOT; };
 		9F0725891E6692F3003EBC22 /* QuitCont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuitCont.swift; path = Muthos/controller/account/QuitCont.swift; sourceTree = SOURCE_ROOT; };
 		9F0BF02D1E66849C005ADED9 /* FindPwdCont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPwdCont.swift; path = Muthos/controller/account/FindPwdCont.swift; sourceTree = SOURCE_ROOT; };
@@ -330,13 +330,6 @@
 		DFBB212E1C79EB6700A7A5A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		DFBB21301C79F15D00A7A5A1 /* BorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderView.swift; path = view/BorderView.swift; sourceTree = "<group>"; };
 		DFC1C4921C7360B600BD6B89 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopAlignedLabel.swift; path = view/TopAlignedLabel.swift; sourceTree = "<group>"; };
-		DFCB1F4F1E25DA4F00D01E3B /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		DFCB1F501E25DA4F00D01E3B /* MOGBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOGBookView.h; sourceTree = "<group>"; };
-		DFCB1F511E25DA4F00D01E3B /* MOGBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOGBookView.m; sourceTree = "<group>"; };
-		DFCB1F521E25DA4F00D01E3B /* MOGOpenBookAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOGOpenBookAnimator.h; sourceTree = "<group>"; };
-		DFCB1F531E25DA4F00D01E3B /* MOGOpenBookAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOGOpenBookAnimator.m; sourceTree = "<group>"; };
-		DFCB1F541E25DA4F00D01E3B /* MOGOpenBookSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOGOpenBookSegue.h; sourceTree = "<group>"; };
-		DFCB1F551E25DA4F00D01E3B /* MOGOpenBookSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOGOpenBookSegue.m; sourceTree = "<group>"; };
 		DFDA8D0E1C81A74100F49E92 /* MyNoteCont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyNoteCont.swift; path = Muthos/controller/main/MyNoteCont.swift; sourceTree = SOURCE_ROOT; };
 		DFE540441C79C2440027BAAA /* ApiProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiProvider.swift; path = Muthos/common/ApiProvider.swift; sourceTree = SOURCE_ROOT; };
 		DFE540461C79C2E00027BAAA /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Muthos/model/Account.swift; sourceTree = SOURCE_ROOT; };
@@ -516,7 +509,6 @@
 		4FA3193B1C79C2BD00907C3E /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				DFCB1F4E1E25DA4F00D01E3B /* MOGOpenBookSegue */,
 				4F3350D71D79E2220064FBF5 /* UIImageViewAligned */,
 				4FA3193C1C79C2BD00907C3E /* Async.swift */,
 				190AE0A01EC8DF99007F89F0 /* SpeechKitApplicationKey.m */,
@@ -620,20 +612,6 @@
 			name = header;
 			sourceTree = "<group>";
 		};
-		DFCB1F4E1E25DA4F00D01E3B /* MOGOpenBookSegue */ = {
-			isa = PBXGroup;
-			children = (
-				DFCB1F4F1E25DA4F00D01E3B /* .gitkeep */,
-				DFCB1F501E25DA4F00D01E3B /* MOGBookView.h */,
-				DFCB1F511E25DA4F00D01E3B /* MOGBookView.m */,
-				DFCB1F521E25DA4F00D01E3B /* MOGOpenBookAnimator.h */,
-				DFCB1F531E25DA4F00D01E3B /* MOGOpenBookAnimator.m */,
-				DFCB1F541E25DA4F00D01E3B /* MOGOpenBookSegue.h */,
-				DFCB1F551E25DA4F00D01E3B /* MOGOpenBookSegue.m */,
-			);
-			path = MOGOpenBookSegue;
-			sourceTree = "<group>";
-		};
 		DFE7F00F1C71C12700FECD50 = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +704,8 @@
 				DF4B8F151C79936B007B8E49 /* CollapsableTableScene.swift */,
 				DFC1C4921C7360B600BD6B89 /* TopAlignedLabel.swift */,
 				DFBB21301C79F15D00A7A5A1 /* BorderView.swift */,
+				8CDCE0B41F78CE5500F4A0E8 /* SituationItem.swift */,
+				8CDCE0B21F78CA8000F4A0E8 /* NarrationView.swift */,
 				4FBD34D81C8820B400BE1A4E /* BallonView.swift */,
 				4F5DD8C91CA262EC0076E4F9 /* TriangleView.swift */,
 				4F42ACE31D8E5410005CA874 /* BookModeView.swift */,
@@ -932,7 +912,6 @@
 				DF4B8F201C799564007B8E49 /* TooltipHeader.xib in Resources */,
 				4F458F4C1E13746D0000F613 /* 08_02_fail.mp3 in Resources */,
 				DFE5404C1C79C4D90027BAAA /* BookSetView.xib in Resources */,
-				DFCB1F561E25DA4F00D01E3B /* .gitkeep in Resources */,
 				4F458F491E13746D0000F613 /* 07_03_talk.mp3 in Resources */,
 				4F458F461E13746D0000F613 /* 07_02_talk.mp3 in Resources */,
 				DFE7F0261C71C12800FECD50 /* Assets.xcassets in Resources */,
@@ -1003,7 +982,6 @@
 				DF4B8F0D1C797F3A007B8E49 /* SettingAgeCont.swift in Sources */,
 				DF24E94C1C78B3D200ACF81F /* SettingCell.swift in Sources */,
 				4F66F5041D25F70D00DC41D4 /* TrainingPhoneCont.swift in Sources */,
-				DFCB1F571E25DA4F00D01E3B /* MOGBookView.m in Sources */,
 				DF60E19F1C783246006338C9 /* ReceiveGiftCell.swift in Sources */,
 				4F458F221E1366670000F613 /* SoundEffectManager.swift in Sources */,
 				4F3B86A81CAC13EF00A04EB1 /* AVAsyncPlayer.swift in Sources */,
@@ -1018,7 +996,6 @@
 				4FDF2CA71DCC8FBF00D338FB /* SpeechFrameworkRecognizer.swift in Sources */,
 				DF280E401C78ED82002527E8 /* SettingAccountCont.swift in Sources */,
 				DFA684D81DB2324C005CF6C6 /* UIImagePickerController+Rx.swift in Sources */,
-				DFCB1F581E25DA4F00D01E3B /* MOGOpenBookAnimator.m in Sources */,
 				DF4B8F161C79936B007B8E49 /* CollapsableTableProtocols.swift in Sources */,
 				4FBD34D91C8820B400BE1A4E /* BallonView.swift in Sources */,
 				9F07258A1E6692F3003EBC22 /* QuitCont.swift in Sources */,
@@ -1042,6 +1019,7 @@
 				DF60E1A41C783E70006338C9 /* CardCont.swift in Sources */,
 				DFE9556F1C784C7500CA757F /* NoticeCell.swift in Sources */,
 				DF4B8F1E1C79955A007B8E49 /* TooltipHeader.swift in Sources */,
+				8CDCE0B31F78CA8100F4A0E8 /* NarrationView.swift in Sources */,
 				4F76D3251D1ACAA400636897 /* SummaryCont.swift in Sources */,
 				DFE7F01C1C71C12700FECD50 /* AppDelegate.swift in Sources */,
 				DF4B8F1B1C799532007B8E49 /* SettingHeader.swift in Sources */,
@@ -1071,6 +1049,7 @@
 				4F200E5B1D9550940066CA2A /* PetCell.swift in Sources */,
 				1404C5DD1F304BE400899900 /* UIDevice.swift in Sources */,
 				DFB559071C74264C0081855A /* StoreListCell.swift in Sources */,
+				8CDCE0B51F78CE5500F4A0E8 /* SituationItem.swift in Sources */,
 				DFE7F06F1C71CC7B00FECD50 /* Category.swift in Sources */,
 				DF4B8F261C7997E3007B8E49 /* SettingTooltipCont.swift in Sources */,
 				4F66F4FC1D25F5F900DC41D4 /* TrainingClockCont.swift in Sources */,
@@ -1093,7 +1072,6 @@
 				4F60BFE41DD4164100B2ADD3 /* ApplicationContext.swift in Sources */,
 				DFE7F0731C71CC9600FECD50 /* MainCont.swift in Sources */,
 				4F66F5021D25F6F700DC41D4 /* TrainingCalculationCont.swift in Sources */,
-				DFCB1F591E25DA4F00D01E3B /* MOGOpenBookSegue.m in Sources */,
 				DFB5590A1C74403B0081855A /* MyPageCont.swift in Sources */,
 				DFE7F0671C71CC5200FECD50 /* common.swift in Sources */,
 				4F3350E91D7A56E80064FBF5 /* PetViewModel.swift in Sources */,

@@ -10,8 +10,5 @@
 
 #import "AudioUnitTool.h"
 #import "UIImageViewAligned.h"
-#import "MOGOpenBookSegue.h"
-#import "MOGOpenBookAnimator.h"
-#import "MOGBookView.h"
 
 #endif

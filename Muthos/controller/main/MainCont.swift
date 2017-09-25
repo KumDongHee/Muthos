@@ -263,24 +263,7 @@ class MainCont : DefaultCont, CellSelectDelegate, UINavigationControllerDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openSegue" {
-            let openSegue = segue as! MOGOpenBookSegue
-            
-            if let book = selectedBook, let cell = selectedCell {
-                let cont = segue.destination as! SetMainCont
-                cont.book = book
-                
-                let cellImage = UIView.renderUIViewToImage(viewToBeRendered: cell)
-                var frame = cell.frame
-                //숫자의 근거 찾아야함 (지금 눈대중으로 맞춤)
-                frame.origin.y += 105
-                openSegue.setupBookView(cellImage, frame: frame)
-            }
-            openSegue.setCompletionBlock({ (completed) in
-                print("open")
-            }, closeCompletion: { (completed) in
-                print("close")
-            })
-            super.prepare(for: openSegue, sender: sender)
+            super.prepare(for: segue, sender: sender)
         }
     }
     

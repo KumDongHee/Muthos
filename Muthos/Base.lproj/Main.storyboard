@@ -116,7 +116,7 @@
                         <outlet property="storeButton" destination="5bf-IM-Om6" id="LzX-F5-PxG"/>
                         <outlet property="tableView" destination="cij-Zx-1B6" id="mkQ-2j-riM"/>
                         <segue destination="r7l-Fh-Xk8" kind="custom" identifier="showDetail" customClass="BookOpenSegue" customModule="muthos" customModuleProvider="target" id="Gty-VM-v5m"/>
-                        <segue destination="r7l-Fh-Xk8" kind="custom" identifier="openSegue" customClass="MOGOpenBookSegue" animates="NO" id="oZx-Fr-9ow"/>
+                        <segue destination="r7l-Fh-Xk8" kind="show" identifier="openSegue" animates="NO" id="oZx-Fr-9ow"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9J-NL-hMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1492,7 +1492,7 @@ everything else</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_img_ground" translatesAutoresizingMaskIntoConstraints="NO" id="mwW-Sj-Ehj">
-                                        <rect key="frame" x="0.0" y="139.5" width="245.5" height="73.5"/>
+                                        <rect key="frame" x="0.0" y="140" width="245.5" height="73"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="mwW-Sj-Ehj" secondAttribute="height" multiplier="245:73" id="SIt-yy-g5q"/>
                                         </constraints>
@@ -1774,13 +1774,13 @@ everything else</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dpm-Vy-vAh">
-                                                <rect key="frame" x="0.0" y="237.5" width="322" height="85"/>
+                                                <rect key="frame" x="0.0" y="238" width="322" height="84.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKh-TI-dti" customClass="UIControl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84.5" height="85"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QTa-Yg-OTI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="84.5" height="85"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="84.5"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1793,10 +1793,10 @@ everything else</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWl-RK-8m3" customClass="UIControl">
-                                                        <rect key="frame" x="118.5" y="0.0" width="85" height="85"/>
+                                                        <rect key="frame" x="119" y="0.0" width="84" height="84.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oGs-uq-h3m">
-                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="84.5"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1808,10 +1808,10 @@ everything else</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fr6-oP-VE7" customClass="UIControl">
-                                                        <rect key="frame" x="237.5" y="0.0" width="84.5" height="85"/>
+                                                        <rect key="frame" x="238" y="0.0" width="84" height="84.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wnt-QJ-Fml">
-                                                                <rect key="frame" x="0.0" y="0.0" width="84.5" height="85"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="84" height="84.5"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
