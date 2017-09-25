@@ -1,0 +1,5 @@
+# Muthos
+
+git reset --hard // 작업내용 지우기 (보통 xcode를 여는 것 만으로도 작업내용이 생김)
+git pull origin // 새로운 파일 받기
+
