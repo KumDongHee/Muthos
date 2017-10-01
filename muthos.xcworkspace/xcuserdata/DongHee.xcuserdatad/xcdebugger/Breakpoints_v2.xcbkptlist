@@ -361,22 +361,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Muthos/view/BallonView.swift"
-            timestampString = "528014357.0556"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "showDictationResultOn(textView:model:white:fontSize:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "muthos/controller/main/DefaultCont.swift"
             timestampString = "525241839.869824"
             startingColumnNumber = "9223372036854775807"
@@ -394,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Muthos/controller/books/SituationCont.swift"
-            timestampString = "528014489.381893"
+            timestampString = "528570272.722383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "886"
-            endingLineNumber = "886"
+            startingLineNumber = "853"
+            endingLineNumber = "853"
             landmarkName = "clearDialogItems()"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Muthos/controller/books/SituationCont.swift"
-            timestampString = "528014489.381893"
+            timestampString = "528570272.722383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "834"
-            endingLineNumber = "834"
+            startingLineNumber = "803"
+            endingLineNumber = "803"
             landmarkName = "doRenderQuote(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Muthos/controller/books/SituationCont.swift"
-            timestampString = "528011171.919242"
+            timestampString = "528570272.722383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "showResultArea(_:desc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Muthos/controller/books/SituationCont.swift"
-            timestampString = "528011171.919242"
+            timestampString = "528570272.722383"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "showResultArea(_:desc:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +442,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Muthos/controller/books/SituationCont.swift"
-            timestampString = "528014489.381893"
+            timestampString = "528571611.093088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1103"
-            endingLineNumber = "1103"
+            startingLineNumber = "1271"
+            endingLineNumber = "1271"
+            landmarkName = "renderNarration(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Muthos/controller/books/SituationCont.swift"
+            timestampString = "528571628.927991"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1054"
+            endingLineNumber = "1054"
             landmarkName = "renderCurrentSequence()"
             landmarkType = "7">
          </BreakpointContent>

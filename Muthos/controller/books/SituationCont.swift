@@ -53,8 +53,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     var htmlCached:Bool = false
     var currentSpeechVoice:URL?
     var holdNextSequence:Bool = false
-    var currentBallonView:BallonView?
-    var currentDictationModel:DictationModel?
+    var currentSituationItem:SituationItem?
     var playMode:String? = ""
     var listenPaused:Bool = false
     var pivots:[Pivot] = []
@@ -93,7 +92,6 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     @IBOutlet weak var listenArea: UIView!
     @IBOutlet weak var btnPauseListen: UIButton!
     @IBOutlet weak var pivotsCarousel: iCarousel!
-    @IBOutlet weak var bgTopNarration: UIImageView!
 
     @IBOutlet weak var pulse: UIView!
     @IBOutlet weak var btnReplay: UIButton!
@@ -106,15 +104,6 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     
     deinit {
         print("deinit, SituationCont")
-    }
-    
-    class DictationModel {
-        var model:JSON
-        var textView:UITextView?
-        init(_ model:JSON, textView:UITextView?) {
-            self.model = model
-            self.textView = textView
-        }
     }
     
     func procListenPaused(_ pause:Bool) {
@@ -138,10 +127,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                 self.holdNextSequence = false
             }
             else {
-                resetBgNarration({() -> Bool in
-                    self.renderNextSequence()
-                    return true
-                })
+                self.renderNextSequence()
             }
         }
     }
@@ -226,7 +212,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         micButton.setBackgroundImage(UIImage(named:image!), for: UIControlState())
     }
     
-    func showDictationResult(_ orig:String, desc:String) {
+    func showDictationResult(_ desc:String) {
         print(dictationLabelArea.frame)
         dictationText.isHidden = true
         dictationLabelArea.isHidden = true
@@ -234,7 +220,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         let images:[String] = ["control_result_fail", "control_result_success"]
         let lightImages:[String] = ["control_result_light_violet", "control_result_light_yellow"]
         let effects:[SOUND_CODE] = [.fail, .success]
-        let json:JSON = BookController.evaluateSentence(orig, desc: desc)
+        let json:JSON = BookController.evaluateSentence((currentSituationItem?.getDictationText())!, desc: desc)
         
         talkAnswer.isHidden = false
         resultArea.isHidden = false
@@ -249,28 +235,10 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
 
         ApplicationContext.playEffect(code: effects[grade])
         
-        self.controller!.writeBonus(orig, grade: grade)
+        self.controller!.writeBonus((currentSituationItem?.quote!["text"].string)!, grade: grade)
         
-        if self.currentBallonView != nil {
-            self.currentBallonView?.showDictationResult()
-            showDictationTips(self.currentBallonView!.quote!, result:json)
-        } else if let tv = self.currentDictationModel?.textView {
-            let model = self.currentDictationModel?.model
-            let text:String = model!["text"].string!
-            var fontSize:Int = 20
-            if let fs:Int = model?["font-size"].intValue {
-                if fs > 0 { fontSize = fs }
-            }
-            if let dictations:String = model?["dictation"].string {
-                var html:String = BookController.getDictationResultOf(text, dictations: dictations)
-                html = "<span style='color:white;font-size:"+String(fontSize)+"'>" + html + "</span>"
-                tv.setBalloonHtmlText(html)
-                tv.sizeToFit()
-            }
-            
-            BallonView.showDictationResultOn(textView:tv, model:(self.currentDictationModel?.model)!, white:true, fontSize:fontSize)
-            showDictationTips(model!, result:json);
-        }
+        currentSituationItem?.showDictationResult()
+        showDictationTips((currentSituationItem?.quote)!, result:json)
         
         ApplicationContext.sharedInstance.userViewModel.appendExp(1, memo:"dictation")
         
@@ -298,8 +266,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                                                               correct:correct, desc:result["desc"].string!)
         html = "<span style='color:white;font-size:18px'>" + html + "</span>"
         
-        tv.setBalloonHtmlText(html)
-        dictationTipsOrigin.setBalloonHtmlText(html)
+        tv.setHtmlText(html)
+        dictationTipsOrigin.setHtmlText(html)
         
         tv.sizeToFit()
         
@@ -601,6 +569,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view!.endEditing(true)
+        self.showDictationResult(self.dictationText.text!)
         self.dictationText.text = ""
         return true
     }
@@ -834,6 +803,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.view!.addSubview(ballonView)
         self.quotes.add(ballonView)
         
+        self.currentSituationItem = ballonView
+        
         var waiting:TimeInterval = 0
         
         if model["waiting"].error == nil {
@@ -841,43 +812,39 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             waiting = TimeInterval(w) / 1000.0
         }
         
-        if controller!.model?["category"].string == "picture" {
-            var mute:Bool = false
-            if "quote" == type
-                && controller!.model?["mute-quote"] != nil
-                && controller!.model?["mute-quote"].string == "true" {
-                mute = true
-                self.btnReplay.isHidden = false
-            }
-            if let param:String = model["voice"].string {
-                self.currentSpeechVoice = self.controller!.prepareResourcePath(param)
-
-                if mute || listenPaused {
-                    if waiting == 0 {
-                        self.renderNextSequence()
-                    }
-                }
-                else {
-                    controller?.playVoice(self.currentSpeechVoice!, callback: {() -> Bool in
-                        if "talk" == self.playMode {
-                            if let _:String = model["dictation"].string {
-                                self.currentDictationModel = DictationModel(model, textView:ballonView.quoteView)
-                                self.currentBallonView = ballonView;
-                                self.holdNextSequence = true
-                                self.showDictationArea()
-                            }
-                        }
-
-                        self.btnReplay.isHidden = false
-                        self.renderNextSequence()
-                        return true
-                    })
-                }
-            }
-            else {
+        var mute:Bool = false
+        if "quote" == type
+            && controller!.model?["mute-quote"] != nil
+            && controller!.model?["mute-quote"].string == "true" {
+            mute = true
+            self.btnReplay.isHidden = false
+        }
+        if let param:String = model["voice"].string {
+            self.currentSpeechVoice = self.controller!.prepareResourcePath(param)
+            
+            if mute || listenPaused {
                 if waiting == 0 {
                     self.renderNextSequence()
                 }
+            }
+            else {
+                controller?.playVoice(self.currentSpeechVoice!, callback: {() -> Bool in
+                    if "talk" == self.playMode {
+                        if let _:String = model["dictation"].string {
+                            self.holdNextSequence = true
+                            self.showDictationArea()
+                        }
+                    }
+                    
+                    self.btnReplay.isHidden = false
+                    self.renderNextSequence()
+                    return true
+                })
+            }
+        }
+        else {
+            if waiting == 0 {
+                self.renderNextSequence()
             }
         }
     }
@@ -894,6 +861,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.narrations.removeAllObjects()
         self.imageScene.isHidden = true
         self.btnReplay.isHidden = true
+        self.currentSituationItem = nil
     }
     
     func findSetModel(_ set:String) -> JSON {
@@ -1068,20 +1036,6 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         renderCurrentSequence()
     }
     
-    func processRestoreBgTopNarration(_ callback:@escaping Async.callbackFunc) -> Bool {
-        guard currentSequence > 0 else { return callback() }
-        
-        let sequence:JSON = controller!.selectedSequence()
-        let prev:JSON = sequence[currentSequence - 1]
-        let curr:JSON = sequence[currentSequence]
-        
-        guard prev["type"].stringValue == "next" && curr["type"].stringValue != "narration" else { return callback() }
-
-        resetBgNarration(callback)
-        
-        return true
-    }
-    
     func restartBGMOnCurrentSequence() {
         var seq = currentSequence
         let sequence:JSON = controller!.selectedSequence()
@@ -1105,20 +1059,16 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         let model:JSON = getSequenceModel(sequence)!
         let type:String = model["type"].stringValue
         
-        /* 나레이션 상단 그림자 영역 관련 예외 처리 */
-        _ = processRestoreBgTopNarration({() -> Bool in
-            if "quote" == type { self.renderQuote(model) }
-            else if "image" == type { self.renderImage(model["params"].string!); self.renderNextSequence() }
-            else if "sound" == type { self.renderSound(model["params"].string!) }
-            else if "video" == type { self.renderVideo(model) }
-            else if "video-sync" == type { self.renderVideoSync(model) }
-            else if "speech" == type { self.clearDialogItems(); if "listen" == self.playMode {self.renderQuote(model)} else {self.renderSpeech(model)} }
-            else if "bgm" == type { self.renderBgm(model); }
-            else if "narration" == type { self.clearDialogItems(); self.renderNarration(model) }
-            else if "next" == type { self.renderNext(model) }
-            else if "clearQuotes" == type {self.clearDialogItems(); self.renderNextSequence() }
-            return true
-        })
+        if "quote" == type { self.renderQuote(model) }
+        else if "image" == type { self.renderImage(model["params"].string!); self.renderNextSequence() }
+        else if "sound" == type { self.renderSound(model["params"].string!) }
+        else if "video" == type { self.renderVideo(model) }
+        else if "video-sync" == type { self.renderVideoSync(model) }
+        else if "speech" == type { self.clearDialogItems(); if "listen" == self.playMode {self.renderQuote(model)} else {self.renderSpeech(model)} }
+        else if "bgm" == type { self.renderBgm(model); }
+        else if "narration" == type { self.clearDialogItems(); self.renderNarration(model) }
+        else if "next" == type { self.renderNext(model) }
+        else if "clearQuotes" == type {self.clearDialogItems(); self.renderNextSequence() }
     }
     
     func cacheNextHtml(_ sequence:JSON) {
@@ -1317,34 +1267,17 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         })
     }
     
-    func resetBgNarration(_ callback:@escaping Async.callbackFunc) {
-        animate {
-            for n in self.narrations {
-                (n as! UIView).layer.opacity = 0
-            }
-            self.bgTopNarration.setTop((self.bgTopNarration.height) * -1)
-            }.withDuration(0.3).withOptions(.curveEaseOut)
-            .completion { (finish) -> Void in
-                for n in self.narrations {
-                    (n as! UIView).removeFromSuperview()
-                }
-                self.narrations.removeAllObjects()
-                _ = callback()
-        }
-    }
-    
     func renderNarration( _ model : JSON) { // narration 독립적인 뷰로 빠져야함
         controller?.waitForResource(
             model["voice"].string!,
             callback:{() -> Bool in
                 
                 let narrationView:NarrationView = NarrationView.init(quote: model)
-                let type:String = model["type"].string!
                 
                 narrationView.delegate = self
                 narrationView.playMode = self.playMode
                 
-                self.currentDictationModel = DictationModel(model, textView:narrationView.narrTextView)
+                self.currentSituationItem = narrationView
                 
                 self.view.addSubview(narrationView)
                 narrationView.frame.origin.y = (self.navigationController?.navigationBar.frame.size.height)! + UIApplication.shared.statusBarFrame.size.height
@@ -1361,8 +1294,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
                         narrationView.isHidden = false
                         return true
                     }
-                    if let dictations:String = model["dictation"].string {
-                        self.currentBallonView = nil
+                    if let _ = model["dictation"].string {
                         self.showDictationArea()
                     }
                     else {

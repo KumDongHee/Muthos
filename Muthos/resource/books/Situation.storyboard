@@ -70,10 +70,6 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="talk_bg_sh_top_narration" translatesAutoresizingMaskIntoConstraints="NO" id="Q16-Dk-fb1">
-                                <rect key="frame" x="0.0" y="-266" width="375" height="266"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="talk_bg_sh_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="aXa-Ct-FhV">
                                 <rect key="frame" x="0.0" y="503" width="375" height="164"/>
                                 <constraints>
@@ -87,7 +83,7 @@
                                         <rect key="frame" x="0.0" y="402" width="375" height="265"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="I don't want to talk about school." translatesAutoresizingMaskIntoConstraints="NO" id="OJ6-YY-Zdg">
-                                                <rect key="frame" x="12" y="5" width="352" height="45"/>
+                                                <rect key="frame" x="11.5" y="5" width="352" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="fPn-Vu-IK0"/>
@@ -97,14 +93,14 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tLa-c6-gfP" userLabel="Line">
-                                                <rect key="frame" x="12" y="50" width="352" height="1"/>
+                                                <rect key="frame" x="11.5" y="50" width="352" height="1"/>
                                                 <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Y5I-mt-i6J"/>
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="talk about" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xqz-2g-P0G">
-                                                <rect key="frame" x="12" y="55" width="352" height="45"/>
+                                                <rect key="frame" x="11.5" y="55" width="352" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="QZe-c2-6Ol"/>
@@ -114,7 +110,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="~ 에 대해 이야기 하다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zge-0O-ArJ">
-                                                <rect key="frame" x="12" y="90" width="352" height="45"/>
+                                                <rect key="frame" x="11.5" y="90" width="352" height="45"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="7fX-DI-oTz"/>
@@ -124,7 +120,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mVU-g5-eZa">
-                                                <rect key="frame" x="12" y="125" width="352" height="105"/>
+                                                <rect key="frame" x="11.5" y="125" width="352" height="105"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="105" id="xIO-Ap-ffV"/>
@@ -416,7 +412,6 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="bgTopNarration" destination="Q16-Dk-fb1" id="VOc-Wd-eta"/>
                         <outlet property="btnNext" destination="bz0-kk-9vq" id="am3-7R-p1J"/>
                         <outlet property="btnNextSequence" destination="3sT-22-cOZ" id="nph-l7-uKN"/>
                         <outlet property="btnPauseListen" destination="plw-dg-Jce" id="R0p-ON-5Nf"/>
@@ -547,7 +542,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdf-7H-Giu">
-                                <rect key="frame" x="157" y="571" width="62" height="62"/>
+                                <rect key="frame" x="156.5" y="571" width="62" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="62" id="EBr-ki-U7G"/>
                                     <constraint firstAttribute="height" constant="62" id="pTG-bS-wZK"/>
@@ -593,7 +588,6 @@
         <image name="control_result_light_yellow" width="375" height="64"/>
         <image name="talk_bg_sh_bottom" width="375" height="164"/>
         <image name="talk_bg_sh_top" width="375" height="23"/>
-        <image name="talk_bg_sh_top_narration" width="375" height="265"/>
         <image name="talk_icon_note" width="21" height="23"/>
         <image name="talk_icon_note_in" width="10" height="9"/>
         <image name="talk_icon_note_out" width="9" height="9"/>

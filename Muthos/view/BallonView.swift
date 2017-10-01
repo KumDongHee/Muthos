@@ -13,9 +13,6 @@ import SwiftyJSON
 
 class BallonView:SituationItem {
     
-    let BACKGROUND_STANDARD_WIDTH : CGFloat = 375
-    let BACKGROUND_STANDARD_HEIGHT : CGFloat = 667
-    
     enum TriangleEdge {
         case bottomLeft
         case bottomRight
@@ -28,7 +25,6 @@ class BallonView:SituationItem {
     }
     
     let triangle:TriangleView = TriangleView()
-    let quoteView:UITextView = UITextView()
     let recognizedTextView:UITextView = UITextView()
     let recognizedBackground:UIView = UIView()
     let quoteBackground:UIView = UIView()
@@ -39,6 +35,8 @@ class BallonView:SituationItem {
     
     override init(quote: JSON) {
         super.init(quote : quote)
+        
+        textcolor = "black"
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.4
@@ -55,7 +53,7 @@ class BallonView:SituationItem {
             quoteView.frame.size.width = CGFloat(w)
         }
         
-        quoteView.setBalloonHtmlText(self.getQuoteText())
+        quoteView.setHtmlText(self.getQuoteText())
         quoteView.sizeToFit()
         quoteBackground.addSubview(quoteView)
         
@@ -82,6 +80,8 @@ class BallonView:SituationItem {
         initEdge()
         initTriangleView()
         
+        addSubview(triangle)
+        
         if TriangleEdge.bottomLeft == edge || TriangleEdge.bottomRight == edge {
             triangle.frame.origin.y = quoteBackground.height
         }
@@ -90,7 +90,7 @@ class BallonView:SituationItem {
     func changeToAnswerBallon(recognized : String, flexibility : JSON) -> Int {
         
         let json:JSON = BookController.evaluateSentence(self.getQuoteText(), desc: recognized, flexibility:flexibility)
-        quoteView.setBalloonHtmlText(json["orig"].stringValue)
+        quoteView.setHtmlText(json["orig"].stringValue)
         
         recognizedTextView.isEditable = false
         recognizedTextView.isUserInteractionEnabled = false
@@ -98,7 +98,7 @@ class BallonView:SituationItem {
         
         recognizedTextView.frame = CGRect(x: PADDING_WIDTH+X_MOVE, y: 0, width: UIScreen.main.bounds.size.width * 2 / 3, height: 40)
         
-        recognizedTextView.setBalloonHtmlText(json["desc"].stringValue)
+        recognizedTextView.setHtmlText(json["desc"].stringValue)
         recognizedTextView.sizeToFit()
         recognizedBackground.frame = CGRect(x: 0, y: quoteView.frame.size.height, width: quoteView.width+PADDING_WIDTH*2, height: quoteView.height)
         recognizedBackground.backgroundColor = UIColor.yellow
@@ -161,31 +161,8 @@ class BallonView:SituationItem {
     let PADDING_WIDTH:CGFloat = 8
     let X_MOVE:CGFloat = 1
     
-    func showDictationResult() {
-        BallonView.showDictationResultOn(textView: quoteView, model: self.quote!)
-        initTriangleView()
-    }
-    
-    static func showDictationResultOn(textView:UITextView, model:JSON, white:Bool = false, fontSize:Int = -1) {
-        let text:String = model["text"].string!
-        var fontString:String = fontSize > 0 ? "font-size:" + String(fontSize) : ""
-        if let fs:Int = model["font-size"].intValue {
-            if fs > 0 { fontString = "font-size:" + String(fs) }
-        }
-        if let dictations:String = model["dictation"].string {
-            var html:String = BookController.getDictationResultOf(text, dictations: dictations)
-            html = "<span style='color:"+(white ? "white" : "black")+";"+fontString+"'>" + html + "</span>"
-            textView.setBalloonHtmlText(html)
-            textView.sizeToFit()
-        }
-    }
-    
-    func getQuoteText() -> String {
-        return BookController.getQuoteTextOf(dialog: self.quote!, params: self.quote!, playMode: playMode!, hideColor:"white")
-    }
-    
-    func getDictationText() -> String {
-        return BookController.getDictationTextOf(self.quote!["text"].string!, dictations:self.quote!["dictation"].string!)
+    override func showDictationResult() {
+        super.showDictationResult()
     }
 
     let PADDING:CGFloat = 12
@@ -238,8 +215,6 @@ class BallonView:SituationItem {
         
         triangle.point = calcPointPosition(origin, end)
         triangle.frame = calcTriangleRectFor([origin, end, third])
-        
-        addSubview(triangle)
     }
     
     func calcPointPosition(_ origin:CGPoint,_ end:CGPoint) -> TriangleView.PointPosition {
@@ -280,7 +255,7 @@ class BallonView:SituationItem {
 
 extension UITextView {
     
-    func setBalloonHtmlText(_ html:String) {
+    func setHtmlText(_ html:String) {
         let BACKGROUND_STANDARD_WIDTH : CGFloat = 375
         let fontsize : Int = Int(18 * pow(UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH,1/2))
         let PREFIX:String = "<span style='font-size:\(fontsize)px;AppleGothic;font-family:Apple SD Gothic Neo;font-weight:400;'>"

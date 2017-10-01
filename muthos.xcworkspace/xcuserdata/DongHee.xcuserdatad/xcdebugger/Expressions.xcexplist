@@ -3,10 +3,94 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SituationCont.restoreBackgroundOnPivotIndex(Int) -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentSequence">
+            </PersistentString>
+            <PersistentString
+               value = "sequence">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.getSpeechModel() -&gt; JSON?:SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sequence">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SituationCont.replayCurrentVoice() -&gt; ():SituationCont.swift">
          <PersistentStrings>
             <PersistentString
                value = "currentSet">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NarrationView.init(quote : JSON) -&gt; NarrationView:NarrationView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "backgroundShadow.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.showDictationResult(String) -&gt; ():SituationCont.swift">
+      </ContextState>
+      <ContextState
+         contextName = "BallonView.init(quote : JSON) -&gt; BallonView:BallonView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "UIScreen.main.bounds.size.width">
+            </PersistentString>
+            <PersistentString
+               value = "UIScreen.main.bounds.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static BookController.getDictationResultOf(String, dictations : String, correct : Bool, desc : String?) -&gt; String:BookController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.doRenderQuote(AnyObject) -&gt; ():SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "ballonView.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainCont.tableViewSetting(disposeBag : DisposeBag) -&gt; ():StoreListCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewModel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationItem.showDictationResult() -&gt; ():SituationItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "quote">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationCont.textFieldShouldReturn(UITextField) -&gt; Bool:SituationCont.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dictationText.text!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SituationItem.showDictationResult(dict : String) -&gt; ():SituationItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "dict">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -23,52 +107,6 @@
       </ContextState>
       <ContextState
          contextName = "SituationCont.showResultArea(desc : String) -&gt; ():SituationCont.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SituationCont.restoreBackgroundOnPivotIndex(Int) -&gt; ():SituationCont.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "currentSequence">
-            </PersistentString>
-            <PersistentString
-               value = "sequence">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SituationCont.doRenderQuote(AnyObject) -&gt; ():SituationCont.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "ballonView.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SituationCont.getSpeechModel() -&gt; JSON?:SituationCont.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "sequence">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "BallonView.init(quote : JSON) -&gt; BallonView:BallonView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "UIScreen.main.bounds.size.width">
-            </PersistentString>
-            <PersistentString
-               value = "UIScreen.main.bounds.size.height">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MainCont.tableViewSetting(disposeBag : DisposeBag) -&gt; ():StoreListCont.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "viewModel">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

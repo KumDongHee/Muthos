@@ -19,39 +19,46 @@ class NarrationView: SituationItem {
     }
     */
     
-    var narrTextView : UITextView = UITextView()
     var backgroundShadow : UIImageView = UIImageView(image: UIImage(named: "talk_bg_sh_top_narration"))
     
+    let BACKGROUND_OFFSET : CGFloat = 100
     let PADDING_X : CGFloat = 12
     let PADDING_Y : CGFloat = 20
     
     override init(quote: JSON) {
         super.init(quote : quote)
         
-        self.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:10000)
+        textcolor = "white"
         
-        narrTextView.frame = CGRect(x:PADDING_X, y:PADDING_Y, width:self.frame.size.width - 2 * PADDING_X, height:10000)
+        quoteView.frame = CGRect(x:PADDING_X, y:PADDING_Y, width:UIScreen.main.bounds.size.width - 2 * PADDING_X, height:10000)
         
         
         let text:String = BookController.getQuoteTextOf(dialog: quote, params: quote, playMode: self.playMode!)
         
-        var fontSize:Int = 20
+        quoteView.setHtmlText("<span style='color:white;font-size:"+String(fontSize)+"'>"+text+"</span>")
+        quoteView.isEditable = false
+        quoteView.isUserInteractionEnabled = false
+        quoteView.backgroundColor = UIColor.clear
+        quoteView.sizeToFit()
         
-        if quote["font-size"].error == nil {
-            let fs:Int = quote["font-size"].intValue
-            if fs > 0 { fontSize = fs }
-        }
         
-        narrTextView.setBalloonHtmlText("<span style='color:white;font-size:"+String(fontSize)+"'>"+text+"</span>")
-        narrTextView.isEditable = false
-        narrTextView.isUserInteractionEnabled = false
-        narrTextView.backgroundColor = UIColor.clear
-        narrTextView.sizeToFit()
+        self.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:PADDING_Y + quoteView.frame.size.height)
+        self.layer.masksToBounds = false
         
-        backgroundShadow.frame = CGRect(x: 0, y: narrTextView.height - backgroundShadow.height, width: self.frame.size.width, height: backgroundShadow.frame.size.height)
+        adjustShadow();
         
         self.addSubview(backgroundShadow)
-        self.addSubview(narrTextView)
+        self.addSubview(quoteView)
+    }
+    
+    func adjustShadow() {
+        backgroundShadow.frame = CGRect(x: 0, y: PADDING_Y + quoteView.frame.size.height + BACKGROUND_OFFSET - backgroundShadow.frame.size.height, width: UIScreen.main.bounds.size.width, height: backgroundShadow.frame.size.height)
+        
+    }
+    
+    override func showDictationResult() {
+        quoteView.frame = CGRect(x:PADDING_X, y:PADDING_Y, width:UIScreen.main.bounds.size.width - 2 * PADDING_X, height:10000)
+        super.showDictationResult()
     }
     
     required init?(coder aDecoder: NSCoder) {
