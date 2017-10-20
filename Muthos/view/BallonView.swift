@@ -33,8 +33,8 @@ class BallonView:SituationItem {
     static let MARGIN:CGFloat = 3
     static let PADDING_MYNOTE:CGFloat = 15
     
-    override init(quote: JSON) {
-        super.init(quote : quote)
+    override init(quote: JSON, playmode: String) {
+        super.init(quote : quote, playmode: playmode)
         
         textcolor = "black"
         
@@ -247,8 +247,8 @@ class BallonView:SituationItem {
         return CGRect(x:minX, y:minY, width:maxX - minX, height:maxY - minY)
     }
     
-    func setHtmlText(_ html:String) {
-        
+    override func getQuoteText() -> String {
+        return BookController.getQuoteTextOf(dialog: self.quote!, params: self.quote!, playMode: playMode!, hideColor:"white")
     }
     
 }

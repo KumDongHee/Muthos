@@ -25,15 +25,15 @@ class NarrationView: SituationItem {
     let PADDING_X : CGFloat = 12
     let PADDING_Y : CGFloat = 20
     
-    override init(quote: JSON) {
-        super.init(quote : quote)
+    override init(quote: JSON, playmode: String) {
+        super.init(quote : quote, playmode: playmode)
         
         textcolor = "white"
         
         quoteView.frame = CGRect(x:PADDING_X, y:PADDING_Y, width:UIScreen.main.bounds.size.width - 2 * PADDING_X, height:10000)
         
         
-        let text:String = BookController.getQuoteTextOf(dialog: quote, params: quote, playMode: self.playMode!)
+        let text:String = self.getQuoteText()
         
         quoteView.setHtmlText("<span style='color:white;font-size:"+String(fontSize)+"'>"+text+"</span>")
         quoteView.isEditable = false

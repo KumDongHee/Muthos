@@ -29,11 +29,11 @@ class SituationItem: UIView {
     weak var delegate:SituationItemDelegate?
     
     
-    init(quote: JSON) {
+    init(quote: JSON, playmode: String) {
         super.init(frame: CGRect())
         fontSize = Int(18 * pow(UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH,1/2))
         self.quote = quote
-        
+        self.playMode = playmode
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SituationItem.tapped(_:))))
     }
     
@@ -63,7 +63,7 @@ class SituationItem: UIView {
     }
     
     func getQuoteText() -> String {
-        return BookController.getQuoteTextOf(dialog: self.quote!, params: self.quote!, playMode: playMode!, hideColor:"white")
+        return BookController.getQuoteTextOf(dialog: self.quote!, params: self.quote!, playMode: playMode!)
     }
     func getDictationText() -> String {
         return BookController.getDictationTextOf(self.quote!["text"].string!, dictations:self.quote!["dictation"].string!)
