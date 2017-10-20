@@ -85,6 +85,8 @@ class MainCont : DefaultCont, CellSelectDelegate, UINavigationControllerDelegate
 
         self.bind()
         checkReachability()
+        collectionView.isHidden = false
+        tableView.isHidden = true
     }
     
     func reloadData() {

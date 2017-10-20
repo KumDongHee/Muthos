@@ -24,6 +24,7 @@ extension MainCont : UITableViewDelegate, StoreListCellDelegate, DownloadManager
         self.tableView.rowHeight = 89
         
         if let categories = try? self.viewModel.categories.value() {
+            if categories.count > 0 {
             let category = categories[0]
             let books = Variable<[Book]>(category.books)
             
@@ -39,6 +40,7 @@ extension MainCont : UITableViewDelegate, StoreListCellDelegate, DownloadManager
                     let book = category.books[indexPath.row]
                     self.selectBook(book)
                 }).addDisposableTo(disposeBag)
+            }
         }
     }
     
