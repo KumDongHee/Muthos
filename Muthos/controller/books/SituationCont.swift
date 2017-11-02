@@ -1154,26 +1154,21 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.pivotsCarousel.isHidden = true
     }
     
-    // MARK: - PopOver
-    func showDialogPopOver(_ model : JSON?) {
+    // MARK: - Popover
+    func SituationItemDidTapped(item: SituationItem, quote: JSON) {
         
         guard  "listen" != self.playMode! else { return }
         guard controller!.flagPlayingVoice == false else { return }
         guard dictationText.isHidden == true else { return }
         
-        popOver.model = model
+        popOver.model = quote
         
         var frame:CGRect = self.view.bounds
         frame.origin.y = self.topLayoutGuide.length
         frame.size.height -= self.topLayoutGuide.length
         popOver.view.frame = frame
-
+        
         self.view.addSubview(popOver.view)
-    }
-    
-    // MARK: - BallonView
-    func SituationItemDidTapped(item: SituationItem, quote: JSON) {
-        showDialogPopOver(quote)
     }
     
     // MARK: - Carousel
