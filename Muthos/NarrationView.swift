@@ -23,11 +23,12 @@ class NarrationView: SituationItem {
     
     let BACKGROUND_OFFSET : CGFloat = 100
     let PADDING_X : CGFloat = 12
-    let PADDING_Y : CGFloat = 20
+    let PADDING_Y : CGFloat = 12
     
     override init(quote: JSON, playmode: String) {
         super.init(quote : quote, playmode: playmode)
         
+        fontSize = Int(20 * pow(UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH,1/2))
         textcolor = "white"
         
         quoteView.frame = CGRect(x:PADDING_X, y:PADDING_Y, width:UIScreen.main.bounds.size.width - 2 * PADDING_X, height:10000)

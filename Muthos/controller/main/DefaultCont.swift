@@ -22,6 +22,8 @@ class DefaultCont: UIViewController {
     let rightControl:UIControl = UIControl()
     let iconButton = UIButton(type: UIButtonType.custom)
     
+    let navItemleftPadding : CGFloat = 10
+    
     let MARGIN_TOP:CGFloat = MainCont.scaledSize(3)
     
     override func viewDidLoad() {
@@ -78,10 +80,10 @@ class DefaultCont: UIViewController {
         if let nav = self.navigationController {
             if nav.viewControllers.count == 1 {
                 leftButton.setImage(UIImage(named: "gnb_top_icon_menu"), for: UIControlState())
-                leftButton.frame = CGRect(x: 0, y: 0, width: MainCont.scaledSize(21), height: MainCont.scaledSize(30))
+                leftButton.frame = CGRect(x: 0, y: 0, width: navItemleftPadding * 2 + leftButton.frame.size.width, height: (navigationController?.navigationBar.frame.size.height)!)
             } else {
                 leftButton.setImage(UIImage(named: "gnb_top_icon_back"), for: UIControlState())
-                leftButton.frame = CGRect(x: 0, y: 0, width: MainCont.scaledSize(11), height: MainCont.scaledSize(30))
+                leftButton.frame = CGRect(x: 0, y: 0, width: navItemleftPadding * 2 + leftButton.frame.size.width, height: (navigationController?.navigationBar.frame.size.height)!)
             }
         }
         
