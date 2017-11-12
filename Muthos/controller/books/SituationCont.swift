@@ -84,10 +84,10 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     @IBOutlet weak var dictationLabelBackground: UIView!
     
     @IBOutlet weak var dictationTipsArea: UIView!
-    @IBOutlet weak var dictationTipsOrigin: UITextView!
-    @IBOutlet weak var dictationTipsWords: UITextView!
-    @IBOutlet weak var dictationTipsTranslation: UITextView!
-    @IBOutlet weak var dictationTipsMemo: UITextView!
+    @IBOutlet weak var dictationTipsOrigin: UILabel!
+    @IBOutlet weak var dictationTipsWords: UILabel!
+    @IBOutlet weak var dictationTipsTranslation: UILabel!
+    @IBOutlet weak var dictationTipsMemo: UILabel!
     
     @IBOutlet weak var listenArea: UIView!
     @IBOutlet weak var btnPauseListen: UIButton!
@@ -257,22 +257,12 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         let dictations:String = model["dictation"].string!
         let correct:Bool = result["grade"].intValue == 5
 
-        let tv:UITextView = UITextView()
-        tv.frame = dictationTipsOrigin.bounds
-        tv.setHeight(1000)
-
         var html:String = BookController.getDictationResultOf(model["text"].string!,
                                                               dictations: dictations,
                                                               correct:correct, desc:result["desc"].string!)
         html = "<span style='color:white;font-size:18px'>" + html + "</span>"
         
-        tv.setHtmlText(html)
         dictationTipsOrigin.setHtmlText(html)
-        
-        tv.sizeToFit()
-        
-        let con = dictationTipsOrigin.constraints[0]
-        con.constant = tv.height
 
         dictationTipsWords.text = model["text"].string!
         
@@ -500,7 +490,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         let index:String = controller!.model!["sets"][controller!.selectedIdx!]["index"].stringValue
         let title:String = "Set " + index
         (self.navigationItem.titleView?.subviews[0] as! UILabel).text = title
-
+        
+        _ = videoLoop!.start()
         if flagReserveStart {
             flagReserveStart = false
             start()
@@ -1574,5 +1565,29 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         guard consumeSequence > 0 else { return false }
         consumeSequence -= 1
         return true
+    }
+}
+
+
+extension UILabel {
+    
+    func setHtmlText(_ html:String) {
+        let BACKGROUND_STANDARD_WIDTH : CGFloat = 375
+        let fontsize : Int = Int(18 * pow(UIScreen.main.bounds.size.width / BACKGROUND_STANDARD_WIDTH,1/2))
+        let PREFIX:String = "<span style='font-size:\(fontsize)px;AppleGothic;font-family:Apple SD Gothic Neo;font-weight:400;'>"
+        let SUFFIX:String = "</span>"
+        
+        do {
+            let myStr:String = PREFIX+html+SUFFIX
+            let str = try NSMutableAttributedString(data: myStr.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+            
+            let paraStyle = NSMutableParagraphStyle()
+            paraStyle.lineSpacing = -2.0
+            str.addAttribute(NSParagraphStyleAttributeName, value:paraStyle, range:NSMakeRange(0, str.length))
+            
+            self.attributedText = str
+        } catch {
+            print(error)
+        }
     }
 }
