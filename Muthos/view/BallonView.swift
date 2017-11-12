@@ -100,7 +100,7 @@ class BallonView:SituationItem {
         
         recognizedTextView.setHtmlText(json["desc"].stringValue)
         recognizedTextView.sizeToFit()
-        recognizedBackground.frame = CGRect(x: 0, y: quoteView.frame.size.height, width: quoteView.width+PADDING_WIDTH*2, height: quoteView.height)
+        recognizedBackground.frame = CGRect(x: 0, y: quoteView.frame.size.height, width: recognizedTextView.width+PADDING_WIDTH*2, height: recognizedTextView.height)
         recognizedBackground.backgroundColor = UIColor.yellow
         recognizedBackground.addSubview(recognizedTextView)
         
