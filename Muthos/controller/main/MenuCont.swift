@@ -69,7 +69,7 @@ class MenuCont: UIViewController, UIActionSheetDelegate {
                 }
                 self.mm_drawerController?.closeDrawer(animated: true, completion: nil)
             }).addDisposableTo(disposeBag)
-*/
+
         petButton.rx.tap
 			.subscribe(onNext: { [unowned self] _ in
                 if let nav = self.mm_drawerController?.centerViewController as? UINavigationController {
@@ -80,7 +80,7 @@ class MenuCont: UIViewController, UIActionSheetDelegate {
                 }
                 self.mm_drawerController?.closeDrawer(animated: true, completion: nil)
             }).addDisposableTo(disposeBag)
-/*
+
         friendButton.rx.tap
 			.subscribe(onNext: { [unowned self] _ in
                 if let nav = self.mm_drawerController?.centerViewController as? UINavigationController {

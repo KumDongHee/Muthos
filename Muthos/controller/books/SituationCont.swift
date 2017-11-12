@@ -30,7 +30,10 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
     var currentPlayerIndex : Int = 0
     var progressing:Bool = false
     var audioPlayer:AVAsyncPlayer = AVAsyncPlayer()
-    var videoPlayer = AVQueuePlayer()
+    var videoLoop:VideoLoop?
+    var videoCallback:Async.callbackFunc?
+    var players : [AVPlayer] = []
+    var playerLayers : [AVPlayerLayer] = []
     var currentRetry:Int = 0
     var currentWebviewIdx:Int = 0
     var currentPivotIdx:Int = 0
@@ -465,10 +468,9 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.dictationText.autocorrectionType = UITextAutocorrectionType.no
 
         
-        let playerLayer = AVPlayerLayer(player: videoPlayer)
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        playerLayer.frame = self.view!.bounds
-        scene.layer.addSublayer(playerLayer)
+        initSinglePlayer()
+        initSinglePlayer()
+        videoLoop = VideoLoop(cont:self)
     }
     
     func hideAllScreens() {
@@ -522,6 +524,8 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         initPivotsCarousel()
         
         scene.isHidden = false
+        selectPlayerAtIndex(0)
+        _ = videoLoop!.start()
         
         currentSequence = 0
         
@@ -656,11 +660,18 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         NotificationCenter.default.removeObserver(self)
         controller?.stopVoice()
         progressing = false
-        videoPlayer.pause()
+        pauseAllPlayers()
+        videoLoop!.stop()
         clearDialogItems()
         audioPlayer.stop()
         controller!.recognizer!.setDelegate(nil)
         saveLastSequence()
+    }
+    
+    func pauseAllPlayers() {
+        for p in players {
+            p.pause()
+        }
     }
     
     override func touchLeftButton() {
@@ -713,7 +724,44 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         pivotsCarousel.reloadData()
         pivotsCarousel.scrollToItem(at: 0, animated:false)
     }
-
+    
+    func currentPlayer() -> AVPlayer {
+        return self.players[currentPlayerIndex]
+    }
+    
+    func nextPlayer() -> AVPlayer {
+        return self.players[(currentPlayerIndex + 1) % self.players.count]
+    }
+    
+    func selectPlayerAtIndex(_ idx:Int) {
+        pauseAllPlayers()
+        currentPlayerIndex = idx % players.count
+        CATransaction.setDisableActions(true)
+        for (i, p) in playerLayers.enumerated() {
+            if i == currentPlayerIndex {
+                p.zPosition = 1
+            }
+        }
+        for (i, p) in playerLayers.enumerated() {
+            if i != currentPlayerIndex {
+                p.zPosition = 0
+            }
+        }
+    }
+    
+    func switchPlayer() {
+        selectPlayerAtIndex(currentPlayerIndex+1)
+    }
+    
+    func initSinglePlayer() {
+        let player = AVPlayer()
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerLayer.frame = self.view!.bounds
+        scene.layer.addSublayer(playerLayer)
+        self.players.append(player)
+        self.playerLayers.append(playerLayer)
+    }
     
     func replayCurrentVoice() {
         if let sv:URL = self.currentSpeechVoice {
@@ -823,6 +871,60 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
             }
         }
         return self.model!
+    }
+    
+    func prepareVideo(_ url:URL) {
+        nextPlayer().replaceCurrentItem(with: AVPlayerItem(url:url))
+        nextPlayer().currentItem!.seek(to: CMTimeMakeWithSeconds(0.0, nextPlayer().currentTime().timescale))
+    }
+    
+    func playCurrentVideo(_ callback:@escaping Async.callbackFunc) {
+        self.videoCallback = callback
+        
+        
+        ///// TODO : 음성과 충돌 지점
+        // currentPlayer().play()
+        
+        
+        let speechRecognizer = SpeechFrameworkRecognizer.instance()
+        if false == speechRecognizer.getOnRecognize() {
+            // 일반 재생
+            currentPlayer().isMuted = false
+            currentPlayer().play()
+        }
+        else {
+            ///// 무음 재생
+            currentPlayer().isMuted = true
+            currentPlayer().play()
+        }
+        
+        //let speechRecognizer = SpeechFrameworkRecognizer.instance()
+        //currentPlayer().play()
+        
+        
+        
+        
+        //////////////////////////////
+        self.performSelector(onMainThread: #selector(SituationCont.setupVideoObserver), with: nil, waitUntilDone: false);
+    }
+    
+    func playVideo(_ url:URL, callback:@escaping Async.callbackFunc) {
+        currentPlayer().replaceCurrentItem(with: AVPlayerItem(url:url))
+        self.videoCallback = callback
+        currentPlayer().play()
+        
+        self.performSelector(onMainThread: #selector(SituationCont.setupVideoObserver), with: nil, waitUntilDone: false);
+    }
+    
+    func setupVideoObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(SituationCont.onVideoEnd(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: currentPlayer().currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(SituationCont.onVideoEnd(_:)), name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime, object: currentPlayer().currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(SituationCont.onVideoEnd(_:)), name: NSNotification.Name.AVPlayerItemPlaybackStalled, object: currentPlayer().currentItem)
+    }
+    
+    func onVideoEnd(_ notification: Notification) {
+        NotificationCenter.default.removeObserver(self)
+        _ = self.videoCallback!()
     }
     
     func currentWebView() -> UIWebView {
@@ -959,7 +1061,7 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         else if "image" == type { self.renderImage(model["params"].string!); self.renderNextSequence() }
         else if "sound" == type { self.renderSound(model["params"].string!) }
         else if "video" == type { self.renderVideo(model) }
-        else if "video-sync" == type { self.renderVideo(model) }
+        else if "video-sync" == type { self.renderVideoSync(model) }
         else if "speech" == type { self.clearDialogItems(); if "listen" == self.playMode {self.renderQuote(model)} else {self.renderSpeech(model)} }
         else if "bgm" == type { self.renderBgm(model); }
         else if "narration" == type { self.clearDialogItems(); self.renderNarration(model) }
@@ -1062,22 +1164,83 @@ class SituationCont : DefaultCont, UITextFieldDelegate, iCarouselDataSource, iCa
         self.imageScene.image = UIImage(data:try! Data(contentsOf: URL(string:param)!))
     }
     
-    var looper : AVPlayerLooper?
+    class VideoLoop {
+        var nextVideo:URL?
+        var looping:Bool = false
+        var cont:SituationCont?
+        
+        init(cont:SituationCont) {
+            self.cont = cont
+        }
+        
+        func start() -> Bool {
+            looping = true
+            doLoop()
+            return true
+        }
+        
+        func doLoop() {
+            if !looping {
+                return
+            }
+            
+            cont!.currentPlayer().pause()
+            cont!.switchPlayer()
+            if let video = nextVideo { cont!.prepareVideo(video) }
+            cont!.playCurrentVideo({()->Bool in
+                self.doLoop()
+                return true
+            })
+        }
+        
+        func changeVideo(_ url:URL) {
+            nextVideo = url
+            cont!.prepareVideo(nextVideo!)
+            cont!.currentPlayer().pause()
+            cont!.switchPlayer()
+            cont!.playCurrentVideo({()->Bool in
+                if !self.looping { return false }
+                let modelName = UIDevice.current.modelName
+                if modelName == "iPhone 5" || modelName == "iPhone 5c" || modelName == "iPhone 5s" || modelName == "iPhone 6" || modelName == "iPad Air" || modelName == "iPad Air 2" || modelName == "iPad mini 3" || modelName == "iPad mini 4" || modelName == "iPad 4" {
+                    
+                }else {
+                    self.changeVideo(url)
+                }
+                
+                return true
+            })
+        }
+        
+        func stop() {
+            looping = false
+        }
+    }
     
     func renderVideo(_ json:JSON) {
         if "listen" == playMode {
-            self.clearDialogItems()            
+            self.clearDialogItems()
         }
         controller?.waitForResource(
             json["params"].string!,
             callback:{() -> Bool in
                 let url = (self.controller?.prepareResourcePath(json["params"].string!)!)!
-                let item = AVPlayerItem(url:url)
-              //  self.videoPlayer.pause()
-                self.looper = AVPlayerLooper(player: self.videoPlayer,templateItem: item)
-                self.videoPlayer.play()
+                self.videoLoop!.changeVideo(url)
                 self.renderNextSequence()
                 return true
+        })
+    }
+    
+    func renderVideoSync(_ json:JSON) {
+        controller?.waitForResource(json["params"].string!, callback: {() -> Bool in
+            self.clearDialogItems()
+            self.prepareVideo((self.controller?.prepareResourcePath(json["params"].string!)!)!)
+            self.currentPlayer().pause()
+            self.switchPlayer()
+            self.playCurrentVideo({()->Bool in
+                self.renderNextSequence()
+                return true
+            })
+            return true
         })
     }
     

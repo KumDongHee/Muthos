@@ -85,6 +85,7 @@
 		4FE8B73D1D90CD2900BC54BE /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE8B73C1D90CD2900BC54BE /* Bolts.framework */; };
 		5F1C73481E431CA4008B0127 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1C73471E431CA4008B0127 /* StoreKit.framework */; };
 		780187B52B4A161B06DE0845 /* Pods_muthos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E35285C6FD65B2BF8DCD14F /* Pods_muthos.framework */; };
+		8C5AD6431FB81A8700E1CD48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C5AD6421FB81A8700E1CD48 /* Assets.xcassets */; };
 		8CDCE0B31F78CA8100F4A0E8 /* NarrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDCE0B21F78CA8000F4A0E8 /* NarrationView.swift */; };
 		8CDCE0B51F78CE5500F4A0E8 /* SituationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDCE0B41F78CE5500F4A0E8 /* SituationItem.swift */; };
 		9F0725881E668A3A003EBC22 /* ChangePwdCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0725871E668A3A003EBC22 /* ChangePwdCont.swift */; };
@@ -161,7 +162,6 @@
 		DFE540501C7A33980027BAAA /* SettingVersionCont.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE5404F1C7A33980027BAAA /* SettingVersionCont.swift */; };
 		DFE7F01C1C71C12700FECD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F01B1C71C12700FECD50 /* AppDelegate.swift */; };
 		DFE7F0211C71C12700FECD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F01F1C71C12700FECD50 /* Main.storyboard */; };
-		DFE7F0261C71C12800FECD50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0251C71C12800FECD50 /* Assets.xcassets */; };
 		DFE7F0291C71C12800FECD50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFE7F0271C71C12800FECD50 /* LaunchScreen.storyboard */; };
 		DFE7F0651C71CC4500FECD50 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0641C71CC4500FECD50 /* UIColor.swift */; };
 		DFE7F0671C71CC5200FECD50 /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7F0661C71CC5200FECD50 /* common.swift */; };
@@ -262,6 +262,7 @@
 		4FE8B7321D90CA0B00BC54BE /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		4FE8B73C1D90CD2900BC54BE /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		5F1C73471E431CA4008B0127 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		8C5AD6421FB81A8700E1CD48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Muthos/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		8CDCE0B21F78CA8000F4A0E8 /* NarrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NarrationView.swift; sourceTree = "<group>"; };
 		8CDCE0B41F78CE5500F4A0E8 /* SituationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SituationItem.swift; sourceTree = "<group>"; };
 		9F0725871E668A3A003EBC22 /* ChangePwdCont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePwdCont.swift; path = Muthos/controller/account/ChangePwdCont.swift; sourceTree = SOURCE_ROOT; };
@@ -341,7 +342,6 @@
 		DFE7F0181C71C12700FECD50 /* muthos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muthos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFE7F01B1C71C12700FECD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFE7F0201C71C12700FECD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DFE7F0251C71C12800FECD50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFE7F0281C71C12800FECD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFE7F02A1C71C12800FECD50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFE7F0641C71CC4500FECD50 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = extension/UIColor.swift; sourceTree = "<group>"; };
@@ -645,10 +645,10 @@
 				DFE7F04D1C71C99600FECD50 /* viewmodel */,
 				DFE7F04C1C71C98700FECD50 /* controller */,
 				DFE7F01B1C71C12700FECD50 /* AppDelegate.swift */,
+				8C5AD6421FB81A8700E1CD48 /* Assets.xcassets */,
 				DFE7F01F1C71C12700FECD50 /* Main.storyboard */,
 				DF4B8F031C796451007B8E49 /* Setting.storyboard */,
 				DFBB212D1C79EB6700A7A5A1 /* Account.storyboard */,
-				DFE7F0251C71C12800FECD50 /* Assets.xcassets */,
 				DFE7F0271C71C12800FECD50 /* LaunchScreen.storyboard */,
 				DFE540481C79C4380027BAAA /* Muthos-Bridging-Header.h */,
 				DFE7F02A1C71C12800FECD50 /* Info.plist */,
@@ -904,6 +904,7 @@
 				DFE7F0291C71C12800FECD50 /* LaunchScreen.storyboard in Resources */,
 				DF38A9901E33C46C007E7AF6 /* FindPwdConfirmCont.xib in Resources */,
 				DF5004A31C764EFB003B90D2 /* FriendCell.xib in Resources */,
+				8C5AD6431FB81A8700E1CD48 /* Assets.xcassets in Resources */,
 				4F458F551E13746D0000F613 /* 04_01_coin.mp3 in Resources */,
 				4F458F581E13746D0000F613 /* 03_01_bookopen.mp3 in Resources */,
 				DFB559081C74264C0081855A /* StoreListCell.xib in Resources */,
@@ -914,7 +915,6 @@
 				DFE5404C1C79C4D90027BAAA /* BookSetView.xib in Resources */,
 				4F458F491E13746D0000F613 /* 07_03_talk.mp3 in Resources */,
 				4F458F461E13746D0000F613 /* 07_02_talk.mp3 in Resources */,
-				DFE7F0261C71C12800FECD50 /* Assets.xcassets in Resources */,
 				4F458F371E13746D0000F613 /* 11_01_in.mp3 in Resources */,
 				DFE7F0211C71C12700FECD50 /* Main.storyboard in Resources */,
 				4FA3193A1C79BE7D00907C3E /* Situation.storyboard in Resources */,
